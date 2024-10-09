@@ -1,3 +1,9 @@
-[gd_scene format=3 uid="uid://m6mn47cd8npo"]
+[gd_scene load_steps=2 format=3 uid="uid://m6mn47cd8npo"]
+
+[ext_resource type="Texture2D" uid="uid://oqtavowi0a0g" path="res://assets/sprites/level/street.png" id="1_6fwr5"]
 
 [node name="Level1" type="Node3D"]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+texture = ExtResource("1_6fwr5")
