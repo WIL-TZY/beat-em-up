@@ -10,6 +10,15 @@ config_version=5
 
 [application]
 
-config/name="New Game Project"
+config/name="BeatEmUp"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=1024
+window/size/viewport_height=600
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
