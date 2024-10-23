@@ -2,7 +2,7 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dj1sm3iwv27xn"
+uid="uid://crvn6dfdvghix"
 path="res://.godot/imported/walk.png-102ad77f09529950073b6d536ede6c1e.ctex"
 metadata={
 "vram_texture": false
@@ -15,13 +15,13 @@ dest_files=["res://.godot/imported/walk.png-102ad77f09529950073b6d536ede6c1e.cte
 
 [params]
 
-compress/mode=1
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
