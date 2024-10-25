@@ -42,7 +42,7 @@ metadata/_edit_lock_ = true
 shape = SubResource("ConcavePolygonShape3D_evua4")
 
 [node name="WallUp" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, -0.5, 2.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, -0.5, -0.3)
 visible = false
 mesh = SubResource("BoxMesh_1huhl")
 metadata/_edit_lock_ = true
@@ -53,7 +53,7 @@ metadata/_edit_lock_ = true
 shape = SubResource("ConcavePolygonShape3D_cfvtq")
 
 [node name="WallDown" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, -0.5, 7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, -0.5, 4.5)
 visible = false
 mesh = SubResource("BoxMesh_1huhl")
 metadata/_edit_lock_ = true
