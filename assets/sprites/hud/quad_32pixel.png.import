@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d1beel2eptmqi"
-path="res://.godot/imported/Morrigan Aensland_81.png-12f141c6c6da3ada1a495b261fa62b1d.ctex"
+uid="uid://cg3fbl1gwkhec"
+path="res://.godot/imported/quad_32pixel.png-8be1ea69ce6e338c1438a2c3a2b21974.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/player/morrigan/new folder/Morrigan Aensland_81.png"
-dest_files=["res://.godot/imported/Morrigan Aensland_81.png-12f141c6c6da3ada1a495b261fa62b1d.ctex"]
+source_file="res://assets/sprites/hud/quad_32pixel.png"
+dest_files=["res://.godot/imported/quad_32pixel.png-8be1ea69ce6e338c1438a2c3a2b21974.ctex"]
 
 [params]
 
