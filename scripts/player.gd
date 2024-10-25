@@ -4,6 +4,8 @@ const SPEED := 5.0
 const JUMP_FORCE := 4.5
 const GRAVITY := 9.8
 
+var animation := ""
+
 @onready var sprite: Sprite3D = $Sprite3D
 @onready var animator: AnimationPlayer = $AnimationPlayer
 @onready var spd := SPEED
@@ -23,12 +25,28 @@ func _process(delta: float) -> void:
 	
 	# Handle sprite flipping
 	flip()
+	# Handle sprite animation
+	animate()
 
 # Physics calculations should be in _physics_process
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	# Move the character
 	move_and_slide()
 
 func flip() -> void:
 	if velocity.x != 0:
 		sprite.flip_h = velocity.x < 0
+
+func animate() -> void:
+	if not is_on_floor():
+		set_animation("Jump")
+	else:
+		if velocity.x != 0 or velocity.z != 0:
+			set_animation("Walk")
+		else:
+			set_animation("Idle")
+
+func set_animation(anim: String) -> void:
+	if animation != anim:
+		animation = anim
+		animator.play(animation)
