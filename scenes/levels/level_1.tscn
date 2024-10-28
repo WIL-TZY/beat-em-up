@@ -64,4 +64,4 @@ metadata/_edit_lock_ = true
 shape = SubResource("ConcavePolygonShape3D_cfvtq")
 
 [node name="Player" parent="." instance=ExtResource("2_712xq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.0293, -0.5, 3.01136)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.0293, -0.6, 3.01136)
