@@ -1,6 +1,6 @@
 class_name Character extends CharacterBody3D
 
-enum StateMachine { IDLE, WALK, JUMP, FALL }
+enum StateMachine { IDLE, WALK, JUMP, FALL, JAB, PUNCH }
 
 @export var speed := 2
 @export var jump_force := 5
@@ -12,19 +12,24 @@ var gravity : float = 9.8
 @onready var animated_sprite : AnimatedSprite3D = $AnimatedSprite
 @onready var shadow : Sprite3D = $Shadow
 
-# Get input (read-only)
+# Encapsulation - Get input (read-only)
 var input : Vector2: 
 	get: return Input.get_vector("move_left", "move_right", "move_up", "move_down") * speed
 
 var jump: bool:
 	get: return Input.is_action_just_pressed("jump")
 
+var attack: bool:
+	get: return Input.is_action_just_pressed("attack")
+
 func _physics_process(delta: float) -> void:
 	match state:
-		StateMachine.IDLE: 		__idle()
-		StateMachine.WALK: 		__walk()
-		StateMachine.JUMP: 		__jump()
-		StateMachine.FALL: 		__fall()
+		StateMachine.IDLE: __idle()
+		StateMachine.WALK: __walk()
+		StateMachine.JUMP: __jump()
+		StateMachine.FALL: __fall()
+		StateMachine.JAB: __jab()
+		StateMachine.PUNCH: __punch()
 
 	__set_gravity(delta)
 	move_and_slide()
@@ -41,10 +46,12 @@ func __change_state(new_state: StateMachine) -> void:
 		enter_state = true
 	
 # Abstract methods (only updated in child)
-func __idle() 	-> void: pass
-func __walk() 	-> void: pass
-func __jump() 	-> void: pass
-func __fall() 	-> void: pass
+func __idle() -> void: pass
+func __walk() -> void: pass
+func __jump() -> void: pass
+func __fall() -> void: pass
+func __jab() -> void: pass
+func __punch() -> void: pass
 
 ### MOVE & IDLE
 func __movement() -> void:

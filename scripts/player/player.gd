@@ -5,6 +5,7 @@ func __idle() -> void:
 	__stop_movement()
 	if input: __change_state(StateMachine.WALK)
 	if jump: __change_state(StateMachine.JUMP)
+	if attack: __change_state(StateMachine.JAB)
 
 func __walk() -> void:
 	__enter_state("walk")
@@ -12,6 +13,7 @@ func __walk() -> void:
 	__flip()
 	if not input: __change_state(StateMachine.IDLE)
 	if jump: __change_state(StateMachine.JUMP)
+	if attack: __change_state(StateMachine.JAB)
 
 func __jump() -> void:
 	# Player can move while jumping
@@ -33,6 +35,28 @@ func __fall() -> void:
 	if is_on_floor(): 
 		if shadow != null: shadow.show()
 		__change_state(StateMachine.IDLE)
+
+func __jab() -> void:
+	__enter_state("jab")
+	__stop_movement()
+	
+	if animated_sprite.frame >= 3:
+		__change_state(StateMachine.IDLE)
+
+	# Change to Punch state
+	if (animated_sprite.frame >= 2) and attack:
+		__change_state(StateMachine.PUNCH)
+
+func __punch() -> void:
+	__enter_state("punch")
+	__stop_movement()
+	
+	if animated_sprite.frame >= 4:
+		__change_state(StateMachine.IDLE)
+		
+	# Punch sequence
+	#if animated_sprite.frame >= 3:
+	#	__change_state(StateMachine.JAB)
 
 # (DEBUG) Draw state
 func _process(_delta: float) -> void:
