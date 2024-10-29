@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://dvjfg7epy2hwg"]
+[gd_scene load_steps=54 format=3 uid="uid://dvjfg7epy2hwg"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_hiktt"]
 [ext_resource type="Texture2D" uid="uid://buxqfs57nxyhs" path="res://assets/sprites/player/hurt.png" id="2_gy2cy"]
@@ -350,6 +350,9 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_xuhya"]
+size = Vector3(0.7, 1.5, 0.2)
+
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_hiktt")
 
@@ -368,6 +371,13 @@ autoplay = "idle"
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -0.03, 0, -0.1)
 texture_filter = 0
 texture = ExtResource("11_uo1nh")
+
+[node name="Attack" type="Area3D" parent="."]
+
+[node name="AttackCollision" type="CollisionShape3D" parent="Attack"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9, 1, 0)
+shape = SubResource("BoxShape3D_xuhya")
+disabled = true
 
 [node name="Label" type="Label" parent="."]
 offset_left = 31.0

@@ -8,9 +8,11 @@ enum StateMachine { IDLE, WALK, JUMP, FALL, JAB, PUNCH }
 var state : StateMachine = StateMachine.IDLE
 var enter_state : bool = true
 var gravity : float = 9.8
+var in_attack : bool = false
 
 @onready var animated_sprite : AnimatedSprite3D = $AnimatedSprite
 @onready var shadow : Sprite3D = $Shadow
+@onready var attack_collision: CollisionShape3D = $Attack/AttackCollision
 
 # Encapsulation - Get input (read-only)
 var input : Vector2: 
@@ -21,6 +23,12 @@ var jump: bool:
 
 var attack: bool:
 	get: return Input.is_action_just_pressed("attack")
+
+func _ready() -> void:
+	# DEBUG BODY
+	$Attack.body_entered.connect(func(body: Node3D):
+		print(body.name)
+	)
 
 func _physics_process(delta: float) -> void:
 	match state:
@@ -64,9 +72,21 @@ func __stop_movement() -> void:
 
 func __flip() -> void:
 	if input.x:
-		animated_sprite.flip_h = true if input.x < 0 else false
+		animated_sprite.flip_h = true if input.x < 0 else false # Flip sprite
+		$Attack.scale.x = -1 if input.x < 0 else 1 # Flip attack collision
 
 ### JUMP
 func __set_gravity(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y -= gravity * delta
+
+### ATTACK
+func __start_attack_collision() -> void:
+	if not in_attack:
+		in_attack = true
+		attack_collision.disabled = false
+		
+func __end_attack_collision() -> void:
+	if in_attack:
+		in_attack = false
+		attack_collision.disabled = true
