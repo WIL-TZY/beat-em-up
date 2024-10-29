@@ -5,7 +5,8 @@ func __idle() -> void:
 	__stop_movement()
 	if input: __change_state(StateMachine.WALK)
 	if jump: __change_state(StateMachine.JUMP)
-	if attack: __change_state(StateMachine.JAB)
+	if punch: __change_state(StateMachine.JAB)
+	if kick: __change_state(StateMachine.KICK)
 
 func __walk() -> void:
 	__enter_state("walk")
@@ -13,7 +14,8 @@ func __walk() -> void:
 	__flip()
 	if not input: __change_state(StateMachine.IDLE)
 	if jump: __change_state(StateMachine.JUMP)
-	if attack: __change_state(StateMachine.JAB)
+	if punch: __change_state(StateMachine.JAB)
+	if kick: __change_state(StateMachine.KICK)
 
 func __jump() -> void:
 	# Player can move while jumping
@@ -47,7 +49,7 @@ func __jab() -> void:
 		__change_state(StateMachine.IDLE)
 
 	# Change to Punch state
-	if (animated_sprite.frame >= 2) and attack:
+	if (animated_sprite.frame >= 2) and punch:
 		__end_attack_collision()
 		__change_state(StateMachine.PUNCH)
 
@@ -63,6 +65,30 @@ func __punch() -> void:
 	# Punch sequence
 	#if animated_sprite.frame >= 3:
 	#	__change_state(StateMachine.JAB)
+
+func __kick() -> void:
+	__enter_state("kick")
+	__start_attack_collision()
+	__stop_movement()
+	
+	# Kick
+	if animated_sprite.frame >= 6:
+		__end_attack_collision()
+		__change_state(StateMachine.IDLE)
+
+	# Change to KICK_AIR state
+	if (animated_sprite.frame >= 5) and kick:
+		__end_attack_collision()
+		__change_state(StateMachine.KICK_AIR)
+
+func __kick_air() -> void:
+	__enter_state("kick_air")
+	__start_attack_collision()
+	__stop_movement()
+	
+	if animated_sprite.frame >= 8:
+		__end_attack_collision()
+		__change_state(StateMachine.IDLE)
 
 # (DEBUG) Draw state
 func _process(_delta: float) -> void:

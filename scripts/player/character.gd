@@ -1,6 +1,6 @@
 class_name Character extends CharacterBody3D
 
-enum StateMachine { IDLE, WALK, JUMP, FALL, JAB, PUNCH }
+enum StateMachine { IDLE, WALK, JUMP, FALL, JAB, PUNCH, KICK, KICK_AIR }
 
 @export var speed := 2
 @export var jump_force := 5
@@ -21,8 +21,11 @@ var input : Vector2:
 var jump: bool:
 	get: return Input.is_action_just_pressed("jump")
 
-var attack: bool:
-	get: return Input.is_action_just_pressed("attack")
+var punch: bool:
+	get: return Input.is_action_just_pressed("punch")
+
+var kick: bool:
+	get: return Input.is_action_just_pressed("kick")
 
 func _ready() -> void:
 	# DEBUG BODY
@@ -38,6 +41,8 @@ func _physics_process(delta: float) -> void:
 		StateMachine.FALL: __fall()
 		StateMachine.JAB: __jab()
 		StateMachine.PUNCH: __punch()
+		StateMachine.KICK: __kick()
+		StateMachine.KICK_AIR: __kick_air()
 
 	__set_gravity(delta)
 	move_and_slide()
@@ -60,6 +65,8 @@ func __jump() -> void: pass
 func __fall() -> void: pass
 func __jab() -> void: pass
 func __punch() -> void: pass
+func __kick() -> void: pass
+func __kick_air() -> void: pass
 
 ### MOVE & IDLE
 func __movement() -> void:
@@ -85,7 +92,7 @@ func __start_attack_collision() -> void:
 	if not in_attack:
 		in_attack = true
 		attack_collision.disabled = false
-		
+
 func __end_attack_collision() -> void:
 	if in_attack:
 		in_attack = false
