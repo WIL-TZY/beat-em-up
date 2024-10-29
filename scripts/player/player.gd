@@ -90,6 +90,21 @@ func __kick_air() -> void:
 		__end_attack_collision()
 		__change_state(StateMachine.IDLE)
 
+func __hurt() -> void:
+	if enter_state:
+		enter_state = false
+		animated_sprite.play("hurt")
+		__stop_movement()
+	
+	# Wait 0.5 seconds before changing state
+	await get_tree().create_timer(0.5).timeout
+	__change_state(StateMachine.IDLE)
+
+func __died() -> void:
+	if enter_state:
+		enter_state = false
+		print("Game Over...")
+
 # (DEBUG) Draw state
 func _process(_delta: float) -> void:
 	var label : Label = $Label

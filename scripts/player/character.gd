@@ -1,7 +1,8 @@
 class_name Character extends CharacterBody3D
 
-enum StateMachine { IDLE, WALK, JUMP, FALL, JAB, PUNCH, KICK, KICK_AIR }
+enum StateMachine { IDLE, WALK, JUMP, FALL, JAB, PUNCH, KICK, KICK_AIR, HURT, DIED }
 
+@export var hp := 100
 @export var speed := 2
 @export var jump_force := 5
 
@@ -43,6 +44,8 @@ func _physics_process(delta: float) -> void:
 		StateMachine.PUNCH: __punch()
 		StateMachine.KICK: __kick()
 		StateMachine.KICK_AIR: __kick_air()
+		StateMachine.HURT: __hurt()
+		StateMachine.DIED: __died()
 
 	__set_gravity(delta)
 	move_and_slide()
@@ -58,7 +61,7 @@ func __change_state(new_state: StateMachine) -> void:
 		state = new_state
 		enter_state = true
 	
-# Abstract methods (only updated in child)
+# Abstract methods (only updated in children)
 func __idle() -> void: pass
 func __walk() -> void: pass
 func __jump() -> void: pass
@@ -67,6 +70,8 @@ func __jab() -> void: pass
 func __punch() -> void: pass
 func __kick() -> void: pass
 func __kick_air() -> void: pass
+func __hurt() -> void: pass
+func __died() -> void: pass
 
 ### MOVE & IDLE
 func __movement() -> void:
@@ -97,3 +102,14 @@ func __end_attack_collision() -> void:
 	if in_attack:
 		in_attack = false
 		attack_collision.disabled = true
+
+### DAMAGE
+func __take_damage(damage: int) -> void:
+	hp -= damage
+	print(hp)
+	
+	# Death Check
+	if hp <= 0:
+		__change_state(StateMachine.DIED)
+	else:
+		__change_state(StateMachine.HURT)
