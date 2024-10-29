@@ -1,4 +1,4 @@
-extends Character
+class_name Player extends Character
 
 func __idle() -> void:
 	__enter_state("idle")
@@ -103,6 +103,8 @@ func __hurt() -> void:
 func __died() -> void:
 	if enter_state:
 		enter_state = false
+		animated_sprite.play("hurt")
+		__stop_movement()
 		print("Game Over...")
 
 # (DEBUG) Draw state
