@@ -1,6 +1,6 @@
 class_name Character extends CharacterBody3D
 
-enum StateMachine { IDLE, WALK, JUMP }
+enum StateMachine { IDLE, WALK, JUMP, FALL }
 
 @export var speed := 2
 @export var jump_force := 5
@@ -21,9 +21,10 @@ var jump: bool:
 
 func _physics_process(delta: float) -> void:
 	match state:
-		StateMachine.IDLE: __idle()
-		StateMachine.WALK: __walk()
-		StateMachine.JUMP: __jump()
+		StateMachine.IDLE: 		__idle()
+		StateMachine.WALK: 		__walk()
+		StateMachine.JUMP: 		__jump()
+		StateMachine.FALL: 		__fall()
 
 	__set_gravity(delta)
 	move_and_slide()
@@ -40,9 +41,10 @@ func __change_state(new_state: StateMachine) -> void:
 		enter_state = true
 	
 # Abstract methods (only updated in child)
-func __idle() -> void: pass
-func __walk() -> void: pass
-func __jump() -> void: pass
+func __idle() 	-> void: pass
+func __walk() 	-> void: pass
+func __jump() 	-> void: pass
+func __fall() 	-> void: pass
 
 ### MOVE & IDLE
 func __movement() -> void:

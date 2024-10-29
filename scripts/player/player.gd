@@ -24,10 +24,18 @@ func __jump() -> void:
 		velocity.y = jump_force
 		if shadow != null: shadow.hide()
 		
-		# Wait 0.2 seconds
-		await get_tree().create_timer(0.2).timeout 
+	if velocity.y < 0: __change_state(StateMachine.FALL)
+
+func __fall() -> void:
+	__enter_state("fall")
+	__movement()
 	
-	# Only runs this block after waiting for 0.2 seconds
 	if is_on_floor(): 
 		if shadow != null: shadow.show()
 		__change_state(StateMachine.IDLE)
+
+# (DEBUG) Draw state
+func _process(_delta: float) -> void:
+	var label : Label = $Label
+	var text = str(StateMachine.keys()[state])
+	label.text = text
