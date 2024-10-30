@@ -105,7 +105,13 @@ func __died() -> void:
 		enter_state = false
 		animated_sprite.play("hurt")
 		__stop_movement()
-		print("Game Over...")
+		
+		# Death VFX (flicker sprite)
+		for i in range(8):
+			animated_sprite.visible = not animated_sprite.visible
+			await get_tree().create_timer(0.1).timeout
+		
+		animated_sprite.hide()
 
 # (DEBUG) Draw state
 func _process(_delta: float) -> void:
