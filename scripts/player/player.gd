@@ -115,6 +115,6 @@ func __died() -> void:
 
 # (DEBUG) Draw state
 func _process(_delta: float) -> void:
-	var label : Label = $Label
+	var label : Label = $"Debug Label"
 	var text = str(StateMachine.keys()[state])
 	label.text = text

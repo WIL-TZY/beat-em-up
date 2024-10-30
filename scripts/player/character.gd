@@ -14,6 +14,7 @@ var in_attack : bool = false
 @onready var animated_sprite : AnimatedSprite3D = $AnimatedSprite
 @onready var shadow : Sprite3D = $Shadow
 @onready var attack_collision: CollisionShape3D = $Attack/AttackCollision
+@onready var ui_controller: UI = %UIMain
 
 # Encapsulation - Get input (read-only)
 var input : Vector2: 
@@ -106,7 +107,7 @@ func __end_attack_collision() -> void:
 ### DAMAGE
 func __take_damage(damage: int) -> void:
 	hp -= damage
-	print(hp)
+	ui_controller.__update_health(hp)
 	
 	# Death Check
 	if hp <= 0:

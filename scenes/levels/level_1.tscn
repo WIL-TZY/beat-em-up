@@ -1,8 +1,17 @@
-[gd_scene load_steps=10 format=3 uid="uid://m6mn47cd8npo"]
+[gd_scene load_steps=15 format=3 uid="uid://m6mn47cd8npo"]
 
 [ext_resource type="Texture2D" uid="uid://oqtavowi0a0g" path="res://assets/sprites/level/street.png" id="1_6fwr5"]
+[ext_resource type="Script" path="res://scripts/ui/ui_controller.gd" id="1_ku0yx"]
 [ext_resource type="PackedScene" uid="uid://dvjfg7epy2hwg" path="res://scenes/prefab/player.tscn" id="2_712xq"]
 [ext_resource type="Script" path="res://scripts/enemies/damage.gd" id="3_hhu1u"]
+[ext_resource type="Texture2D" uid="uid://dslgnhcf0pf77" path="res://assets/portraits/idle1.png" id="4_f8cwb"]
+[ext_resource type="FontFile" uid="uid://bxfrdveuo38na" path="res://assets/fonts/crang/Crang.ttf" id="4_yxgh7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lpki2"]
+bg_color = Color(0.884516, 0.42812, 0.581192, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c7kki"]
+bg_color = Color(0.285746, 0.681028, 0.580107, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ve8hh"]
 size = Vector2(50, 10)
@@ -21,6 +30,45 @@ data = PackedVector3Array(-25, 1, 0.05, 25, 1, 0.05, -25, -1, 0.05, 25, 1, 0.05,
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_o0qxj"]
 
 [node name="Level1" type="Node3D"]
+
+[node name="UIMain" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+script = ExtResource("1_ku0yx")
+
+[node name="UIPlayer" type="Control" parent="UIMain"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 45.0
+offset_top = 29.0
+offset_right = 277.0
+offset_bottom = 98.0
+
+[node name="Name" type="Label" parent="UIMain/UIPlayer"]
+layout_mode = 0
+offset_left = 104.0
+offset_top = 42.0
+offset_right = 216.0
+offset_bottom = 67.0
+theme_override_fonts/font = ExtResource("4_yxgh7")
+theme_override_font_sizes/font_size = 24
+text = "PLAYER"
+
+[node name="Health" type="ProgressBar" parent="UIMain/UIPlayer"]
+layout_mode = 0
+offset_left = 61.0
+offset_top = 6.0
+offset_right = 331.0
+offset_bottom = 33.0
+theme_override_styles/background = SubResource("StyleBoxFlat_lpki2")
+theme_override_styles/fill = SubResource("StyleBoxFlat_c7kki")
+value = 100.0
+
+[node name="Portrait" type="Sprite2D" parent="UIMain/UIPlayer"]
+position = Vector2(52, 29)
+scale = Vector2(4.69485, 4.69485)
+texture = ExtResource("4_f8cwb")
+region_enabled = true
+region_rect = Rect2(32.965, 16.4392, 20.5039, 17.0866)
 
 [node name="Camera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.898794, 0.438371, 0, -0.438371, 0.898794, -17.5, 3.5, 6)
