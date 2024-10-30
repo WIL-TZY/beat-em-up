@@ -3,7 +3,7 @@ class_name Character extends CharacterBody3D
 enum StateMachine { IDLE, WALK, JUMP, FALL, JAB, PUNCH, KICK, KICK_AIR, HURT, DIED }
 
 @export var hp := 100
-@export var speed := 2
+@export var speed := 2.0
 @export var jump_force := 5
 
 var state : StateMachine = StateMachine.IDLE
@@ -56,7 +56,7 @@ func __enter_state(animation: String) -> void:
 	if enter_state:
 		enter_state = false
 		animated_sprite.play(animation)
-		
+
 func __change_state(new_state: StateMachine) -> void:
 	if state != new_state:
 		state = new_state

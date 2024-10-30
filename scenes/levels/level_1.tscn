@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://m6mn47cd8npo"]
+[gd_scene load_steps=16 format=3 uid="uid://m6mn47cd8npo"]
 
 [ext_resource type="Texture2D" uid="uid://oqtavowi0a0g" path="res://assets/sprites/level/street.png" id="1_6fwr5"]
 [ext_resource type="Script" path="res://scripts/ui/ui_controller.gd" id="1_ku0yx"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://scripts/enemies/damage.gd" id="3_hhu1u"]
 [ext_resource type="Texture2D" uid="uid://dslgnhcf0pf77" path="res://assets/portraits/idle1.png" id="4_f8cwb"]
 [ext_resource type="FontFile" uid="uid://bxfrdveuo38na" path="res://assets/fonts/crang/Crang.ttf" id="4_yxgh7"]
+[ext_resource type="PackedScene" uid="uid://cgbbvbh4tg22t" path="res://scenes/prefab/punk.tscn" id="7_0w6k3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lpki2"]
 bg_color = Color(0.884516, 0.42812, 0.581192, 1)
@@ -129,5 +130,8 @@ mesh = SubResource("CylinderMesh_nrfqf")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("CylinderShape3D_o0qxj")
+
+[node name="Punk" parent="." instance=ExtResource("7_0w6k3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, 1.4)
 
 [connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]
