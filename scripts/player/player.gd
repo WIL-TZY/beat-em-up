@@ -95,6 +95,9 @@ func __hurt() -> void:
 		enter_state = false
 		animated_sprite.play("hurt")
 		__stop_movement()
+		
+		# Update UI
+		ui_controller.__update_health(health_component.hp)
 	
 	# Wait 0.5 seconds before changing state
 	await get_tree().create_timer(0.5).timeout
@@ -106,7 +109,7 @@ func __died() -> void:
 		animated_sprite.play("hurt")
 		__stop_movement()
 		
-		# Update UI... (UGH, NEED TO REFACTOR THIS!)
+		# Update UI
 		ui_controller.__update_health(health_component.hp)
 		
 		# Death VFX (flicker sprite)

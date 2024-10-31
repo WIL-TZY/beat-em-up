@@ -2,7 +2,7 @@ class_name Character extends CharacterBody3D
 
 enum StateMachine { IDLE, WALK, JUMP, FALL, JAB, PUNCH, KICK, KICK_AIR, HURT, DIED }
 
-@export var hp := 100
+@export var hp := 100.0
 @export var speed := 2.0
 @export var jump_force := 5
 
@@ -37,7 +37,7 @@ func _ready() -> void:
 	health_component.hp = hp
 	
 	# Connect signals
-	health_component.__on_damage.connect(func(hp: float): __update_hp(hp))
+	health_component.__on_damage.connect(func(_hp: float): __change_state(StateMachine.HURT))
 	health_component.__on_dead.connect(func(): __change_state(StateMachine.DIED))
 	# Detects collision with the enemy's hitbox component
 	attack.area_entered.connect(func(hitbox: HitboxComponent):print(hitbox.get_parent().name))
@@ -111,8 +111,3 @@ func __end_attack_collision() -> void:
 	if in_attack:
 		in_attack = false
 		attack_collision.disabled = true
-
-### DAMAGE
-func __update_hp(hp: int) -> void:
-	ui_controller.__update_health(hp)
-	__change_state(StateMachine.HURT)
