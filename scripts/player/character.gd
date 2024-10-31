@@ -13,6 +13,7 @@ var in_attack : bool = false
 
 @onready var animated_sprite : AnimatedSprite3D = $AnimatedSprite
 @onready var shadow : Sprite3D = $Shadow
+@onready var attack: Area3D = $Attack
 @onready var attack_collision: CollisionShape3D = $Attack/AttackCollision
 @onready var ui_controller: UI = %UIMain
 
@@ -86,7 +87,7 @@ func __stop_movement() -> void:
 func __flip() -> void:
 	if input.x:
 		animated_sprite.flip_h = true if input.x < 0 else false # Flip sprite
-		$Attack.scale.x = -1 if input.x < 0 else 1 # Flip attack collision
+		attack.scale.x = -1 if input.x < 0 else 1 # Flip attack collision
 
 ### JUMP
 func __set_gravity(delta: float) -> void:

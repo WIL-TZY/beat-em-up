@@ -48,13 +48,32 @@ func __walk(delta) -> void:
 		else: 
 			self.velocity.z = randi_range(-1, 0)
 
-	# Stops 1 meter before reaching the player position
-	if abs(target_distance.x) < 1:
+	# Attack the player when a certain distance is reached
+	if abs(target_distance.x) < distance_attack:
+		# Stops before reaching the player position
 		self.velocity.x = 0
+		
+		# Start attack
+		if abs(player.transform.origin.z - self.transform.origin.z) < 0.2:
+			__change_state(EnemyState.ATTACK)
 
 	__set_animation("idle" if not self.velocity else "walk")
 	__flip() # Only flips towards the player while in walk state
 	move_and_slide()
+
+func __attack() -> void:
+	if enter_state:
+		enter_state = false
+		__stop_movement()
+		__start_attack_collision()
+		__set_animation("punch")
+
+		timer_node.wait_time = 0.5
+		timer_node.start()
+
+		await timer_node.timeout
+		__end_attack_collision()
+		__change_state(EnemyState.IDLE)
 
 # (DEBUG) Draw state
 func _process(_delta: float) -> void:
