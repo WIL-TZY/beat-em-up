@@ -106,6 +106,9 @@ func __died() -> void:
 		animated_sprite.play("hurt")
 		__stop_movement()
 		
+		# Update UI... (UGH, NEED TO REFACTOR THIS!)
+		ui_controller.__update_health(health_component.hp)
+		
 		# Death VFX (flicker sprite)
 		for i in range(8):
 			animated_sprite.visible = not animated_sprite.visible

@@ -21,10 +21,13 @@ var in_attack : bool
 @onready var attack: Area3D = $Attack
 @onready var attack_collision: CollisionShape3D = $Attack/AttackCollision
 
+@onready var health_component: HealthComponent = $HealthComponent
+
 func _ready() -> void:
+	health_component.hp = hp
 	# Damage
 	# Connect the body_entered signal manually with a lambda function
-	attack.body_entered.connect(func(target: Player): target.__take_damage(strength))
+	attack.area_entered.connect(func(hitbox: HitboxComponent): hitbox.__take_damage(strength))
 
 func _physics_process(delta: float) -> void:
 	match state:

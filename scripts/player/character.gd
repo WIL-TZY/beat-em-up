@@ -17,6 +17,8 @@ var in_attack : bool = false
 @onready var attack_collision: CollisionShape3D = $Attack/AttackCollision
 @onready var ui_controller: UI = %UIMain
 
+@onready var health_component: HealthComponent = $HealthComponent
+
 # Encapsulation - Get input (read-only)
 var input : Vector2: 
 	get: return Input.get_vector("move_left", "move_right", "move_up", "move_down") * speed
@@ -30,12 +32,17 @@ var punch: bool:
 var kick: bool:
 	get: return Input.is_action_just_pressed("kick")
 
+# Runs only once
 func _ready() -> void:
-	# DEBUG BODY
-	$Attack.body_entered.connect(func(body: Node3D):
-		print(body.name)
-	)
+	health_component.hp = hp
+	
+	# Connect signals
+	health_component.__on_damage.connect(func(hp: float): __update_hp(hp))
+	health_component.__on_dead.connect(func(): __change_state(StateMachine.DIED))
+	# Detects collision with the enemy's hitbox component
+	attack.area_entered.connect(func(hitbox: HitboxComponent):print(hitbox.get_parent().name))
 
+# Runs every frame
 func _physics_process(delta: float) -> void:
 	match state:
 		StateMachine.IDLE: __idle()
@@ -106,12 +113,6 @@ func __end_attack_collision() -> void:
 		attack_collision.disabled = true
 
 ### DAMAGE
-func __take_damage(damage: int) -> void:
-	hp -= damage
+func __update_hp(hp: int) -> void:
 	ui_controller.__update_health(hp)
-	
-	# Death Check
-	if hp <= 0:
-		__change_state(StateMachine.DIED)
-	else:
-		__change_state(StateMachine.HURT)
+	__change_state(StateMachine.HURT)

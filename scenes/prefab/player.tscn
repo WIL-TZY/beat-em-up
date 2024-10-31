@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://dvjfg7epy2hwg"]
+[gd_scene load_steps=57 format=3 uid="uid://dvjfg7epy2hwg"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_hiktt"]
 [ext_resource type="Texture2D" uid="uid://buxqfs57nxyhs" path="res://assets/sprites/player/hurt.png" id="2_gy2cy"]
@@ -11,9 +11,11 @@
 [ext_resource type="Texture2D" uid="uid://dkq3h8m537w4" path="res://assets/sprites/player/dive_kick.png" id="5_nrx27"]
 [ext_resource type="Texture2D" uid="uid://p3k1wiesb2uu" path="res://assets/sprites/player/jump_kick.png" id="6_4vngc"]
 [ext_resource type="Texture2D" uid="uid://b16gbb0rtfcdm" path="res://assets/sprites/player/shadow.png" id="11_uo1nh"]
+[ext_resource type="PackedScene" uid="uid://bl2vkn58dh1bm" path="res://scenes/prefab/components/health_component.tscn" id="12_w47wr"]
+[ext_resource type="PackedScene" uid="uid://dya27kouyh7ho" path="res://scenes/prefab/components/hitbox_component.tscn" id="13_2prks"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_v4t3c"]
-size = Vector3(0.7, 1.2, 0.2)
+size = Vector3(0.7, 1.7, 0.2)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mqsak"]
 atlas = ExtResource("5_cjcsy")
@@ -377,12 +379,15 @@ animations = [{
 [sub_resource type="BoxShape3D" id="BoxShape3D_xuhya"]
 size = Vector3(0.7, 1.5, 0.2)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_swsf1"]
+size = Vector3(0.7, 1.7, 0.2)
+
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 2
 script = ExtResource("1_hiktt")
 
 [node name="Collision" type="CollisionShape3D" parent="."]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
 shape = SubResource("BoxShape3D_v4t3c")
 
 [node name="AnimatedSprite" type="AnimatedSprite3D" parent="."]
@@ -398,11 +403,23 @@ texture_filter = 0
 texture = ExtResource("11_uo1nh")
 
 [node name="Attack" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 4
 
 [node name="AttackCollision" type="CollisionShape3D" parent="Attack"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9, 1, 0)
 shape = SubResource("BoxShape3D_xuhya")
 disabled = true
+
+[node name="HealthComponent" parent="." instance=ExtResource("12_w47wr")]
+
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("13_2prks")]
+collision_layer = 2
+health_component = NodePath("../HealthComponent")
+
+[node name="HitboxCollision" type="CollisionShape3D" parent="HitboxComponent"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("BoxShape3D_swsf1")
 
 [node name="Debug Label" type="Label" parent="."]
 anchors_preset = 2
