@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cgbbvbh4tg22t"]
+[gd_scene load_steps=30 format=3 uid="uid://cgbbvbh4tg22t"]
 
 [ext_resource type="Texture2D" uid="uid://ccnuviw3xi35w" path="res://assets/sprites/enemies/hurt.png" id="1_j62we"]
 [ext_resource type="Script" path="res://scripts/enemies/punk.gd" id="1_myo8e"]
@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cc6kmmbgj7p8" path="res://assets/sprites/enemies/walk.png" id="4_eyls0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rcr4w"]
-size = Vector3(0.9, 1.8, 0.2)
+size = Vector3(1.4, 1.8, 0.2)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pqryl"]
 atlas = ExtResource("1_j62we")
@@ -33,19 +33,19 @@ region = Rect2(0, 0, 96, 63)
 atlas = ExtResource("1_j62we")
 region = Rect2(96, 0, 96, 63)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8q6yr"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_1gg2p"]
 atlas = ExtResource("2_0hsm1")
 region = Rect2(0, 0, 96, 63)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2rcwm"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_g5tru"]
 atlas = ExtResource("2_0hsm1")
 region = Rect2(96, 0, 96, 63)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_lgx4d"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_y7wqe"]
 atlas = ExtResource("2_0hsm1")
 region = Rect2(192, 0, 96, 63)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_px5f4"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_crv5s"]
 atlas = ExtResource("2_0hsm1")
 region = Rect2(288, 0, 96, 63)
 
@@ -125,16 +125,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_8q6yr")
+"texture": SubResource("AtlasTexture_1gg2p")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2rcwm")
+"texture": SubResource("AtlasTexture_g5tru")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_lgx4d")
+"texture": SubResource("AtlasTexture_y7wqe")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_px5f4")
+"texture": SubResource("AtlasTexture_crv5s")
 }],
 "loop": true,
 "name": &"idle",
@@ -189,20 +189,45 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g0pp5"]
+bg_color = Color(0, 0, 0, 1)
+
 [node name="Punk" type="CharacterBody3D"]
 script = ExtResource("1_myo8e")
 
 [node name="Collision" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0.94, 0)
 shape = SubResource("BoxShape3D_rcr4w")
 
 [node name="AnimatedSprite" type="AnimatedSprite3D" parent="."]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 1.26069, 0)
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 1.3, 0)
+offset = Vector2(-7, 0)
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_0pj1t")
-animation = &"up"
+animation = &"walk"
 autoplay = "idle"
-frame = 3
-frame_progress = 1.0
+frame = 2
+frame_progress = 0.865279
 
 [node name="Shadow" type="Sprite3D" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Debug Label1" type="Label" parent="."]
+offset_left = 954.0
+offset_top = 89.0
+offset_right = 1047.0
+offset_bottom = 134.0
+theme_override_font_sizes/font_size = 32
+text = "STATE"
+horizontal_alignment = 1
+
+[node name="Debug Label2" type="Label" parent="."]
+offset_left = 840.0
+offset_top = 145.0
+offset_right = 1018.0
+offset_bottom = 190.0
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_g0pp5")
+text = "target_distance"
+horizontal_alignment = 1
