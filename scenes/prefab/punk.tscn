@@ -149,10 +149,16 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_gep11")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gep11")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gep11")
 }],
 "loop": false,
 "name": &"punch",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -208,7 +214,7 @@ texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_0pj1t")
 animation = &"punch"
 autoplay = "idle"
-frame = 2
+frame = 4
 frame_progress = 1.0
 
 [node name="Shadow" type="Sprite3D" parent="."]
@@ -216,6 +222,8 @@ frame_progress = 1.0
 [node name="Timer" type="Timer" parent="."]
 
 [node name="Attack" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
 
 [node name="AttackCollision" type="CollisionShape3D" parent="Attack"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2, 0.95, 0)
@@ -223,15 +231,21 @@ shape = SubResource("BoxShape3D_3mh63")
 disabled = true
 
 [node name="Debug Label1" type="Label" parent="."]
-offset_left = 954.0
-offset_top = 89.0
-offset_right = 1047.0
-offset_bottom = 134.0
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -93.0
+offset_top = -45.0
+grow_horizontal = 0
+grow_vertical = 0
 theme_override_font_sizes/font_size = 32
 text = "STATE"
 horizontal_alignment = 1
 
 [node name="Debug Label2" type="Label" parent="."]
+visible = false
 offset_left = 840.0
 offset_top = 145.0
 offset_right = 1018.0

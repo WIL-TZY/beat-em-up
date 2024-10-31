@@ -4,7 +4,7 @@ enum EnemyState { IDLE, WALK, HURT, DOWN, UP, ATTACK, DIED }
 
 @export var hp := 30
 @export var speed := 5.0
-@export var strength := 3
+@export var strength := 25
 @export var distance_attack := 1.2
 
 var state : EnemyState = EnemyState.IDLE
@@ -20,6 +20,11 @@ var in_attack : bool
 @onready var player: Player = %Player
 @onready var attack: Area3D = $Attack
 @onready var attack_collision: CollisionShape3D = $Attack/AttackCollision
+
+func _ready() -> void:
+	# Damage
+	# Connect the body_entered signal manually with a lambda function
+	attack.body_entered.connect(func(target: Player): target.__take_damage(strength))
 
 func _physics_process(delta: float) -> void:
 	match state:
