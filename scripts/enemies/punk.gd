@@ -40,24 +40,19 @@ func __walk(delta) -> void:
 	
 	# Walks for 1s and 2s
 	walk_timer += delta
-	if walk_timer >= randf_range(1, 2): walk_timer = 0 # Reset timer
-	
-	# Vertical Movement
-	if self.transform.origin.z < player.transform.origin.z:
-		self.velocity.z = randi_range(0, 1) 
-	else: 
-		self.velocity.z = randi_range(-1, 0)
+	if walk_timer >= randf_range(1, 2): 
+		walk_timer = 0 # Reset timer
+		# Vertical Movement
+		if self.transform.origin.z < player.transform.origin.z:
+			self.velocity.z = randi_range(0, 1) 
+		else: 
+			self.velocity.z = randi_range(-1, 0)
 
 	# Stops 1 meter before reaching the player position
-	if (abs(target_distance.x) < 1):
+	if abs(target_distance.x) < 1:
 		self.velocity.x = 0
 
-	# __set_animation("idle" if not self.velocity else "walk")
-	if not self.velocity:
-		__set_animation("idle")
-	else:
-		__set_animation("walk")
-
+	__set_animation("idle" if not self.velocity else "walk")
 	__flip() # Only flips towards the player while in walk state
 	move_and_slide()
 
