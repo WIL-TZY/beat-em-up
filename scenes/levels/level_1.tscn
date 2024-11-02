@@ -118,7 +118,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.0293, -0.6, 3.01136)
 
 [node name="Punk" parent="." instance=ExtResource("7_0w6k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, 1.4)
-hp = 30
-speed = 5.0
-strength = 25
-distance_attack = 1.2

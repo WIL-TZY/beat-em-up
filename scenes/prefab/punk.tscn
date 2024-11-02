@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://cgbbvbh4tg22t"]
+[gd_scene load_steps=34 format=3 uid="uid://cgbbvbh4tg22t"]
 
 [ext_resource type="Texture2D" uid="uid://ccnuviw3xi35w" path="res://assets/sprites/enemies/hurt.png" id="1_j62we"]
 [ext_resource type="Script" path="res://scripts/enemies/punk.gd" id="1_myo8e"]
@@ -10,6 +10,10 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rcr4w"]
 size = Vector3(0.9, 1.6, 0.2)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_07wld"]
+atlas = ExtResource("1_j62we")
+region = Rect2(288, 0, 96, 63)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pqryl"]
 atlas = ExtResource("1_j62we")
@@ -93,6 +97,14 @@ region = Rect2(288, 0, 96, 63)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0pj1t"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_07wld")
+}],
+"loop": true,
+"name": &"died",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_pqryl")
@@ -211,7 +223,7 @@ shape = SubResource("BoxShape3D_rcr4w")
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 1.3, 0)
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_0pj1t")
-animation = &"down"
+animation = &"died"
 autoplay = "idle"
 
 [node name="Shadow" type="Sprite3D" parent="."]
@@ -252,7 +264,6 @@ text = "STATE"
 horizontal_alignment = 1
 
 [node name="Debug Label2" type="Label" parent="."]
-visible = false
 offset_left = 840.0
 offset_top = 145.0
 offset_right = 1018.0

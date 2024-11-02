@@ -10,6 +10,7 @@ func __idle() -> void:
 		# Wait a random amount of time in idle state
 		timer_node.wait_time = randf_range(1, 2)
 		timer_node.start()
+		hurt_index = 0 # Reset hurt/down state
 
 		# Automatically change to walk after timeout
 		await timer_node.timeout
@@ -81,28 +82,64 @@ func __hurt() -> void:
 		animated_sprite.play("hurt")
 
 		timer_node.stop()
-		timer_node.wait_time = 0.75
+		timer_node.wait_time = randf_range(0.5, 1)
 		timer_node.start()
-		
+			
 		await timer_node.timeout
-	
-	move_and_slide()
+		__change_state(EnemyState.IDLE)
 
 func __down() -> void:
 	if enter_state:
 		enter_state = false
+		animated_sprite.play("down")
 		
+		# Can't receive damage while downed
+		hitbox_collision.disabled = true
+		
+		# Upwards animation
 		velocity.x = 1 if player.global_position.x < self.global_position.x else -1
 		velocity.y = 3
 		velocity.z = 0
-		animated_sprite.play("down")
-		
+
 		timer_node.stop()
-		timer_node.wait_time = 0.75
+		timer_node.wait_time = randf_range(1, 2)
 		timer_node.start()
-		
 		await timer_node.timeout
-		__change_state(EnemyState.DIED)
+		
+		# Getting up animation
+		__set_animation("up")
+		await animated_sprite.animation_finished
+		
+		# Can receive damage after getting up
+		hitbox_collision.disabled = true
+		
+		__change_state(EnemyState.IDLE)
+	
+	move_and_slide()
+
+func __died() -> void:
+	if enter_state:
+		enter_state = false
+		animated_sprite.play("died")
+		timer_node.stop()
+		
+		# Death VFX (flicker sprite)
+		for i in range(8):
+			animated_sprite.visible = not animated_sprite.visible
+			await get_tree().create_timer(0.1).timeout
+		# Makes the enemy disappear after being defeated
+		animated_sprite.hide()
+		
+		# Removes the node safely
+		queue_free()
+
+### DAMAGE
+func __on_damage(_hp: float) -> void:
+	# TO-DO: Atualizar a HUD do inimigo
+	hurt_index += 1
+	match hurt_index:
+		1: __change_state(EnemyState.HURT)
+		2: __change_state(EnemyState.DOWN)
 
 # (DEBUG) Draw state
 func _process(_delta: float) -> void:
@@ -110,4 +147,5 @@ func _process(_delta: float) -> void:
 	var label2 : Label = $"Debug Label2"
 	var text = str(EnemyState.keys()[state])
 	label1.text = text
-	label2.text = str(target_distance)
+	# label2.text = str(target_distance)
+	label2.text = "Hurt Index: " + str(hurt_index)

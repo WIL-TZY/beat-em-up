@@ -116,7 +116,7 @@ func __died() -> void:
 		for i in range(8):
 			animated_sprite.visible = not animated_sprite.visible
 			await get_tree().create_timer(0.1).timeout
-		
+		# Makes the player disappear after being defeated
 		animated_sprite.hide()
 
 # (DEBUG) Draw state

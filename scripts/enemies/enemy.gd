@@ -23,12 +23,13 @@ var hurt_index : int
 @onready var attack_collision: CollisionShape3D = $Attack/AttackCollision
 
 @onready var health_component: HealthComponent = $HealthComponent
+@onready var hitbox_collision: CollisionShape3D = $HitboxComponent/HitboxCollision
 
 func _ready() -> void:
 	health_component.hp = hp
 	
 	# Connect the signal manually
-	health_component.__on_damage.connect(func(hp: float): __on_damage(hp))
+	health_component.__on_damage.connect(func(_hp: float): __on_damage(_hp))
 	health_component.__on_dead.connect(func(): __change_state(EnemyState.DIED))
 	# Damage
 	attack.area_entered.connect(func(hitbox: HitboxComponent): hitbox.__take_damage(strength))
@@ -60,6 +61,9 @@ func __attack() -> void: pass
 func __hurt() -> void: pass
 func __down() -> void: pass
 func __died() -> void: pass
+
+# This function is different for each enemy, based on the amount of hurt states
+func __on_damage(_hp: float) -> void: pass
 
 ### MOVE & IDLE
 func __movement() -> void:
@@ -94,11 +98,3 @@ func __end_attack_collision() -> void:
 	if in_attack:
 		in_attack = false
 		attack_collision.disabled = true
-
-### DAMAGE
-func __on_damage(hp: float) -> void:
-	# TO-DO: Atualizar a HUD do inimigo
-	hurt_index += 1
-	match hurt_index:
-		1: __change_state(EnemyState.HURT)
-		2: __change_state(EnemyState.DOWN)
