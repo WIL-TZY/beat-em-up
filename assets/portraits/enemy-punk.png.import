@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d0tqwd0xpskub"
-path="res://.godot/imported/shadow.png-250d4999aad1c86c26fd2188c3c69734.ctex"
+uid="uid://43vx4vkyisix"
+path="res://.godot/imported/enemy-punk.png-edf0b67305cf89cf9aa7ef5f2e425cfc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/characters/shadow.png"
-dest_files=["res://.godot/imported/shadow.png-250d4999aad1c86c26fd2188c3c69734.ctex"]
+source_file="res://assets/portraits/enemy-punk.png"
+dest_files=["res://.godot/imported/enemy-punk.png-edf0b67305cf89cf9aa7ef5f2e425cfc.ctex"]
 
 [params]
 
@@ -21,7 +21,7 @@ compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d0tqwd0xpskub"
-path="res://.godot/imported/shadow.png-250d4999aad1c86c26fd2188c3c69734.ctex"
+uid="uid://dslgnhcf0pf77"
+path="res://.godot/imported/brawler-girl.png-996b6bd42451420e53a18bd576a5c4b0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/characters/shadow.png"
-dest_files=["res://.godot/imported/shadow.png-250d4999aad1c86c26fd2188c3c69734.ctex"]
+source_file="res://assets/portraits/brawler-girl.png"
+dest_files=["res://.godot/imported/brawler-girl.png-996b6bd42451420e53a18bd576a5c4b0.ctex"]
 
 [params]
 
@@ -21,7 +21,7 @@ compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CharacterData" load_steps=3 format=3 uid="uid://cf2jqf5y68bys"]
+
+[ext_resource type="Script" path="res://scripts/resources/character_data.gd" id="1_8d683"]
+[ext_resource type="Texture2D" uid="uid://68h33t3lfxxi" path="res://assets/portraits/long-tail.png" id="1_etq0a"]
+
+[resource]
+script = ExtResource("1_8d683")
+name = "Long Tail"
+portrait = ExtResource("1_etq0a")
+hp = 100.0
+speed = 2.0
+jump_force = 5
+strength = 5
