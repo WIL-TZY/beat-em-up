@@ -86,8 +86,8 @@ func __flip() -> void:
 	# Flip sprite
 	animated_sprite.flip_h = face_right
 
-	# Flip attack collision
-	attack.scale.x = -1 if velocity.x > 0 else 1
+	# Flip attack collision based on facing direction
+	attack.scale.x = -1 if face_right else 1
 
 ### JUMP
 func __set_gravity(delta: float) -> void:
