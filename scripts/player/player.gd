@@ -25,7 +25,7 @@ func __jump() -> void:
 	if enter_state:
 		enter_state = false
 		animated_sprite.play("jump")
-		velocity.y = jump_force
+		velocity.y = properties.jump_force
 		if shadow != null: shadow.hide()
 		
 	if velocity.y < 0: __change_state(StateMachine.FALL)

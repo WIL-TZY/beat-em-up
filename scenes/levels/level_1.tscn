@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://m6mn47cd8npo"]
+[gd_scene load_steps=14 format=3 uid="uid://m6mn47cd8npo"]
 
 [ext_resource type="Texture2D" uid="uid://oqtavowi0a0g" path="res://assets/sprites/level/street.png" id="1_6fwr5"]
 [ext_resource type="Script" path="res://scripts/ui/ui_controller.gd" id="1_ku0yx"]
 [ext_resource type="PackedScene" uid="uid://dvjfg7epy2hwg" path="res://scenes/prefab/player.tscn" id="2_712xq"]
-[ext_resource type="Texture2D" uid="uid://dslgnhcf0pf77" path="res://assets/portraits/idle1.png" id="4_f8cwb"]
+[ext_resource type="Texture2D" uid="uid://dslgnhcf0pf77" path="res://assets/portraits/player.png" id="4_f8cwb"]
 [ext_resource type="FontFile" uid="uid://bxfrdveuo38na" path="res://assets/fonts/crang/Crang.ttf" id="4_yxgh7"]
+[ext_resource type="Resource" uid="uid://dig302ocvq1rd" path="res://scripts/resources/brawler_girl.tres" id="6_edifq"]
 [ext_resource type="PackedScene" uid="uid://cgbbvbh4tg22t" path="res://scenes/prefab/punk.tscn" id="7_0w6k3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lpki2"]
@@ -59,12 +60,14 @@ theme_override_styles/background = SubResource("StyleBoxFlat_lpki2")
 theme_override_styles/fill = SubResource("StyleBoxFlat_c7kki")
 value = 100.0
 
-[node name="Portrait" type="Sprite2D" parent="UIMain/UIPlayer"]
-position = Vector2(52, 29)
+[node name="Portrait" type="TextureRect" parent="UIMain/UIPlayer"]
+layout_mode = 0
+offset_left = -19.0
+offset_top = -6.0
+offset_right = -3.0
+offset_bottom = 10.0
 scale = Vector2(4.69485, 4.69485)
 texture = ExtResource("4_f8cwb")
-region_enabled = true
-region_rect = Rect2(32.965, 16.4392, 20.5039, 17.0866)
 
 [node name="Camera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.898794, 0.438371, 0, -0.438371, 0.898794, -17.5, 3.5, 6)
@@ -115,6 +118,7 @@ shape = SubResource("ConcavePolygonShape3D_cfvtq")
 [node name="Player" parent="." instance=ExtResource("2_712xq")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.0293, -0.6, 3.01136)
+properties = ExtResource("6_edifq")
 
 [node name="Punk" parent="." instance=ExtResource("7_0w6k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, 1.4)

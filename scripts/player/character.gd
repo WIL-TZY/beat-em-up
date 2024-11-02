@@ -2,10 +2,7 @@ class_name Character extends CharacterBody3D
 
 enum StateMachine { IDLE, WALK, JUMP, FALL, JAB, PUNCH, KICK, KICK_AIR, HURT, DIED }
 
-@export var hp := 100.0
-@export var speed := 2.0
-@export var jump_force := 5
-@export var strength := 5
+@export var properties : CharacterData
 
 var state : StateMachine = StateMachine.IDLE
 var enter_state : bool = true
@@ -22,7 +19,7 @@ var in_attack : bool = false
 
 # Encapsulation - Get input (read-only)
 var input : Vector2: 
-	get: return Input.get_vector("move_left", "move_right", "move_up", "move_down") * speed
+	get: return Input.get_vector("move_left", "move_right", "move_up", "move_down") * properties.speed
 
 var jump: bool:
 	get: return Input.is_action_just_pressed("jump")
@@ -35,7 +32,7 @@ var kick: bool:
 
 # Runs only once
 func _ready() -> void:
-	health_component.hp = hp
+	health_component.hp = properties.hp
 	
 	# Connect signals
 	health_component.__on_damage.connect(func(_hp: float): __change_state(StateMachine.HURT))
@@ -43,7 +40,7 @@ func _ready() -> void:
 	# Detects collision with the enemy's hitbox component
 	attack.area_entered.connect(func(hitbox: HitboxComponent):
 		# print(hitbox.get_parent().name)
-		hitbox.__take_damage(strength)
+		hitbox.__take_damage(properties.strength)
 		)
 
 # Runs every frame
