@@ -4,6 +4,8 @@ enum StateMachine { IDLE, WALK, JUMP, FALL, JAB, PUNCH, KICK, KICK_AIR, HURT, DI
 
 @export var properties : CharacterData
 
+const CAMERA_OFFSET : float = 5.0
+
 var state : StateMachine = StateMachine.IDLE
 var enter_state : bool = true
 var gravity : float = 9.8
@@ -14,8 +16,8 @@ var in_attack : bool = false
 @onready var attack: Area3D = $Attack
 @onready var attack_collision: CollisionShape3D = $Attack/AttackCollision
 @onready var HUD: UI = %HUD
-
 @onready var health_component: HealthComponent = $HealthComponent
+@onready var camera: Camera3D = get_parent().get_node("Camera")
 
 # Encapsulation - Get input (read-only)
 var input : Vector2: 
@@ -61,8 +63,9 @@ func _physics_process(delta: float) -> void:
 		StateMachine.HURT: __hurt()
 		StateMachine.DIED: __died()
 
+	position.x = clamp(position.x, camera.position.x - CAMERA_OFFSET, camera.clamped_pos + CAMERA_OFFSET)
 	__set_gravity(delta)
-	move_and_slide()
+	move_and_slide() # Needs to be the last function call
 
 ### Functions
 func __enter_state(animation: String) -> void:

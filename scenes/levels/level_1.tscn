@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://m6mn47cd8npo"]
+[gd_scene load_steps=10 format=3 uid="uid://m6mn47cd8npo"]
 
 [ext_resource type="Texture2D" uid="uid://oqtavowi0a0g" path="res://assets/sprites/level/street.png" id="1_6fwr5"]
 [ext_resource type="PackedScene" uid="uid://dndpxufhapxen" path="res://scenes/prefab/hud.tscn" id="1_qu3tw"]
+[ext_resource type="Script" path="res://scripts/camera/camera.gd" id="2_4wnyf"]
 [ext_resource type="PackedScene" uid="uid://dvjfg7epy2hwg" path="res://scenes/prefab/player.tscn" id="2_712xq"]
 [ext_resource type="PackedScene" uid="uid://cgbbvbh4tg22t" path="res://scenes/prefab/punk.tscn" id="7_0w6k3"]
 
@@ -27,6 +28,7 @@ transform = Transform3D(1, 0, 0, 0, 0.898794, 0.438371, 0, -0.438371, 0.898794, 
 projection = 1
 current = true
 size = 6.0
+script = ExtResource("2_4wnyf")
 metadata/_edit_lock_ = true
 
 [node name="Background" type="Sprite3D" parent="."]
@@ -76,4 +78,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.0293, -0.6, 3.01136)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, 1.4)
 
 [node name="Punk2" parent="." instance=ExtResource("7_0w6k3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5366, 0, 3.70923)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.1324, 0, 3.70923)
