@@ -13,7 +13,7 @@ var in_attack : bool = false
 @onready var shadow : Sprite3D = $Shadow
 @onready var attack: Area3D = $Attack
 @onready var attack_collision: CollisionShape3D = $Attack/AttackCollision
-@onready var ui_controller: UI = %UIMain
+@onready var HUD: UI = %HUD
 
 @onready var health_component: HealthComponent = $HealthComponent
 

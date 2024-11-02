@@ -123,6 +123,9 @@ func __died() -> void:
 		animated_sprite.play("died")
 		timer_node.stop()
 		
+		# Update enemy HUD 
+		HUD.__update_enemy(chara_name, 0, hp_max, portrait)
+		
 		# Death VFX (flicker sprite)
 		for i in range(8):
 			animated_sprite.visible = not animated_sprite.visible
@@ -135,7 +138,9 @@ func __died() -> void:
 
 ### DAMAGE
 func __on_damage(_hp: float) -> void:
-	# TO-DO: Atualizar a HUD do inimigo
+	# Update enemy HUD 
+	HUD.__update_enemy(chara_name, hp, hp_max, portrait)
+	
 	hurt_index += 1
 	match hurt_index:
 		1: __change_state(EnemyState.HURT)

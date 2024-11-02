@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://m6mn47cd8npo"]
+[gd_scene load_steps=15 format=3 uid="uid://m6mn47cd8npo"]
 
 [ext_resource type="Texture2D" uid="uid://oqtavowi0a0g" path="res://assets/sprites/level/street.png" id="1_6fwr5"]
-[ext_resource type="Script" path="res://scripts/ui/ui_controller.gd" id="1_ku0yx"]
+[ext_resource type="Script" path="res://scripts/ui/hud.gd" id="1_ku0yx"]
 [ext_resource type="PackedScene" uid="uid://dvjfg7epy2hwg" path="res://scenes/prefab/player.tscn" id="2_712xq"]
+[ext_resource type="Texture2D" uid="uid://43vx4vkyisix" path="res://assets/portraits/enemy-punk.png" id="4_05f6g"]
 [ext_resource type="Texture2D" uid="uid://dslgnhcf0pf77" path="res://assets/portraits/brawler-girl.png" id="4_f8cwb"]
 [ext_resource type="FontFile" uid="uid://bxfrdveuo38na" path="res://assets/fonts/crang/Crang.ttf" id="4_yxgh7"]
 [ext_resource type="Resource" uid="uid://dig302ocvq1rd" path="res://scripts/resources/brawler_girl.tres" id="6_edifq"]
@@ -28,19 +29,57 @@ data = PackedVector3Array(-25, 1, 0.05, 25, 1, 0.05, -25, -1, 0.05, 25, 1, 0.05,
 
 [node name="Level1" type="Node3D"]
 
-[node name="UIMain" type="CanvasLayer" parent="."]
+[node name="HUD" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
 script = ExtResource("1_ku0yx")
 
-[node name="UIPlayer" type="Control" parent="UIMain"]
+[node name="UIPlayer" type="Control" parent="HUD"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 45.0
-offset_top = 29.0
-offset_right = 277.0
-offset_bottom = 98.0
+offset_left = 40.0
+offset_top = 30.0
+offset_right = 401.0
+offset_bottom = 109.0
 
-[node name="Name" type="Label" parent="UIMain/UIPlayer"]
+[node name="NamePlayer" type="Label" parent="HUD/UIPlayer"]
+layout_mode = 0
+offset_left = 190.0
+offset_top = 42.0
+offset_right = 302.0
+offset_bottom = 67.0
+theme_override_fonts/font = ExtResource("4_yxgh7")
+theme_override_font_sizes/font_size = 24
+text = "PLAYER"
+
+[node name="HealthPlayer" type="ProgressBar" parent="HUD/UIPlayer"]
+layout_mode = 0
+offset_left = 79.0
+offset_top = 6.0
+offset_right = 349.0
+offset_bottom = 33.0
+theme_override_styles/background = SubResource("StyleBoxFlat_lpki2")
+theme_override_styles/fill = SubResource("StyleBoxFlat_c7kki")
+value = 100.0
+
+[node name="PortraitPlayer" type="TextureRect" parent="HUD/UIPlayer"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = -6.0
+offset_right = 15.0
+offset_bottom = 10.0
+scale = Vector2(4.69485, 4.69485)
+texture = ExtResource("4_f8cwb")
+
+[node name="UIEnemy" type="Control" parent="HUD"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 640.0
+offset_top = 30.0
+offset_right = 1065.0
+offset_bottom = 115.0
+
+[node name="NameEnemy" type="Label" parent="HUD/UIEnemy"]
 layout_mode = 0
 offset_left = 104.0
 offset_top = 42.0
@@ -50,7 +89,7 @@ theme_override_fonts/font = ExtResource("4_yxgh7")
 theme_override_font_sizes/font_size = 24
 text = "PLAYER"
 
-[node name="Health" type="ProgressBar" parent="UIMain/UIPlayer"]
+[node name="HealthEnemy" type="ProgressBar" parent="HUD/UIEnemy"]
 layout_mode = 0
 offset_left = 61.0
 offset_top = 6.0
@@ -59,15 +98,19 @@ offset_bottom = 33.0
 theme_override_styles/background = SubResource("StyleBoxFlat_lpki2")
 theme_override_styles/fill = SubResource("StyleBoxFlat_c7kki")
 value = 100.0
+fill_mode = 1
 
-[node name="Portrait" type="TextureRect" parent="UIMain/UIPlayer"]
+[node name="PortraitEnemy" type="TextureRect" parent="HUD/UIEnemy"]
 layout_mode = 0
-offset_left = -19.0
+offset_left = 344.0
 offset_top = -6.0
-offset_right = -3.0
+offset_right = 360.0
 offset_bottom = 10.0
 scale = Vector2(4.69485, 4.69485)
-texture = ExtResource("4_f8cwb")
+texture = ExtResource("4_05f6g")
+
+[node name="TimerEnemyUI" type="Timer" parent="HUD"]
+wait_time = 2.0
 
 [node name="Camera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.898794, 0.438371, 0, -0.438371, 0.898794, -17.5, 3.5, 6)

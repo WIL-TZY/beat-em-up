@@ -2,6 +2,8 @@ class_name Enemy extends CharacterBody3D
 
 enum EnemyState { IDLE, WALK, HURT, DOWN, ATTACK, DIED }
 
+@export var chara_name := "Enemy"
+@export var portrait : Texture2D
 @export var hp := 30
 @export var speed := 5.0
 @export var strength := 25
@@ -16,6 +18,7 @@ var face_right : bool
 var in_attack : bool
 var hurt_index : int
 
+@onready var hp_max := hp
 @onready var animated_sprite : AnimatedSprite3D = $AnimatedSprite
 @onready var timer_node: Timer = $Timer
 @onready var player: Player = %Player
@@ -24,6 +27,7 @@ var hurt_index : int
 
 @onready var health_component: HealthComponent = $HealthComponent
 @onready var hitbox_collision: CollisionShape3D = $HitboxComponent/HitboxCollision
+@onready var HUD: UI = %HUD
 
 func _ready() -> void:
 	health_component.hp = hp
