@@ -2,27 +2,26 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d0tqwd0xpskub"
-path.s3tc="res://.godot/imported/shadow.png-08b1ef3d41c5d3f00cdd7c20bd7744cf.s3tc.ctex"
+uid="uid://b16gbb0rtfcdm"
+path="res://.godot/imported/shadow2.png-13001a65660d93e83e630f10ae729307.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/player/shadow.png"
-dest_files=["res://.godot/imported/shadow.png-08b1ef3d41c5d3f00cdd7c20bd7744cf.s3tc.ctex"]
+source_file="res://assets/sprites/player/shadow2.png"
+dest_files=["res://.godot/imported/shadow2.png-13001a65660d93e83e630f10ae729307.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""

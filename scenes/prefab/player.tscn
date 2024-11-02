@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cfr5o2kjk3h3r" path="res://assets/sprites/player/jump.png" id="5_cjcsy"]
 [ext_resource type="Texture2D" uid="uid://dkq3h8m537w4" path="res://assets/sprites/player/dive_kick.png" id="5_nrx27"]
 [ext_resource type="Texture2D" uid="uid://p3k1wiesb2uu" path="res://assets/sprites/player/jump_kick.png" id="6_4vngc"]
-[ext_resource type="Texture2D" uid="uid://b16gbb0rtfcdm" path="res://assets/sprites/player/shadow.png" id="11_uo1nh"]
+[ext_resource type="Texture2D" uid="uid://d0tqwd0xpskub" path="res://assets/sprites/player/shadow.png" id="11_uo1nh"]
 [ext_resource type="PackedScene" uid="uid://bl2vkn58dh1bm" path="res://scenes/prefab/components/health_component.tscn" id="12_w47wr"]
 [ext_resource type="PackedScene" uid="uid://dya27kouyh7ho" path="res://scenes/prefab/components/hitbox_component.tscn" id="13_2prks"]
 
