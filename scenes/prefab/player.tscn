@@ -1,8 +1,9 @@
-[gd_scene load_steps=57 format=3 uid="uid://dvjfg7epy2hwg"]
+[gd_scene load_steps=58 format=3 uid="uid://dvjfg7epy2hwg"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_hiktt"]
 [ext_resource type="Texture2D" uid="uid://buxqfs57nxyhs" path="res://assets/sprites/characters/brawler-girl/hurt.png" id="2_gy2cy"]
 [ext_resource type="Texture2D" uid="uid://cvwv1j5fexns2" path="res://assets/sprites/characters/brawler-girl/idle.png" id="2_mpijn"]
+[ext_resource type="Resource" uid="uid://dig302ocvq1rd" path="res://scripts/resources/brawler_girl.tres" id="2_y3jej"]
 [ext_resource type="Texture2D" uid="uid://btnghykjb0m21" path="res://assets/sprites/characters/brawler-girl/jab.png" id="3_7klck"]
 [ext_resource type="Texture2D" uid="uid://bqapose8hrvx6" path="res://assets/sprites/characters/brawler-girl/walk.png" id="3_med05"]
 [ext_resource type="Texture2D" uid="uid://bnqbuvbw7xc5k" path="res://assets/sprites/characters/brawler-girl/kick.png" id="4_83wpo"]
@@ -385,6 +386,7 @@ size = Vector3(0.7, 1.7, 0.2)
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 2
 script = ExtResource("1_hiktt")
+properties = ExtResource("2_y3jej")
 
 [node name="Collision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)

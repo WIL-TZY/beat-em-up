@@ -8,6 +8,9 @@ class_name UI extends CanvasLayer
 @onready var portrait_enemy: TextureRect = $UIEnemy/PortraitEnemy
 @onready var timer_enemy_ui: Timer = $TimerEnemyUI
 
+func _ready() -> void:
+	ui_enemy.hide()
+
 func __update_health(hp: float) -> void:
 	health_player.value = hp
 

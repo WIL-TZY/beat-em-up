@@ -1,0 +1,93 @@
+[gd_scene load_steps=7 format=3 uid="uid://dndpxufhapxen"]
+
+[ext_resource type="Script" path="res://scripts/ui/hud.gd" id="1_x30gv"]
+[ext_resource type="FontFile" uid="uid://bxfrdveuo38na" path="res://assets/fonts/crang/Crang.ttf" id="2_h3654"]
+[ext_resource type="Texture2D" uid="uid://dslgnhcf0pf77" path="res://assets/portraits/brawler-girl.png" id="3_d3ubh"]
+[ext_resource type="Texture2D" uid="uid://43vx4vkyisix" path="res://assets/portraits/enemy-punk.png" id="4_yhe04"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lpki2"]
+bg_color = Color(0.884516, 0.42812, 0.581192, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c7kki"]
+bg_color = Color(0.285746, 0.681028, 0.580107, 1)
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_x30gv")
+
+[node name="UIPlayer" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 40.0
+offset_top = 30.0
+offset_right = 401.0
+offset_bottom = 109.0
+
+[node name="NamePlayer" type="Label" parent="UIPlayer"]
+layout_mode = 0
+offset_left = 190.0
+offset_top = 42.0
+offset_right = 302.0
+offset_bottom = 67.0
+theme_override_fonts/font = ExtResource("2_h3654")
+theme_override_font_sizes/font_size = 24
+text = "PLAYER"
+
+[node name="HealthPlayer" type="ProgressBar" parent="UIPlayer"]
+layout_mode = 0
+offset_left = 79.0
+offset_top = 6.0
+offset_right = 349.0
+offset_bottom = 33.0
+theme_override_styles/background = SubResource("StyleBoxFlat_lpki2")
+theme_override_styles/fill = SubResource("StyleBoxFlat_c7kki")
+value = 100.0
+
+[node name="PortraitPlayer" type="TextureRect" parent="UIPlayer"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = -6.0
+offset_right = 15.0
+offset_bottom = 10.0
+scale = Vector2(4.69485, 4.69485)
+texture = ExtResource("3_d3ubh")
+
+[node name="UIEnemy" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 640.0
+offset_top = 30.0
+offset_right = 1065.0
+offset_bottom = 115.0
+
+[node name="NameEnemy" type="Label" parent="UIEnemy"]
+layout_mode = 0
+offset_left = 104.0
+offset_top = 42.0
+offset_right = 216.0
+offset_bottom = 67.0
+theme_override_fonts/font = ExtResource("2_h3654")
+theme_override_font_sizes/font_size = 24
+text = "PLAYER"
+
+[node name="HealthEnemy" type="ProgressBar" parent="UIEnemy"]
+layout_mode = 0
+offset_left = 61.0
+offset_top = 6.0
+offset_right = 331.0
+offset_bottom = 33.0
+theme_override_styles/background = SubResource("StyleBoxFlat_lpki2")
+theme_override_styles/fill = SubResource("StyleBoxFlat_c7kki")
+value = 100.0
+fill_mode = 1
+
+[node name="PortraitEnemy" type="TextureRect" parent="UIEnemy"]
+layout_mode = 0
+offset_left = 344.0
+offset_top = -6.0
+offset_right = 360.0
+offset_bottom = 10.0
+scale = Vector2(4.69485, 4.69485)
+texture = ExtResource("4_yhe04")
+
+[node name="TimerEnemyUI" type="Timer" parent="."]
+wait_time = 2.0

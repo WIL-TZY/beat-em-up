@@ -216,6 +216,7 @@ bg_color = Color(0, 0, 0, 1)
 [node name="Punk" type="CharacterBody3D"]
 collision_layer = 4
 script = ExtResource("1_myo8e")
+chara_name = "Punk Dude"
 portrait = ExtResource("2_6hk03")
 
 [node name="Collision" type="CollisionShape3D" parent="."]
