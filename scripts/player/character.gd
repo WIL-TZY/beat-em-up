@@ -5,6 +5,7 @@ enum StateMachine { IDLE, WALK, JUMP, FALL, JAB, PUNCH, KICK, KICK_AIR, HURT, DI
 @export var hp := 100.0
 @export var speed := 2.0
 @export var jump_force := 5
+@export var strength := 5
 
 var state : StateMachine = StateMachine.IDLE
 var enter_state : bool = true
@@ -40,7 +41,10 @@ func _ready() -> void:
 	health_component.__on_damage.connect(func(_hp: float): __change_state(StateMachine.HURT))
 	health_component.__on_dead.connect(func(): __change_state(StateMachine.DIED))
 	# Detects collision with the enemy's hitbox component
-	attack.area_entered.connect(func(hitbox: HitboxComponent):print(hitbox.get_parent().name))
+	attack.area_entered.connect(func(hitbox: HitboxComponent):
+		# print(hitbox.get_parent().name)
+		hitbox.__take_damage(strength)
+		)
 
 # Runs every frame
 func _physics_process(delta: float) -> void:

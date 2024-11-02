@@ -75,6 +75,35 @@ func __attack() -> void:
 		__end_attack_collision()
 		__change_state(EnemyState.IDLE)
 
+func __hurt() -> void:
+	if enter_state:
+		enter_state = false
+		animated_sprite.play("hurt")
+
+		timer_node.stop()
+		timer_node.wait_time = 0.75
+		timer_node.start()
+		
+		await timer_node.timeout
+	
+	move_and_slide()
+
+func __down() -> void:
+	if enter_state:
+		enter_state = false
+		
+		velocity.x = 1 if player.global_position.x < self.global_position.x else -1
+		velocity.y = 3
+		velocity.z = 0
+		animated_sprite.play("down")
+		
+		timer_node.stop()
+		timer_node.wait_time = 0.75
+		timer_node.start()
+		
+		await timer_node.timeout
+		__change_state(EnemyState.DIED)
+
 # (DEBUG) Draw state
 func _process(_delta: float) -> void:
 	var label1 : Label = $"Debug Label1"

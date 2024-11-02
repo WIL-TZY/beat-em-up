@@ -1,6 +1,6 @@
 class_name Enemy extends CharacterBody3D
 
-enum EnemyState { IDLE, WALK, HURT, DOWN, UP, ATTACK, DIED }
+enum EnemyState { IDLE, WALK, HURT, DOWN, ATTACK, DIED }
 
 @export var hp := 30
 @export var speed := 5.0
@@ -14,6 +14,7 @@ var death : bool
 var walk_timer : float
 var face_right : bool
 var in_attack : bool
+var hurt_index : int
 
 @onready var animated_sprite : AnimatedSprite3D = $AnimatedSprite
 @onready var timer_node: Timer = $Timer
@@ -25,8 +26,11 @@ var in_attack : bool
 
 func _ready() -> void:
 	health_component.hp = hp
+	
+	# Connect the signal manually
+	health_component.__on_damage.connect(func(hp: float): __on_damage(hp))
+	health_component.__on_dead.connect(func(): __change_state(EnemyState.DIED))
 	# Damage
-	# Connect the body_entered signal manually with a lambda function
 	attack.area_entered.connect(func(hitbox: HitboxComponent): hitbox.__take_damage(strength))
 
 func _physics_process(delta: float) -> void:
@@ -34,6 +38,9 @@ func _physics_process(delta: float) -> void:
 		EnemyState.IDLE: __idle()
 		EnemyState.WALK: __walk(delta)
 		EnemyState.ATTACK: __attack()
+		EnemyState.HURT: __hurt()
+		EnemyState.DOWN: __down()
+		EnemyState.DIED: __died()
 		
 	__set_gravity(delta)
 
@@ -50,6 +57,9 @@ func __change_state(new_state: EnemyState) -> void:
 func __idle() -> void: pass
 func __walk(_delta: float) -> void: pass
 func __attack() -> void: pass
+func __hurt() -> void: pass
+func __down() -> void: pass
+func __died() -> void: pass
 
 ### MOVE & IDLE
 func __movement() -> void:
@@ -86,3 +96,9 @@ func __end_attack_collision() -> void:
 		attack_collision.disabled = true
 
 ### DAMAGE
+func __on_damage(hp: float) -> void:
+	# TO-DO: Atualizar a HUD do inimigo
+	hurt_index += 1
+	match hurt_index:
+		1: __change_state(EnemyState.HURT)
+		2: __change_state(EnemyState.DOWN)
