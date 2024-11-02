@@ -7,7 +7,7 @@
 script = ExtResource("1_8d683")
 name = "Long Tail"
 portrait = ExtResource("1_etq0a")
-hp = 100.0
-speed = 2.0
-jump_force = 5
-strength = 5
+hp = 140.0
+speed = 3.0
+jump_force = 6
+strength = 3

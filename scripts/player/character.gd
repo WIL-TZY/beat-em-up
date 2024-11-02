@@ -43,6 +43,10 @@ func _ready() -> void:
 		hitbox.__take_damage(properties.strength)
 		)
 
+	# Update HUD
+	HUD.__set_player(properties) # Setup Player Character
+	HUD.__update_health(properties.hp)
+
 # Runs every frame
 func _physics_process(delta: float) -> void:
 	match state:
