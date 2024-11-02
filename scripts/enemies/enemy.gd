@@ -1,6 +1,6 @@
 class_name Enemy extends CharacterBody3D
 
-enum EnemyState { IDLE, WALK, HURT, DOWN, ATTACK, DIED }
+enum EnemyState { IDLE, WALK, ATTACK, HURT, DOWN, UP, DIED }
 
 @export var chara_name := "Enemy"
 @export var portrait : Texture2D
@@ -45,6 +45,7 @@ func _physics_process(delta: float) -> void:
 		EnemyState.ATTACK: __attack()
 		EnemyState.HURT: __hurt()
 		EnemyState.DOWN: __down()
+		EnemyState.UP: __up()
 		EnemyState.DIED: __died()
 		
 	__set_gravity(delta)
@@ -64,6 +65,7 @@ func __walk(_delta: float) -> void: pass
 func __attack() -> void: pass
 func __hurt() -> void: pass
 func __down() -> void: pass
+func __up() -> void: pass
 func __died() -> void: pass
 
 # This function is different for each enemy, based on the amount of hurt states

@@ -20,6 +20,9 @@ func __walk(delta) -> void:
 	if enter_state:
 		enter_state = false
 
+		# Ensure velocity starts at zero
+		velocity = Vector3.ZERO  
+
 		# Wait a random amount of time in walk state
 		timer_node.wait_time = randf_range(2, 4)
 		timer_node.start()
@@ -84,7 +87,7 @@ func __hurt() -> void:
 		timer_node.stop()
 		timer_node.wait_time = randf_range(0.5, 1)
 		timer_node.start()
-			
+
 		await timer_node.timeout
 		__change_state(EnemyState.IDLE)
 
@@ -97,7 +100,7 @@ func __down() -> void:
 		hitbox_collision.disabled = true
 		
 		# Upwards animation
-		velocity.x = 1 if player.global_position.x < self.global_position.x else -1
+		# velocity.x = 0.5 if player.global_position.x < self.global_position.x else -0.5
 		velocity.y = 3
 		velocity.z = 0
 
@@ -106,21 +109,25 @@ func __down() -> void:
 		timer_node.start()
 		await timer_node.timeout
 		
-		# Getting up animation
+		__change_state(EnemyState.UP)
+
+	move_and_slide()
+
+func __up() -> void:
+	if enter_state:
+		enter_state = false
 		__set_animation("up")
 		await animated_sprite.animation_finished
 		
 		# Can receive damage after getting up
-		hitbox_collision.disabled = true
+		hitbox_collision.disabled = false
 		
 		__change_state(EnemyState.IDLE)
 	
-	move_and_slide()
-
 func __died() -> void:
 	if enter_state:
 		enter_state = false
-		animated_sprite.play("died")
+		__set_animation("died")
 		timer_node.stop()
 		
 		# Update enemy HUD 
@@ -137,11 +144,11 @@ func __died() -> void:
 		queue_free()
 
 ### DAMAGE
-func __on_damage(_hp: float) -> void:
+func __on_damage(hp: float) -> void:
 	# Update enemy HUD 
 	HUD.__update_enemy(chara_name, hp, hp_max, portrait)
 	
-	hurt_index += 1
+	hurt_index += 1 # Reset is on idle state
 	match hurt_index:
 		1: __change_state(EnemyState.HURT)
 		2: __change_state(EnemyState.DOWN)
@@ -153,4 +160,5 @@ func _process(_delta: float) -> void:
 	var text = str(EnemyState.keys()[state])
 	label1.text = text
 	# label2.text = str(target_distance)
-	label2.text = "Hurt Index: " + str(hurt_index)
+	# label2.text = "Hurt Index: " + str(hurt_index)
+	label2.text = "Enemy HP: " + str(hp)
