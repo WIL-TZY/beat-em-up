@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b16gbb0rtfcdm"
-path="res://.godot/imported/shadow2.png-13001a65660d93e83e630f10ae729307.ctex"
+uid="uid://cvwv1j5fexns2"
+path="res://.godot/imported/idle.png-04dd7a9708b598333b8d6d16252e3f6b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/player/shadow2.png"
-dest_files=["res://.godot/imported/shadow2.png-13001a65660d93e83e630f10ae729307.ctex"]
+source_file="res://assets/sprites/characters/brawler-girl/idle.png"
+dest_files=["res://.godot/imported/idle.png-04dd7a9708b598333b8d6d16252e3f6b.ctex"]
 
 [params]
 

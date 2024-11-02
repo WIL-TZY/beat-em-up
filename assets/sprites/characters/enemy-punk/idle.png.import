@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bqapose8hrvx6"
-path="res://.godot/imported/walk.png-c16a4b53f3d0c28d4e3c6cdac598b111.ctex"
+uid="uid://bb3kqcjwy87tw"
+path="res://.godot/imported/idle.png-16b0fcaf26fccfec46bda631410e456e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/player/walk.png"
-dest_files=["res://.godot/imported/walk.png-c16a4b53f3d0c28d4e3c6cdac598b111.ctex"]
+source_file="res://assets/sprites/characters/enemy-punk/idle.png"
+dest_files=["res://.godot/imported/idle.png-16b0fcaf26fccfec46bda631410e456e.ctex"]
 
 [params]
 

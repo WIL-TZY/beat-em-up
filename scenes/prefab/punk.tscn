@@ -1,12 +1,12 @@
 [gd_scene load_steps=35 format=3 uid="uid://cgbbvbh4tg22t"]
 
-[ext_resource type="Texture2D" uid="uid://ccnuviw3xi35w" path="res://assets/sprites/enemies/hurt.png" id="1_j62we"]
+[ext_resource type="Texture2D" uid="uid://ccnuviw3xi35w" path="res://assets/sprites/characters/enemy-punk/hurt.png" id="1_j62we"]
 [ext_resource type="Script" path="res://scripts/enemies/punk.gd" id="1_myo8e"]
-[ext_resource type="Texture2D" uid="uid://bb3kqcjwy87tw" path="res://assets/sprites/enemies/idle.png" id="2_0hsm1"]
-[ext_resource type="Texture2D" uid="uid://cdrbmxfqaon7t" path="res://assets/sprites/enemies/punch.png" id="3_04x18"]
-[ext_resource type="Texture2D" uid="uid://cc6kmmbgj7p8" path="res://assets/sprites/enemies/walk.png" id="4_eyls0"]
+[ext_resource type="Texture2D" uid="uid://bb3kqcjwy87tw" path="res://assets/sprites/characters/enemy-punk/idle.png" id="2_0hsm1"]
+[ext_resource type="Texture2D" uid="uid://cdrbmxfqaon7t" path="res://assets/sprites/characters/enemy-punk/punch.png" id="3_04x18"]
+[ext_resource type="Texture2D" uid="uid://cc6kmmbgj7p8" path="res://assets/sprites/characters/enemy-punk/walk.png" id="4_eyls0"]
 [ext_resource type="PackedScene" uid="uid://bl2vkn58dh1bm" path="res://scenes/prefab/components/health_component.tscn" id="6_edu8u"]
-[ext_resource type="Texture2D" uid="uid://d0tqwd0xpskub" path="res://assets/sprites/player/shadow.png" id="6_sudbo"]
+[ext_resource type="Texture2D" uid="uid://d0tqwd0xpskub" path="res://assets/sprites/characters/shadow.png" id="6_sudbo"]
 [ext_resource type="PackedScene" uid="uid://dya27kouyh7ho" path="res://scenes/prefab/components/hitbox_component.tscn" id="7_j5ocx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rcr4w"]

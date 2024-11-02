@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bb3kqcjwy87tw"
-path="res://.godot/imported/idle.png-3149fbd79269c5cd59ad0dac194b645a.ctex"
+uid="uid://bqapose8hrvx6"
+path="res://.godot/imported/walk.png-4c80ba821801b9256b5f25a178f9e840.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/enemies/idle.png"
-dest_files=["res://.godot/imported/idle.png-3149fbd79269c5cd59ad0dac194b645a.ctex"]
+source_file="res://assets/sprites/characters/brawler-girl/walk.png"
+dest_files=["res://.godot/imported/walk.png-4c80ba821801b9256b5f25a178f9e840.ctex"]
 
 [params]
 

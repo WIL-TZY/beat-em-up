@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://buxqfs57nxyhs"
-path="res://.godot/imported/hurt.png-7401b2039dabeccd3e15cd3fe3c208e6.ctex"
+uid="uid://cdrbmxfqaon7t"
+path="res://.godot/imported/punch.png-06076322ba98d6eeda6f1a6a2f4ff8ec.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/player/hurt.png"
-dest_files=["res://.godot/imported/hurt.png-7401b2039dabeccd3e15cd3fe3c208e6.ctex"]
+source_file="res://assets/sprites/characters/enemy-punk/punch.png"
+dest_files=["res://.godot/imported/punch.png-06076322ba98d6eeda6f1a6a2f4ff8ec.ctex"]
 
 [params]
 

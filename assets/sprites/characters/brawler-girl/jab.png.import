@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cdrbmxfqaon7t"
-path="res://.godot/imported/punch.png-420cd43829f60e2dc3237b25c96e9001.ctex"
+uid="uid://btnghykjb0m21"
+path="res://.godot/imported/jab.png-8ff373105aa460fa05f795935f232baf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/enemies/punch.png"
-dest_files=["res://.godot/imported/punch.png-420cd43829f60e2dc3237b25c96e9001.ctex"]
+source_file="res://assets/sprites/characters/brawler-girl/jab.png"
+dest_files=["res://.godot/imported/jab.png-8ff373105aa460fa05f795935f232baf.ctex"]
 
 [params]
 

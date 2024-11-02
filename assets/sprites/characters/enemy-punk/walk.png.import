@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ccnuviw3xi35w"
-path="res://.godot/imported/hurt.png-5688f7034bf3173160cee8886ec68565.ctex"
+uid="uid://cc6kmmbgj7p8"
+path="res://.godot/imported/walk.png-cfd664364067e21be0522b102a3b14d2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/enemies/hurt.png"
-dest_files=["res://.godot/imported/hurt.png-5688f7034bf3173160cee8886ec68565.ctex"]
+source_file="res://assets/sprites/characters/enemy-punk/walk.png"
+dest_files=["res://.godot/imported/walk.png-cfd664364067e21be0522b102a3b14d2.ctex"]
 
 [params]
 

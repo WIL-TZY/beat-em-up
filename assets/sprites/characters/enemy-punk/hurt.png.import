@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://btnghykjb0m21"
-path="res://.godot/imported/jab.png-a8b80fb0847c78ef2d4c10aebb8268ce.ctex"
+uid="uid://ccnuviw3xi35w"
+path="res://.godot/imported/hurt.png-b05042c1732d1aa2295ec7b56e599840.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/player/jab.png"
-dest_files=["res://.godot/imported/jab.png-a8b80fb0847c78ef2d4c10aebb8268ce.ctex"]
+source_file="res://assets/sprites/characters/enemy-punk/hurt.png"
+dest_files=["res://.godot/imported/hurt.png-b05042c1732d1aa2295ec7b56e599840.ctex"]
 
 [params]
 
