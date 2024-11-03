@@ -10,6 +10,7 @@ var state : StateMachine = StateMachine.IDLE
 var enter_state : bool = true
 var gravity : float = 9.8
 var in_attack : bool = false
+var alive : bool = true
 
 @onready var animated_sprite : AnimatedSprite3D = $AnimatedSprite
 @onready var shadow : Sprite3D = $Shadow

@@ -49,7 +49,7 @@ func __jab() -> void:
 		__change_state(StateMachine.IDLE)
 
 	# Change to Punch state
-	if (animated_sprite.frame >= 2) and punch:
+	if (animated_sprite.frame >= 2) and punch and alive:
 		__end_attack_collision()
 		__change_state(StateMachine.PUNCH)
 
@@ -58,7 +58,7 @@ func __punch() -> void:
 	__start_attack_collision()
 	__stop_movement()
 	
-	if animated_sprite.frame >= 4:
+	if animated_sprite.frame >= 4 and alive:
 		__end_attack_collision()
 		__change_state(StateMachine.IDLE)
 		
@@ -77,7 +77,7 @@ func __kick() -> void:
 		__change_state(StateMachine.IDLE)
 
 	# Change to KICK_AIR state
-	if (animated_sprite.frame >= 5) and kick:
+	if (animated_sprite.frame >= 5) and kick and alive:
 		__end_attack_collision()
 		__change_state(StateMachine.KICK_AIR)
 
@@ -86,7 +86,7 @@ func __kick_air() -> void:
 	__start_attack_collision()
 	__stop_movement()
 	
-	if animated_sprite.frame >= 8:
+	if animated_sprite.frame >= 8 and alive:
 		__end_attack_collision()
 		__change_state(StateMachine.IDLE)
 
@@ -107,6 +107,7 @@ func __died() -> void:
 	if enter_state:
 		enter_state = false
 		animated_sprite.play("hurt")
+		alive = false
 		__stop_movement()
 		
 		# Update UI
