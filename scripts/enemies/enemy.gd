@@ -12,11 +12,11 @@ enum EnemyState { IDLE, WALK, ATTACK, HURT, DOWN, UP, DIED }
 var state : EnemyState = EnemyState.IDLE
 var enter_state : bool = true
 var gravity : float = 9.8
-var death : bool
-var walk_timer : float
-var face_right : bool
-var in_attack : bool
-var hurt_index : int
+var dead : bool = false
+var walk_timer : float = 0
+var face_right : bool = false
+var in_attack : bool = false
+var hurt_index : int = 0
 
 @onready var hp_max := hp
 @onready var animated_sprite : AnimatedSprite3D = $AnimatedSprite
@@ -29,7 +29,12 @@ var hurt_index : int
 @onready var hitbox_collision: CollisionShape3D = $HitboxComponent/HitboxCollision
 @onready var HUD: UI = GameController.HUD
 
+@onready var debug_overlay = get_parent().get_node("DebugOverlay")
+var enemy_label: Label ## DEBUG
+	
 func _ready() -> void:
+	GameController.enemies.append(self)
+	
 	health_component.hp = hp
 	
 	# Connect the signal manually
@@ -37,6 +42,23 @@ func _ready() -> void:
 	health_component.__on_dead.connect(func(): __change_state(EnemyState.DIED))
 	# Damage
 	attack.area_entered.connect(func(hitbox: HitboxComponent): hitbox.__take_damage(strength))
+
+	# (DEBUG) Delete later
+	# Create a new Label node for this enemy
+	enemy_label = Label.new()
+	
+	# Unique name for the label
+	enemy_label.name = "EnemyLabel" + str(get_instance_id())
+	debug_overlay.add_child(enemy_label)
+
+	# Position the label for this specific enemy
+	var index = GameController.enemies.find(self)
+	enemy_label.position = Vector2(1000, -80 + index * 30)
+
+func _process(_delta: float) -> void:
+	## (DEBUG) Delete later
+	# Update the label text with the enemy's debug information
+	enemy_label.text = str(EnemyState.keys()[state])
 
 func _physics_process(delta: float) -> void:
 	match state:

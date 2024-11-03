@@ -1,4 +1,8 @@
 class_name GameController extends Node
+# Singleton script
+
+# For debug
+static var enemies: Array[Enemy]
 
 @export var _player: Player 
 @export var _camera: Camera3D

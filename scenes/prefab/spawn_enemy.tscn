@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://b2hexbevog3jp"]
+[gd_scene load_steps=4 format=3 uid="uid://b2hexbevog3jp"]
 
 [ext_resource type="Script" path="res://scripts/spawn_enemy.gd" id="1_afo5l"]
+[ext_resource type="PackedScene" uid="uid://cgbbvbh4tg22t" path="res://scenes/prefab/punk.tscn" id="2_salea"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kkxry"]
 size = Vector3(1, 1, 10)
@@ -10,6 +11,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_afo5l")
+amount = 1
+enemies = Array[PackedScene]([ExtResource("2_salea")])
 
 [node name="CollisionSpawn" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_kkxry")

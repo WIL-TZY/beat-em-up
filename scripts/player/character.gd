@@ -10,7 +10,7 @@ var state : StateMachine = StateMachine.IDLE
 var enter_state : bool = true
 var gravity : float = 9.8
 var in_attack : bool = false
-var alive : bool = true
+var dead : bool = false
 
 @onready var animated_sprite : AnimatedSprite3D = $AnimatedSprite
 @onready var shadow : Sprite3D = $Shadow
@@ -19,6 +19,8 @@ var alive : bool = true
 @onready var HUD: UI = GameController.HUD
 @onready var health_component: HealthComponent = $HealthComponent
 @onready var camera: Camera3D = get_parent().get_node("Camera")
+
+@onready var debug_overlay = get_parent().get_node("DebugOverlay")
 
 # Encapsulation - Get input (read-only)
 var input : Vector2: 
@@ -49,6 +51,9 @@ func _ready() -> void:
 	# Update HUD
 	HUD.__hud_update_player(properties) # Setup Player Character
 	HUD.__hud_update_health(properties.hp)
+	
+	## (DEBUG) Delete later
+	debug_overlay.position = Vector2(20, 620)
 
 # Runs every frame
 func _physics_process(delta: float) -> void:
@@ -121,3 +126,14 @@ func __end_attack_collision() -> void:
 	if in_attack:
 		in_attack = false
 		attack_collision.disabled = true
+
+############################# DEBUG #############################
+# Call this function to update the debug overlay
+func __update_debug_overlay(player_state: String) -> void:
+	var debug_info = player_state
+	
+	debug_overlay.update_debug_info(debug_info)
+	
+func _process(_delta: float) -> void:
+	## (DEBUG) Delete later
+	__update_debug_overlay(str(StateMachine.keys()[state]))

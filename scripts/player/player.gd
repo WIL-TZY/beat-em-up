@@ -1,25 +1,28 @@
 class_name Player extends Character
 
 func __idle() -> void:
+	if dead: return
+	
 	__enter_state("idle")
 	__stop_movement()
 	
-	if alive:
-		if input: __change_state(StateMachine.WALK)
-		if jump: __change_state(StateMachine.JUMP)
-		if punch: __change_state(StateMachine.JAB)
-		if kick: __change_state(StateMachine.KICK)
+	
+	if input: __change_state(StateMachine.WALK)
+	if jump: __change_state(StateMachine.JUMP)
+	if punch: __change_state(StateMachine.JAB)
+	if kick: __change_state(StateMachine.KICK)
 
 func __walk() -> void:
+	if dead: return
+	
 	__enter_state("walk")
 	__movement()
 	__flip()
 	
-	if alive:
-		if not input: __change_state(StateMachine.IDLE)
-		if jump: __change_state(StateMachine.JUMP)
-		if punch: __change_state(StateMachine.JAB)
-		if kick: __change_state(StateMachine.KICK)
+	if not input: __change_state(StateMachine.IDLE)
+	if jump: __change_state(StateMachine.JUMP)
+	if punch: __change_state(StateMachine.JAB)
+	if kick: __change_state(StateMachine.KICK)
 
 func __jump() -> void:
 	# Player can move while jumping
@@ -109,7 +112,7 @@ func __died() -> void:
 	if enter_state:
 		enter_state = false
 		animated_sprite.play("hurt")
-		alive = false
+		dead = true
 		__stop_movement()
 		
 		# Update UI
@@ -122,9 +125,3 @@ func __died() -> void:
 
 		# Makes the player disappear after being defeated
 		animated_sprite.hide()
-
-# (DEBUG) Draw state
-func _process(_delta: float) -> void:
-	var label : Label = $"Debug Label"
-	var text = str(StateMachine.keys()[state])
-	label.text = text

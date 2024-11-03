@@ -3,6 +3,8 @@ extends Enemy
 var target_distance : Vector3 # Distance to player
 
 func __idle() -> void:
+	if dead: return
+	
 	if enter_state:
 		enter_state = false
 		__set_animation("idle")
@@ -17,6 +19,8 @@ func __idle() -> void:
 		__change_state(EnemyState.WALK)
 
 func __walk(delta) -> void:
+	if dead: return
+	
 	if enter_state:
 		enter_state = false
 
@@ -66,6 +70,8 @@ func __walk(delta) -> void:
 	move_and_slide()
 
 func __attack() -> void:
+	if dead: return
+
 	if enter_state:
 		enter_state = false
 		__stop_movement()
@@ -94,23 +100,14 @@ func __hurt() -> void:
 func __down() -> void:
 	if enter_state:
 		enter_state = false
-		animated_sprite.play("down")
-		
-		# Can't receive damage while downed
-		hitbox_collision.disabled = true
-		
-		# Upwards animation
-		# velocity.x = 0.5 if player.global_position.x < self.global_position.x else -0.5
-		velocity.y = 3
-		velocity.z = 0
 
-		timer_node.stop()
-		timer_node.wait_time = randf_range(1, 2)
-		timer_node.start()
+		# Down animation and VFX
+		__set_hurt_throw()
 		await timer_node.timeout
 		
 		__change_state(EnemyState.UP)
 
+	# Physics
 	move_and_slide()
 
 func __up() -> void:
@@ -127,8 +124,16 @@ func __up() -> void:
 func __died() -> void:
 	if enter_state:
 		enter_state = false
+		dead = true
+		
+		# Down animation and VFX
+		__set_hurt_throw()
+		await timer_node.timeout
+		
+		# to prevent the death sliding
+		velocity.x = 0
+		
 		__set_animation("died")
-		timer_node.stop()
 		
 		# Update enemy HUD 
 		HUD.__hud_update_enemy(chara_name, 0, hp_max, portrait)
@@ -142,6 +147,9 @@ func __died() -> void:
 		
 		# Removes the node safely
 		queue_free()
+	
+	# Physics
+	move_and_slide()
 
 ### DAMAGE
 func __on_damage(health: float) -> void:
@@ -153,12 +161,19 @@ func __on_damage(health: float) -> void:
 		1: __change_state(EnemyState.HURT)
 		2: __change_state(EnemyState.DOWN)
 
-# (DEBUG) Draw state
-func _process(_delta: float) -> void:
-	var label1 : Label = $"Debug Label1"
-	var label2 : Label = $"Debug Label2"
-	var text = str(EnemyState.keys()[state])
-	label1.text = text
-	# label2.text = str(target_distance)
-	# label2.text = "Hurt Index: " + str(hurt_index)
-	label2.text = "Enemy HP: " + str(hp)
+func __set_hurt_throw() -> void:
+	animated_sprite.play("down")
+	
+	# Can't receive damage while downed
+	hitbox_collision.disabled = true
+	
+	# Horizontal throw - Not working too nicely with move_and_slide() :( 
+	velocity.x = 0.3 if player.global_position.x < self.global_position.x else -0.3
+	
+	# Vertical throw
+	velocity.y = 3
+	velocity.z = 0
+
+	timer_node.stop()
+	timer_node.wait_time = randf_range(1, 2)
+	timer_node.start()
