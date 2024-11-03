@@ -16,16 +16,16 @@ class_name UI extends CanvasLayer
 func _ready() -> void:
 	ui_enemy.hide()
 
-func __update_health(hp: float) -> void:
+func __hud_update_health(hp: float) -> void:
 	health_player.value = hp
 
-func __set_player(properties: CharacterData) -> void:
+func __hud_update_player(properties: CharacterData) -> void:
 	name_player.text = properties.name
 	health_player.value = properties.hp
 	health_player.max_value = properties.hp
 	portrait_player.texture = properties.portrait
 
-func __update_enemy(new_name: String, hp: float, hp_max: float, portrait: Texture2D) -> void:
+func __hud_update_enemy(new_name: String, hp: float, hp_max: float, portrait: Texture2D) -> void:
 	name_enemy.text = new_name
 	health_enemy.value = hp
 	health_enemy.max_value = hp_max

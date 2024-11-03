@@ -131,7 +131,7 @@ func __died() -> void:
 		timer_node.stop()
 		
 		# Update enemy HUD 
-		HUD.__update_enemy(chara_name, 0, hp_max, portrait)
+		HUD.__hud_update_enemy(chara_name, 0, hp_max, portrait)
 		
 		# Death VFX (flicker sprite)
 		for i in range(8):
@@ -146,7 +146,7 @@ func __died() -> void:
 ### DAMAGE
 func __on_damage(health: float) -> void:
 	# Update enemy HUD 
-	HUD.__update_enemy(chara_name, health, hp_max, portrait)
+	HUD.__hud_update_enemy(chara_name, health, hp_max, portrait)
 	
 	hurt_index += 1 # Reset is on idle state
 	match hurt_index:

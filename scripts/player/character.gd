@@ -46,8 +46,8 @@ func _ready() -> void:
 		)
 
 	# Update HUD
-	HUD.__set_player(properties) # Setup Player Character
-	HUD.__update_health(properties.hp)
+	HUD.__hud_update_player(properties) # Setup Player Character
+	HUD.__hud_update_health(properties.hp)
 
 # Runs every frame
 func _physics_process(delta: float) -> void:
