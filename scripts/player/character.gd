@@ -15,7 +15,7 @@ var in_attack : bool = false
 @onready var shadow : Sprite3D = $Shadow
 @onready var attack: Area3D = $Attack
 @onready var attack_collision: CollisionShape3D = $Attack/AttackCollision
-@onready var HUD: UI = %HUD
+@onready var HUD: UI = GameController.HUD
 @onready var health_component: HealthComponent = $HealthComponent
 @onready var camera: Camera3D = get_parent().get_node("Camera")
 

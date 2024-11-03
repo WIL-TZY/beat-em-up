@@ -21,13 +21,13 @@ var hurt_index : int
 @onready var hp_max := hp
 @onready var animated_sprite : AnimatedSprite3D = $AnimatedSprite
 @onready var timer_node: Timer = $Timer
-@onready var player: Player = %Player
+@onready var player: Player = GameController.player
 @onready var attack: Area3D = $Attack
 @onready var attack_collision: CollisionShape3D = $Attack/AttackCollision
 
 @onready var health_component: HealthComponent = $HealthComponent
 @onready var hitbox_collision: CollisionShape3D = $HitboxComponent/HitboxCollision
-@onready var HUD: UI = %HUD
+@onready var HUD: UI = GameController.HUD
 
 func _ready() -> void:
 	health_component.hp = hp

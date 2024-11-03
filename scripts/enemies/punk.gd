@@ -144,9 +144,9 @@ func __died() -> void:
 		queue_free()
 
 ### DAMAGE
-func __on_damage(hp: float) -> void:
+func __on_damage(health: float) -> void:
 	# Update enemy HUD 
-	HUD.__update_enemy(chara_name, hp, hp_max, portrait)
+	HUD.__update_enemy(chara_name, health, hp_max, portrait)
 	
 	hurt_index += 1 # Reset is on idle state
 	match hurt_index:
