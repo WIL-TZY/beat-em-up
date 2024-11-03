@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://m6mn47cd8npo"]
+[gd_scene load_steps=12 format=3 uid="uid://m6mn47cd8npo"]
 
 [ext_resource type="Texture2D" uid="uid://oqtavowi0a0g" path="res://assets/sprites/level/street.png" id="1_6fwr5"]
 [ext_resource type="Script" path="res://scripts/game_controller.gd" id="1_arknd"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://scripts/camera/camera.gd" id="2_4wnyf"]
 [ext_resource type="PackedScene" uid="uid://dvjfg7epy2hwg" path="res://scenes/prefab/player.tscn" id="2_712xq"]
 [ext_resource type="PackedScene" uid="uid://cgbbvbh4tg22t" path="res://scenes/prefab/punk.tscn" id="7_0w6k3"]
+[ext_resource type="PackedScene" uid="uid://b2hexbevog3jp" path="res://scenes/prefab/spawn_enemy.tscn" id="7_ojrhr"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ve8hh"]
 size = Vector2(50, 10)
@@ -79,8 +80,6 @@ shape = SubResource("ConcavePolygonShape3D_cfvtq")
 [node name="Player" parent="." instance=ExtResource("2_712xq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.0293, -0.6, 3.01136)
 
-[node name="Punk" parent="." instance=ExtResource("7_0w6k3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, 1.4)
-
-[node name="Punk2" parent="." instance=ExtResource("7_0w6k3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.1324, 0, 3.70923)
+[node name="SpawnEnemy" parent="." instance=ExtResource("7_ojrhr")]
+amount = 4
+enemies = Array[PackedScene]([ExtResource("7_0w6k3")])

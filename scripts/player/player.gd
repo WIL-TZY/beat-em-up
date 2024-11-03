@@ -110,12 +110,13 @@ func __died() -> void:
 		__stop_movement()
 		
 		# Update UI
-		HUD.__update_health(health_component.hp)
+		HUD.__hud_update_health(health_component.hp)
 		
 		# Death VFX (flicker sprite)
 		for i in range(8):
 			animated_sprite.visible = not animated_sprite.visible
 			await get_tree().create_timer(0.1).timeout
+
 		# Makes the player disappear after being defeated
 		animated_sprite.hide()
 
