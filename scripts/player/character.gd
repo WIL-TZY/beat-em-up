@@ -64,6 +64,7 @@ func _physics_process(delta: float) -> void:
 		StateMachine.HURT: __hurt()
 		StateMachine.DIED: __died()
 
+	# Clamps the player position to the camera boundaries
 	position.x = clamp(position.x, camera.position.x - CAMERA_OFFSET, camera.clamped_pos + CAMERA_OFFSET)
 	__set_gravity(delta)
 	move_and_slide() # Needs to be the last function call

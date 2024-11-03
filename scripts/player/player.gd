@@ -3,19 +3,23 @@ class_name Player extends Character
 func __idle() -> void:
 	__enter_state("idle")
 	__stop_movement()
-	if input: __change_state(StateMachine.WALK)
-	if jump: __change_state(StateMachine.JUMP)
-	if punch: __change_state(StateMachine.JAB)
-	if kick: __change_state(StateMachine.KICK)
+	
+	if alive:
+		if input: __change_state(StateMachine.WALK)
+		if jump: __change_state(StateMachine.JUMP)
+		if punch: __change_state(StateMachine.JAB)
+		if kick: __change_state(StateMachine.KICK)
 
 func __walk() -> void:
 	__enter_state("walk")
 	__movement()
 	__flip()
-	if not input: __change_state(StateMachine.IDLE)
-	if jump: __change_state(StateMachine.JUMP)
-	if punch: __change_state(StateMachine.JAB)
-	if kick: __change_state(StateMachine.KICK)
+	
+	if alive:
+		if not input: __change_state(StateMachine.IDLE)
+		if jump: __change_state(StateMachine.JUMP)
+		if punch: __change_state(StateMachine.JAB)
+		if kick: __change_state(StateMachine.KICK)
 
 func __jump() -> void:
 	# Player can move while jumping
@@ -40,55 +44,53 @@ func __fall() -> void:
 
 func __jab() -> void:
 	__enter_state("jab")
-	__start_attack_collision()
 	__stop_movement()
-	
-	# Jab
-	if animated_sprite.frame >= 3:
-		__end_attack_collision()
-		__change_state(StateMachine.IDLE)
 
+	# Jab
+	if animated_sprite.frame == 1: __start_attack_collision()
 	# Change to Punch state
-	if (animated_sprite.frame >= 2) and punch and alive:
+	if animated_sprite.frame >= 2: 
 		__end_attack_collision()
-		__change_state(StateMachine.PUNCH)
+		# Goes to next attack
+		if punch: __change_state(StateMachine.PUNCH)
+	# Back to idle
+	if animated_sprite.frame >= 4: __change_state(StateMachine.IDLE)
 
 func __punch() -> void:
 	__enter_state("punch")
-	__start_attack_collision()
 	__stop_movement()
 	
-	if animated_sprite.frame >= 4 and alive:
-		__end_attack_collision()
-		__change_state(StateMachine.IDLE)
-		
+	# Punch
+	if animated_sprite.frame == 1: __start_attack_collision()
+	if animated_sprite.frame >= 2: __end_attack_collision()
+	if animated_sprite.frame >= 4: __change_state(StateMachine.IDLE)
+
 	# Punch sequence
 	#if animated_sprite.frame >= 3:
 	#	__change_state(StateMachine.JAB)
 
 func __kick() -> void:
 	__enter_state("kick")
-	__start_attack_collision()
 	__stop_movement()
 	
 	# Kick
-	if animated_sprite.frame >= 6:
+	if animated_sprite.frame == 3: __start_attack_collision()
+	# Change to Kick Air state
+	if animated_sprite.frame >= 5: 
 		__end_attack_collision()
-		__change_state(StateMachine.IDLE)
-
-	# Change to KICK_AIR state
-	if (animated_sprite.frame >= 5) and kick and alive:
-		__end_attack_collision()
-		__change_state(StateMachine.KICK_AIR)
+		# Goes to next attack
+		if kick: __change_state(StateMachine.KICK_AIR)
+	# Back to idle
+	if animated_sprite.frame >= 6: __change_state(StateMachine.IDLE)
 
 func __kick_air() -> void:
 	__enter_state("kick_air")
-	__start_attack_collision()
 	__stop_movement()
 	
-	if animated_sprite.frame >= 8 and alive:
-		__end_attack_collision()
-		__change_state(StateMachine.IDLE)
+	# Kick
+	if animated_sprite.frame == 2: __start_attack_collision()
+	if animated_sprite.frame >= 4: __end_attack_collision()
+	if animated_sprite.frame >= 8: __change_state(StateMachine.IDLE)
 
 func __hurt() -> void:
 	if enter_state:
