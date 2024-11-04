@@ -126,3 +126,7 @@ func __died() -> void:
 		# Makes the player disappear after being defeated
 		animated_sprite.hide()
 		if shadow != null: shadow.hide()
+		
+		# Change back to menu after 2 seconds
+		await get_tree().create_timer(2).timeout
+		get_tree().change_scene_to_file("res://scenes/ui/ui_player_selector.tscn")

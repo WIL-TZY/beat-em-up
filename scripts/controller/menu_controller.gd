@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-enum MenuState { NULL, MENU, INTRO, SELECT }
+enum MenuState { MENU, INTRO, SELECT }
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 

@@ -5,6 +5,7 @@ enum sides { LEFT = 0, RIGHT = 1 }
 @export var unlocked_at_area: float
 @export var amount: int = 0
 @export var enemies: Array[PackedScene]
+@export var last_area: bool = false
 
 @onready var camera: Camera3D = GameController.camera
 
@@ -22,6 +23,7 @@ func _spawn_enemies() -> void:
 		get_parent().add_child(enemy)
 
 	GameController.level_controller.config_next_area(amount, unlocked_at_area)
+	if last_area: GameController.level_controller.last_area = true
 	# After the spawn is done, remove this node from the scene
 	queue_free()
 

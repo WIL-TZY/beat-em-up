@@ -1,20 +1,23 @@
 class_name UI extends CanvasLayer
 
+# Go
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+
 # Player
-@onready var ui_player: Control = $UIPlayer
-@onready var name_player: Label = $UIPlayer/NamePlayer
-@onready var health_player: ProgressBar = $UIPlayer/HealthPlayer
-@onready var portrait_player: TextureRect = $UIPlayer/PortraitPlayer
+@onready var hud_player: Control = $UIGameplay/HUDPlayer
+@onready var name_player: Label = $UIGameplay/HUDPlayer/NamePlayer
+@onready var health_player: ProgressBar = $UIGameplay/HUDPlayer/HealthPlayer
+@onready var portrait_player: TextureRect = $UIGameplay/HUDPlayer/PortraitPlayer
 
 # Enemy
-@onready var ui_enemy: Control = $UIEnemy
-@onready var name_enemy: Label = $UIEnemy/NameEnemy
-@onready var health_enemy: ProgressBar = $UIEnemy/HealthEnemy
-@onready var portrait_enemy: TextureRect = $UIEnemy/PortraitEnemy
+@onready var hud_enemy: Control = $UIGameplay/HUDEnemy
+@onready var name_enemy: Label = $UIGameplay/HUDEnemy/NameEnemy
+@onready var health_enemy: ProgressBar = $UIGameplay/HUDEnemy/HealthEnemy
+@onready var portrait_enemy: TextureRect = $UIGameplay/HUDEnemy/PortraitEnemy
 @onready var timer_enemy_ui: Timer = $TimerEnemyUI
 
 func _ready() -> void:
-	ui_enemy.hide()
+	hud_enemy.hide()
 
 func __hud_update_health(hp: float) -> void:
 	health_player.value = hp
@@ -31,9 +34,32 @@ func __hud_update_enemy(new_name: String, hp: float, hp_max: float, portrait: Te
 	health_enemy.max_value = hp_max
 	portrait_enemy.texture = portrait
 	
-	ui_enemy.show()
+	hud_enemy.show()
 	timer_enemy_ui.stop()
 	timer_enemy_ui.start()
 	
 	await timer_enemy_ui.timeout
-	ui_enemy.hide()
+	hud_enemy.hide()
+
+func __show_go() -> void:
+	animation_player.play("go")
+	await get_tree().create_timer(2).timeout
+	animation_player.stop()
+	$Go.hide()
+
+func __level_cleared() -> void:
+	# Pause level music
+	var level_music = get_parent().get_node("AudioStreamPlayer")
+	level_music.stop()
+
+	# Show Level Cleared HUD
+	var hud_level_cleared = $UIGameplay/HUDLevelCleared
+	hud_level_cleared.show()
+	var level_clear_music = get_node("LevelClearedJingle")
+	level_clear_music.play()
+	
+	# Timer
+	await get_tree().create_timer(5).timeout
+	
+	# Change back to menu
+	get_tree().change_scene_to_file("res://scenes/ui/ui_player_selector.tscn")
