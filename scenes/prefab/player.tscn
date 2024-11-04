@@ -403,7 +403,7 @@ animation = &"idle"
 autoplay = "idle"
 
 [node name="Shadow" type="Sprite3D" parent="."]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -0.03, 0, -0.1)
+transform = Transform3D(5, 0, 0, 0, 4, 0, 0, 0, 4, -0.1, 0, -0.1)
 texture_filter = 0
 texture = ExtResource("11_uo1nh")
 

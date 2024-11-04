@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://oqtavowi0a0g"
-path.s3tc="res://.godot/imported/street.png-a584181e4d9e74d7272338a25035a633.s3tc.ctex"
+path.s3tc="res://.godot/imported/street1.png-ea4435f419c287e7d76776ee8ee41ff5.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/sprites/level/street.png"
-dest_files=["res://.godot/imported/street.png-a584181e4d9e74d7272338a25035a633.s3tc.ctex"]
+source_file="res://assets/sprites/level/street1.png"
+dest_files=["res://.godot/imported/street1.png-ea4435f419c287e7d76776ee8ee41ff5.s3tc.ctex"]
 
 [params]
 

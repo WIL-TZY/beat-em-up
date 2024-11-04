@@ -125,3 +125,4 @@ func __died() -> void:
 
 		# Makes the player disappear after being defeated
 		animated_sprite.hide()
+		if shadow != null: shadow.hide()
