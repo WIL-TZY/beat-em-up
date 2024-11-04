@@ -2,6 +2,8 @@ class_name Enemy extends CharacterBody3D
 
 enum EnemyState { IDLE, WALK, ATTACK, HURT, DOWN, UP, DIED }
 
+# TO-DO: Cooldown Attack Time for enemies
+
 @export var chara_name := "Enemy"
 @export var portrait : Texture2D
 @export var hp := 30

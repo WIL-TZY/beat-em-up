@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://m6mn47cd8npo"]
+[gd_scene load_steps=15 format=3 uid="uid://m6mn47cd8npo"]
 
 [ext_resource type="Script" path="res://scripts/controller/game_controller.gd" id="1_arknd"]
 [ext_resource type="Script" path="res://scripts/controller/level_controller.gd" id="1_dfsb5"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bpya62t6qls8v" path="res://scenes/prefab/debug/debug_overlay.tscn" id="2_cbthk"]
 [ext_resource type="Texture2D" uid="uid://cqs84ver46kn7" path="res://assets/sprites/level/street2.png" id="6_w3db7"]
 [ext_resource type="PackedScene" uid="uid://b2hexbevog3jp" path="res://scenes/prefab/spawn_enemy.tscn" id="7_ojrhr"]
+[ext_resource type="PackedScene" uid="uid://cco2shgyyj3er" path="res://scenes/prefab/boss.tscn" id="9_5ri4b"]
 [ext_resource type="AudioStream" uid="uid://nf84nk133h0b" path="res://assets/sound/level_1.mp3" id="9_u3ahy"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ve8hh"]
@@ -97,6 +98,7 @@ unlocked_at_area = 14.0
 [node name="SpawnEnemy4" parent="." instance=ExtResource("7_ojrhr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0)
 unlocked_at_area = 20.0
+enemies = Array[PackedScene]([ExtResource("9_5ri4b")])
 last_area = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
