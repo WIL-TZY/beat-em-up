@@ -14,3 +14,6 @@ func _process(delta: float) -> void:
 		
 		# Limit camera borders
 		position.x = clamp(position.x, initial_pos, clamped_pos)
+
+func set_camera_limit(limit: float) -> void:
+	clamped_pos = limit

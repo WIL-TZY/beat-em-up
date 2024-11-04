@@ -7,6 +7,7 @@ static var enemies: Array[Enemy]
 @export var _player: Player 
 @export var _camera: Camera3D
 @export var _HUD: UI
+@export var _level_controller: LevelController
 
 # Static variables persist across instances and scene changes
 # ideal for global data management, utility functions, and ensuring a single data copy 
@@ -14,9 +15,11 @@ static var enemies: Array[Enemy]
 static var player: Player 
 static var camera: Camera3D
 static var HUD: UI
+static var level_controller: LevelController
 
 # Runs before ready
 func _enter_tree() -> void:
 	player = _player
 	camera = _camera
 	HUD = _HUD
+	level_controller = _level_controller

@@ -2,6 +2,7 @@ extends Area3D
 
 enum sides { LEFT = 0, RIGHT = 1 }
 
+@export var unlocked_at_area: float
 @export var amount: int = 0
 @export var enemies: Array[PackedScene]
 
@@ -20,6 +21,7 @@ func _spawn_enemies() -> void:
 		# Add each enemy to the scene
 		get_parent().add_child(enemy)
 
+	GameController.level_controller.config_next_area(amount, unlocked_at_area)
 	# After the spawn is done, remove this node from the scene
 	queue_free()
 

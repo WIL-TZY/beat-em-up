@@ -145,6 +145,12 @@ func __died() -> void:
 		# Makes the enemy disappear after being defeated
 		animated_sprite.hide()
 		
+		# Tells the Level Controller this enemy has died
+		GameController.level_controller.enemy_died()
+		
+		# (DEBUG)
+		enemy_label.queue_free()
+		
 		# Removes the node safely
 		queue_free()
 	

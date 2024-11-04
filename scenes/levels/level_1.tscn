@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://m6mn47cd8npo"]
+[gd_scene load_steps=13 format=3 uid="uid://m6mn47cd8npo"]
 
 [ext_resource type="Texture2D" uid="uid://oqtavowi0a0g" path="res://assets/sprites/level/street.png" id="1_6fwr5"]
-[ext_resource type="Script" path="res://scripts/game_controller.gd" id="1_arknd"]
+[ext_resource type="Script" path="res://scripts/controller/game_controller.gd" id="1_arknd"]
+[ext_resource type="Script" path="res://scripts/controller/level_controller.gd" id="1_dfsb5"]
 [ext_resource type="PackedScene" uid="uid://dndpxufhapxen" path="res://scenes/prefab/hud.tscn" id="1_qu3tw"]
 [ext_resource type="Script" path="res://scripts/camera/camera.gd" id="2_4wnyf"]
 [ext_resource type="PackedScene" uid="uid://dvjfg7epy2hwg" path="res://scenes/prefab/player.tscn" id="2_712xq"]
@@ -21,12 +22,14 @@ size = Vector3(50, 2, 0.1)
 data = PackedVector3Array(-25, 1, 0.05, 25, 1, 0.05, -25, -1, 0.05, 25, 1, 0.05, 25, -1, 0.05, -25, -1, 0.05, 25, 1, -0.05, -25, 1, -0.05, 25, -1, -0.05, -25, 1, -0.05, -25, -1, -0.05, 25, -1, -0.05, 25, 1, 0.05, 25, 1, -0.05, 25, -1, 0.05, 25, 1, -0.05, 25, -1, -0.05, 25, -1, 0.05, -25, 1, -0.05, -25, 1, 0.05, -25, -1, -0.05, -25, 1, 0.05, -25, -1, 0.05, -25, -1, -0.05, 25, 1, 0.05, -25, 1, 0.05, 25, 1, -0.05, -25, 1, 0.05, -25, 1, -0.05, 25, 1, -0.05, -25, -1, 0.05, 25, -1, 0.05, -25, -1, -0.05, 25, -1, 0.05, 25, -1, -0.05, -25, -1, -0.05)
 
 [node name="Level1" type="Node3D"]
+script = ExtResource("1_dfsb5")
 
-[node name="GameController" type="Node" parent="." node_paths=PackedStringArray("_player", "_camera", "_HUD")]
+[node name="GameController" type="Node" parent="." node_paths=PackedStringArray("_player", "_camera", "_HUD", "_level_controller")]
 script = ExtResource("1_arknd")
 _player = NodePath("../Player")
 _camera = NodePath("../Camera")
 _HUD = NodePath("../HUD")
+_level_controller = NodePath("..")
 
 [node name="DebugOverlay" parent="." instance=ExtResource("2_cbthk")]
 
@@ -83,4 +86,13 @@ shape = SubResource("ConcavePolygonShape3D_cfvtq")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.0293, -0.6, 3.01136)
 
 [node name="SpawnEnemy" parent="." instance=ExtResource("7_ojrhr")]
+unlocked_at_area = -2.0
 amount = 2
+
+[node name="SpawnEnemy2" parent="." instance=ExtResource("7_ojrhr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 0)
+unlocked_at_area = 6.0
+
+[node name="SpawnEnemy3" parent="." instance=ExtResource("7_ojrhr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 0, 0)
+unlocked_at_area = 14.0
