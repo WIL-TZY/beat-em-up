@@ -21,7 +21,6 @@ func _ready() -> void:
 
 func __hud_update_health(hp: float) -> void:
 	health_player.value = hp
-
 func __hud_update_player(properties: CharacterData) -> void:
 	name_player.text = properties.name
 	health_player.value = properties.hp
@@ -55,7 +54,7 @@ func __level_cleared() -> void:
 	# Show Level Cleared HUD
 	var hud_level_cleared = $UIGameplay/HUDLevelCleared
 	hud_level_cleared.show()
-	var level_clear_music = get_node("LevelClearedJingle")
+	var level_clear_music = $UIGameplay/HUDLevelCleared/LevelClearedJingle
 	level_clear_music.play()
 	
 	# Timer

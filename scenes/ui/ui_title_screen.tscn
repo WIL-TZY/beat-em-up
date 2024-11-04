@@ -35,7 +35,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Intro/LabelIntro:size")
+tracks/2/path = NodePath("Intro/Controls:size")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -47,7 +47,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Intro/LabelIntro:position")
+tracks/3/path = NodePath("Intro/Controls:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -99,7 +99,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Intro/LabelIntro:size")
+tracks/2/path = NodePath("Intro/Controls:size")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -111,7 +111,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Intro/LabelIntro:position")
+tracks/3/path = NodePath("Intro/Controls:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -233,7 +233,31 @@ texture = ExtResource("2_j27fy")
 expand_mode = 3
 stretch_mode = 4
 
-[node name="LabelIntro" type="Label" parent="Intro"]
+[node name="Controls" type="Label" parent="Intro"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 184.0
+offset_top = 641.0
+offset_right = -184.0
+offset_bottom = 603.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_hs4ff")
+theme_override_font_sizes/font_size = 32
+text = "CONTROLS
+
+WASD or ARROW KEYS : MOVE
+Z : PUNCH
+X: KICK
+SPACE : JUMP"
+horizontal_alignment = 1
+autowrap_mode = 3
+uppercase = true
+
+[node name="Placeholder" type="Label" parent="Intro"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

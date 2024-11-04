@@ -34,6 +34,7 @@ _HUD = NodePath("../HUD")
 _level_controller = NodePath("..")
 
 [node name="DebugOverlay" parent="." instance=ExtResource("2_cbthk")]
+visible = false
 
 [node name="HUD" parent="." instance=ExtResource("1_qu3tw")]
 
@@ -90,10 +91,12 @@ amount = 2
 [node name="SpawnEnemy2" parent="." instance=ExtResource("7_ojrhr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 0)
 unlocked_at_area = 6.0
+amount = 3
 
 [node name="SpawnEnemy3" parent="." instance=ExtResource("7_ojrhr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 0, 0)
 unlocked_at_area = 14.0
+amount = 2
 
 [node name="SpawnEnemy4" parent="." instance=ExtResource("7_ojrhr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0)
