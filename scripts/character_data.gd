@@ -6,3 +6,4 @@ class_name CharacterData extends Resource
 @export var speed := 2.0
 @export var jump_force := 5
 @export var strength := 5
+@export var color := Color.WHITE

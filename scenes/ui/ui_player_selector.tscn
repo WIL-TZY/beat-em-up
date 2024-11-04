@@ -1,0 +1,127 @@
+[gd_scene load_steps=6 format=3 uid="uid://b2yxl1eqpdeoi"]
+
+[ext_resource type="Script" path="res://scripts/ui/ui_player_selector.gd" id="1_hbrj3"]
+[ext_resource type="FontFile" uid="uid://bxfrdveuo38na" path="res://assets/fonts/crang/Crang.ttf" id="2_jbxfc"]
+[ext_resource type="Texture2D" uid="uid://dslgnhcf0pf77" path="res://assets/portraits/brawler-girl.png" id="3_w2dic"]
+[ext_resource type="Texture2D" uid="uid://68h33t3lfxxi" path="res://assets/portraits/long-tail.png" id="4_7mfu0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bts7n"]
+
+[node name="PlayerSelector" type="CanvasLayer"]
+script = ExtResource("1_hbrj3")
+
+[node name="Content" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="Content"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -452.0
+offset_right = 452.0
+offset_bottom = 116.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_jbxfc")
+theme_override_font_sizes/font_size = 60
+text = "Choose your character:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Content"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -491.0
+offset_top = -193.0
+offset_right = 491.0
+offset_bottom = 276.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="ButtonBrawlerGirl" type="Button" parent="Content/HBoxContainer"]
+custom_minimum_size = Vector2(400, 50)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Content/HBoxContainer/ButtonBrawlerGirl"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -151.0
+offset_top = 45.0
+offset_right = 151.0
+offset_bottom = 347.0
+grow_horizontal = 2
+texture = ExtResource("3_w2dic")
+
+[node name="Label" type="Label" parent="Content/HBoxContainer/ButtonBrawlerGirl"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -169.0
+offset_top = -93.0
+offset_right = 169.0
+offset_bottom = -18.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_jbxfc")
+theme_override_font_sizes/font_size = 32
+text = "Brawler Girl"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VSeparator" type="VSeparator" parent="Content/HBoxContainer"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_bts7n")
+
+[node name="ButtonLongTail" type="Button" parent="Content/HBoxContainer"]
+custom_minimum_size = Vector2(400, 50)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Content/HBoxContainer/ButtonLongTail"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -151.0
+offset_top = 45.0
+offset_right = 151.0
+offset_bottom = 347.0
+grow_horizontal = 2
+texture = ExtResource("4_7mfu0")
+
+[node name="Label" type="Label" parent="Content/HBoxContainer/ButtonLongTail"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -169.0
+offset_top = -93.0
+offset_right = 169.0
+offset_bottom = -18.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_jbxfc")
+theme_override_font_sizes/font_size = 32
+text = "Long Tail"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Content/HBoxContainer/ButtonBrawlerGirl" to="." method="_on_button_brawler_girl_pressed"]
+[connection signal="pressed" from="Content/HBoxContainer/ButtonLongTail" to="." method="_on_button_long_tail_pressed"]

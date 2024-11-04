@@ -11,3 +11,4 @@ hp = 140.0
 speed = 3.0
 jump_force = 6
 strength = 3
+color = Color(0.898039, 0.686275, 0.294118, 1)

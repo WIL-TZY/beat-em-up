@@ -125,19 +125,17 @@ func __died() -> void:
 	if enter_state:
 		enter_state = false
 		dead = true
-		
+
 		# Down animation and VFX
 		__set_hurt_throw()
-		await timer_node.timeout
-		
-		# to prevent the death sliding
-		velocity.x = 0
-		
-		__set_animation("died")
-		
 		# Update enemy HUD 
 		HUD.__hud_update_enemy(chara_name, 0, hp_max, portrait)
-		
+
+		await timer_node.timeout
+		velocity.x = 0 # To prevent the death sliding
+
+		__set_animation("died")
+
 		# Death VFX (flicker sprite)
 		for i in range(8):
 			animated_sprite.visible = not animated_sprite.visible

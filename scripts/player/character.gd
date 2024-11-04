@@ -2,7 +2,13 @@ class_name Character extends CharacterBody3D
 
 enum StateMachine { IDLE, WALK, JUMP, FALL, JAB, PUNCH, KICK, KICK_AIR, HURT, DIED }
 
-@export var properties : CharacterData
+# Get player properties
+@export var properties: CharacterData:
+	get:
+		if GameController.player_resource != null:
+			return GameController.player_resource
+		else:
+			return properties
 
 const CAMERA_OFFSET : float = 5.0
 
@@ -51,6 +57,9 @@ func _ready() -> void:
 	# Update HUD
 	HUD.__hud_update_player(properties) # Setup Player Character
 	HUD.__hud_update_health(properties.hp)
+	
+	# Change color based on character
+	animated_sprite.modulate = properties.color
 	
 	## (DEBUG) Delete later
 	debug_overlay.position = Vector2(20, 620)

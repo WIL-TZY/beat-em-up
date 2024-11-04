@@ -16,6 +16,7 @@ static var player: Player
 static var camera: Camera3D
 static var HUD: UI
 static var level_controller: LevelController
+static var player_resource: CharacterData
 
 # Runs before ready
 func _enter_tree() -> void:
