@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://b2yxl1eqpdeoi"]
+[gd_scene load_steps=7 format=3 uid="uid://b2yxl1eqpdeoi"]
 
 [ext_resource type="Script" path="res://scripts/ui/ui_player_selector.gd" id="1_hbrj3"]
 [ext_resource type="FontFile" uid="uid://bxfrdveuo38na" path="res://assets/fonts/crang/Crang.ttf" id="2_jbxfc"]
+[ext_resource type="Texture2D" uid="uid://cnrnp1hc0injx" path="res://assets/sprites/menu/street_of_rage_city.png" id="2_xs8si"]
 [ext_resource type="Texture2D" uid="uid://dslgnhcf0pf77" path="res://assets/portraits/brawler-girl.png" id="3_w2dic"]
 [ext_resource type="Texture2D" uid="uid://68h33t3lfxxi" path="res://assets/portraits/long-tail.png" id="4_7mfu0"]
 
@@ -17,6 +18,19 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="Content"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1176.0
+offset_right = -0.444336
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_xs8si")
+expand_mode = 3
+stretch_mode = 4
 
 [node name="Title" type="Label" parent="Content"]
 layout_mode = 1

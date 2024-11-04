@@ -1,0 +1,266 @@
+[gd_scene load_steps=10 format=3 uid="uid://fyueqs4cwxae"]
+
+[ext_resource type="FontFile" uid="uid://bxfrdveuo38na" path="res://assets/fonts/crang/Crang.ttf" id="1_klyiu"]
+[ext_resource type="Script" path="res://scripts/controller/menu_controller.gd" id="1_pp5ky"]
+[ext_resource type="FontFile" uid="uid://dt84iq2ew2www" path="res://assets/fonts/mario_kart_ds/Mario-Kart-DS.ttf" id="2_hs4ff"]
+[ext_resource type="Texture2D" uid="uid://cnrnp1hc0injx" path="res://assets/sprites/menu/street_of_rage_city.png" id="2_j27fy"]
+[ext_resource type="AudioStream" uid="uid://cdeope1sp76d5" path="res://assets/sound/intro.mp3" id="3_t6ry7"]
+
+[sub_resource type="Animation" id="Animation_4pe2e"]
+resource_name = "intro"
+length = 30.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Intro/Background2:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2275.56, 640)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Intro/Background2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 29.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-1174, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Intro/LabelIntro:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(732, 602)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Intro/LabelIntro:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 28),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(184, 641), Vector2(184, -611)]
+}
+
+[sub_resource type="Animation" id="Animation_6vyx2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Intro/Background2:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2275.56, 640)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Intro/Background2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Intro/LabelIntro:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(732, 602)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Intro/LabelIntro:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(184, 641)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Menu/LabelPressStart:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_bddym"]
+resource_name = "press_start"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Menu/LabelPressStart:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pupqi"]
+_data = {
+"RESET": SubResource("Animation_6vyx2"),
+"intro": SubResource("Animation_4pe2e"),
+"press_start": SubResource("Animation_bddym")
+}
+
+[node name="TitleScreen" type="CanvasLayer"]
+script = ExtResource("1_pp5ky")
+
+[node name="Menu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background1" type="TextureRect" parent="Menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1175.56
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_j27fy")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="LabelTitle" type="Label" parent="Menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -352.0
+offset_top = -150.0
+offset_right = 352.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 10
+theme_override_constants/shadow_outline_size = 10
+theme_override_fonts/font = ExtResource("1_klyiu")
+theme_override_font_sizes/font_size = 64
+text = "Fight Streets"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LabelPressStart" type="Label" parent="Menu"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -112.5
+offset_top = -84.0
+offset_right = 112.5
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_hs4ff")
+theme_override_font_sizes/font_size = 32
+text = "Press Start"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Intro" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background2" type="TextureRect" parent="Intro"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1175.56
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_j27fy")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="LabelIntro" type="Label" parent="Intro"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 184.0
+offset_top = 641.0
+offset_right = -184.0
+offset_bottom = 603.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_hs4ff")
+theme_override_font_sizes/font_size = 32
+text = "Streets of Rage is a beat 'em up game developed and published by Sega for the Genesis in 1991. Players control one of three former police officers turned vigilantes who battle a crime syndicate. 
+
+Streets of Rage establishes many conventions of the Streets of Rage series, such as two-player cooperative play and an acclaimed techno soundtrack from composer Yuzo Koshiro. 
+
+It was ported for the Game Gear, Sega CD and Master System and has been rereleased as part of various compilations and on download services."
+horizontal_alignment = 1
+autowrap_mode = 3
+uppercase = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_pupqi")
+}
+autoplay = "press_start"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_t6ry7")
+autoplay = true
