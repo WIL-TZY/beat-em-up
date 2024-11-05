@@ -249,9 +249,10 @@ theme_override_font_sizes/font_size = 32
 text = "CONTROLS
 
 WASD or ARROW KEYS : MOVE
+ENTER: SELECT, CONFIRM
+SPACE : JUMP
 Z : PUNCH
-X: KICK
-SPACE : JUMP"
+X: KICK"
 horizontal_alignment = 1
 autowrap_mode = 3
 uppercase = true

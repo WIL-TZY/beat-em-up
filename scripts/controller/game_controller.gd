@@ -25,4 +25,9 @@ func _enter_tree() -> void:
 	HUD = _HUD
 	level_controller = _level_controller
 
+func _ready() -> void:
+	# Hides the mouse cursor
+	# Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	pass
+
 ## TO-DO: This controller should handles connection between nodes in the level scene

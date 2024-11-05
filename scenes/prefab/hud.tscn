@@ -83,9 +83,9 @@ offset_bottom = 109.0
 
 [node name="NamePlayer" type="Label" parent="UIGameplay/HUDPlayer"]
 layout_mode = 0
-offset_left = 190.0
+offset_left = 80.0
 offset_top = 42.0
-offset_right = 302.0
+offset_right = 349.0
 offset_bottom = 67.0
 theme_override_fonts/font = ExtResource("2_h3654")
 theme_override_font_sizes/font_size = 24
@@ -121,13 +121,14 @@ offset_bottom = 115.0
 
 [node name="NameEnemy" type="Label" parent="UIGameplay/HUDEnemy"]
 layout_mode = 0
-offset_left = 104.0
+offset_left = 64.0
 offset_top = 42.0
-offset_right = 216.0
+offset_right = 333.0
 offset_bottom = 67.0
 theme_override_fonts/font = ExtResource("2_h3654")
 theme_override_font_sizes/font_size = 24
 text = "PLAYER"
+horizontal_alignment = 2
 
 [node name="HealthEnemy" type="ProgressBar" parent="UIGameplay/HUDEnemy"]
 layout_mode = 0

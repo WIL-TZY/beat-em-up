@@ -139,6 +139,8 @@ alignment = 1
 [node name="ButtonBrawlerGirl" type="Button" parent="Content/HBoxContainer"]
 custom_minimum_size = Vector2(400, 50)
 layout_mode = 2
+focus_mode = 0
+flat = true
 
 [node name="AnimatedBrawlerGirl" type="AnimatedSprite2D" parent="Content/HBoxContainer/ButtonBrawlerGirl"]
 position = Vector2(216, 178)
@@ -176,6 +178,8 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_bts7n")
 [node name="ButtonLongTail" type="Button" parent="Content/HBoxContainer"]
 custom_minimum_size = Vector2(400, 50)
 layout_mode = 2
+focus_mode = 0
+flat = true
 
 [node name="NameLongTail" type="Label" parent="Content/HBoxContainer/ButtonLongTail"]
 layout_mode = 1
