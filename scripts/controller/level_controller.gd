@@ -1,10 +1,13 @@
-class_name LevelController extends Node
+class_name LevelController extends BaseScene
 
 @onready var HUD: UI = $HUD
 
 var enemies := 0
 var unlocked_at_area := 0.0
 var last_area : bool = false
+
+func _ready() -> void:
+	print("Level 1")
 
 func enemy_died() -> void:
 	enemies -= 1

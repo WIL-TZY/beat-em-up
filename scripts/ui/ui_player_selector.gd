@@ -1,13 +1,13 @@
 extends CanvasLayer
 
-@onready var animated_brawler_girl: AnimatedSprite2D = $Content/HBoxContainer/ButtonBrawlerGirl/AnimatedBrawlerGirl
-@onready var animated_long_tail: AnimatedSprite2D = $Content/HBoxContainer/ButtonLongTail/AnimatedLongTail
+@onready var animated_brawler_girl: AnimatedSprite2D = $HBoxContainer/ButtonBrawlerGirl/AnimatedBrawlerGirl
+@onready var animated_long_tail: AnimatedSprite2D = $HBoxContainer/ButtonLongTail/AnimatedLongTail
 
-@onready var button_brawler_girl: Button = $Content/HBoxContainer/ButtonBrawlerGirl
-@onready var button_long_tail: Button = $Content/HBoxContainer/ButtonLongTail
+@onready var button_brawler_girl: Button = $HBoxContainer/ButtonBrawlerGirl
+@onready var button_long_tail: Button = $HBoxContainer/ButtonLongTail
 
-# @onready var select_1: AudioStreamPlayer = $Content/HBoxContainer/ButtonBrawlerGirl/Select1
-# @onready var select_2: AudioStreamPlayer = $Content/HBoxContainer/ButtonLongTail/Select2
+# @onready var select_1: AudioStreamPlayer = $HBoxContainer/ButtonBrawlerGirl/Select1
+# @onready var select_2: AudioStreamPlayer = $HBoxContainer/ButtonLongTail/Select2
 
 enum eCharacter { BRAWLER_GIRL, LONG_TAIL }
 
@@ -28,8 +28,18 @@ func _input(event: InputEvent) -> void:
 
 # Change the selected character based on direction
 func select_character(direction: int) -> void:
-	# Wrap around between 0 and 1
-	selected_character = (selected_character + direction + 2) % 2  
+	# Wrap around between BRAWLER_GIRL (0) and LONG_TAIL (1)
+	if direction == 1:
+		if selected_character == eCharacter.BRAWLER_GIRL:
+			selected_character = eCharacter.LONG_TAIL
+		else:
+			selected_character = eCharacter.BRAWLER_GIRL
+	elif direction == -1:
+		if selected_character == eCharacter.LONG_TAIL:
+			selected_character = eCharacter.BRAWLER_GIRL
+		else:
+			selected_character = eCharacter.LONG_TAIL
+
 	update_selection()
 
 # Update animations and visual effects based on the selected character
@@ -54,7 +64,7 @@ func choose_character() -> void:
 	else:
 		GameController.player_resource = preload("res://scripts/resources/long_tail.tres")
 		
-	get_tree().change_scene_to_file("res://scenes/levels/level_1.tscn")
+	get_tree().change_scene_to_file("res://scenes/screens/level_1.tscn")
 
 # Mouse Hover Effect (removed to keep input limited to keyboard)
 #func _on_button_brawler_girl_mouse_entered() -> void:

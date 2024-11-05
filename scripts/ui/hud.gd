@@ -62,4 +62,4 @@ func __level_cleared() -> void:
 	await get_tree().create_timer(5).timeout
 	
 	# Change back to menu
-	get_tree().change_scene_to_file("res://scenes/ui/ui_player_selector.tscn")
+	get_tree().change_scene_to_file("res://scenes/screens/player_selector.tscn")

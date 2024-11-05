@@ -1,16 +1,16 @@
 [gd_scene load_steps=16 format=3 uid="uid://m6mn47cd8npo"]
 
-[ext_resource type="Script" path="res://scripts/controller/game_controller.gd" id="1_arknd"]
-[ext_resource type="Script" path="res://scripts/controller/level_controller.gd" id="1_dfsb5"]
-[ext_resource type="PackedScene" uid="uid://dndpxufhapxen" path="res://scenes/prefab/hud.tscn" id="1_qu3tw"]
-[ext_resource type="Script" path="res://scripts/camera/camera.gd" id="2_4wnyf"]
-[ext_resource type="PackedScene" uid="uid://dvjfg7epy2hwg" path="res://scenes/prefab/player.tscn" id="2_712xq"]
-[ext_resource type="PackedScene" uid="uid://bpya62t6qls8v" path="res://scenes/prefab/debug/debug_overlay.tscn" id="2_cbthk"]
-[ext_resource type="Texture2D" uid="uid://cqs84ver46kn7" path="res://assets/sprites/level/street2.png" id="6_w3db7"]
-[ext_resource type="PackedScene" uid="uid://b2hexbevog3jp" path="res://scenes/prefab/spawn_enemy.tscn" id="7_ojrhr"]
-[ext_resource type="PackedScene" uid="uid://cco2shgyyj3er" path="res://scenes/prefab/boss.tscn" id="9_5ri4b"]
-[ext_resource type="AudioStream" uid="uid://nf84nk133h0b" path="res://assets/sound/level_1.mp3" id="9_u3ahy"]
-[ext_resource type="PackedScene" uid="uid://kwguj1q613ki" path="res://scenes/prefab/chicken.tscn" id="11_lggeb"]
+[ext_resource type="Script" path="res://scripts/controller/level_controller.gd" id="1_14tb6"]
+[ext_resource type="Script" path="res://scripts/controller/game_controller.gd" id="2_f1jq6"]
+[ext_resource type="PackedScene" uid="uid://bpya62t6qls8v" path="res://scenes/prefab/debug/debug_overlay.tscn" id="3_vxcff"]
+[ext_resource type="PackedScene" uid="uid://dndpxufhapxen" path="res://scenes/ui/hud.tscn" id="4_xwgyf"]
+[ext_resource type="Script" path="res://scripts/camera/camera.gd" id="5_wsgy8"]
+[ext_resource type="Texture2D" uid="uid://cqs84ver46kn7" path="res://assets/sprites/level/street2.png" id="6_3twwo"]
+[ext_resource type="PackedScene" uid="uid://dvjfg7epy2hwg" path="res://scenes/prefab/player.tscn" id="7_ophyb"]
+[ext_resource type="PackedScene" uid="uid://b2hexbevog3jp" path="res://scenes/prefab/spawn_enemy.tscn" id="8_ki7ke"]
+[ext_resource type="PackedScene" uid="uid://cco2shgyyj3er" path="res://scenes/prefab/boss.tscn" id="9_w3w5d"]
+[ext_resource type="AudioStream" uid="uid://nf84nk133h0b" path="res://assets/sound/level_1.mp3" id="10_6liw7"]
+[ext_resource type="PackedScene" uid="uid://kwguj1q613ki" path="res://scenes/prefab/chicken.tscn" id="11_rps6p"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ve8hh"]
 size = Vector2(50, 10)
@@ -25,32 +25,32 @@ size = Vector3(50, 2, 0.1)
 data = PackedVector3Array(-25, 1, 0.05, 25, 1, 0.05, -25, -1, 0.05, 25, 1, 0.05, 25, -1, 0.05, -25, -1, 0.05, 25, 1, -0.05, -25, 1, -0.05, 25, -1, -0.05, -25, 1, -0.05, -25, -1, -0.05, 25, -1, -0.05, 25, 1, 0.05, 25, 1, -0.05, 25, -1, 0.05, 25, 1, -0.05, 25, -1, -0.05, 25, -1, 0.05, -25, 1, -0.05, -25, 1, 0.05, -25, -1, -0.05, -25, 1, 0.05, -25, -1, 0.05, -25, -1, -0.05, 25, 1, 0.05, -25, 1, 0.05, 25, 1, -0.05, -25, 1, 0.05, -25, 1, -0.05, 25, 1, -0.05, -25, -1, 0.05, 25, -1, 0.05, -25, -1, -0.05, 25, -1, 0.05, 25, -1, -0.05, -25, -1, -0.05)
 
 [node name="Level1" type="Node3D"]
-script = ExtResource("1_dfsb5")
+script = ExtResource("1_14tb6")
 
 [node name="GameController" type="Node" parent="." node_paths=PackedStringArray("_player", "_camera", "_HUD", "_level_controller")]
-script = ExtResource("1_arknd")
+script = ExtResource("2_f1jq6")
 _player = NodePath("../Player")
 _camera = NodePath("../Camera")
 _HUD = NodePath("../HUD")
 _level_controller = NodePath("..")
 
-[node name="DebugOverlay" parent="." instance=ExtResource("2_cbthk")]
+[node name="DebugOverlay" parent="." instance=ExtResource("3_vxcff")]
 visible = false
 
-[node name="HUD" parent="." instance=ExtResource("1_qu3tw")]
+[node name="HUD" parent="." instance=ExtResource("4_xwgyf")]
 
 [node name="Camera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.898794, 0.438371, 0, -0.438371, 0.898794, -17.5, 2.3, 6)
 projection = 1
 current = true
 size = 6.0
-script = ExtResource("2_4wnyf")
+script = ExtResource("5_wsgy8")
 metadata/_edit_lock_ = true
 
 [node name="Background" type="Sprite3D" parent="."]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 1, 0, -2.8, -4.1)
 texture_filter = 0
-texture = ExtResource("6_w3db7")
+texture = ExtResource("6_3twwo")
 
 [node name="Ground" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.4, 2)
@@ -82,33 +82,32 @@ mesh = SubResource("BoxMesh_1huhl")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WallDown/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_cfvtq")
 
-[node name="Player" parent="." instance=ExtResource("2_712xq")]
+[node name="Player" parent="." instance=ExtResource("7_ophyb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21, -1.2, 3)
 
-[node name="SpawnEnemy" parent="." instance=ExtResource("7_ojrhr")]
+[node name="SpawnEnemy" parent="." instance=ExtResource("8_ki7ke")]
 unlocked_at_area = -2.0
 amount = 2
 
-[node name="SpawnEnemy2" parent="." instance=ExtResource("7_ojrhr")]
+[node name="SpawnEnemy2" parent="." instance=ExtResource("8_ki7ke")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 0)
 unlocked_at_area = 6.0
 amount = 3
 
-[node name="SpawnEnemy3" parent="." instance=ExtResource("7_ojrhr")]
+[node name="SpawnEnemy3" parent="." instance=ExtResource("8_ki7ke")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 0, 0)
 unlocked_at_area = 14.0
 amount = 2
 
-[node name="SpawnEnemy4" parent="." instance=ExtResource("7_ojrhr")]
+[node name="SpawnEnemy4" parent="." instance=ExtResource("8_ki7ke")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0)
-unlocked_at_area = 20.0
-enemies = Array[PackedScene]([ExtResource("9_5ri4b")])
+unlocked_at_area = 18.0
+enemies = Array[PackedScene]([ExtResource("9_w3w5d")])
 last_area = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("9_u3ahy")
+stream = ExtResource("10_6liw7")
 autoplay = true
 
-[node name="Chicken" parent="." instance=ExtResource("11_lggeb")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.92531, -1.7, 0)
-energy = 50.0
+[node name="Chicken" parent="." instance=ExtResource("11_rps6p")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -7, -1.7, 0)
