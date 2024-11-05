@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://m6mn47cd8npo"]
+[gd_scene load_steps=16 format=3 uid="uid://m6mn47cd8npo"]
 
 [ext_resource type="Script" path="res://scripts/controller/game_controller.gd" id="1_arknd"]
 [ext_resource type="Script" path="res://scripts/controller/level_controller.gd" id="1_dfsb5"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://b2hexbevog3jp" path="res://scenes/prefab/spawn_enemy.tscn" id="7_ojrhr"]
 [ext_resource type="PackedScene" uid="uid://cco2shgyyj3er" path="res://scenes/prefab/boss.tscn" id="9_5ri4b"]
 [ext_resource type="AudioStream" uid="uid://nf84nk133h0b" path="res://assets/sound/level_1.mp3" id="9_u3ahy"]
+[ext_resource type="PackedScene" uid="uid://kwguj1q613ki" path="res://scenes/prefab/chicken.tscn" id="11_lggeb"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ve8hh"]
 size = Vector2(50, 10)
@@ -107,3 +108,7 @@ last_area = true
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_u3ahy")
 autoplay = true
+
+[node name="Chicken" parent="." instance=ExtResource("11_lggeb")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.92531, -1.7, 0)
+energy = 50.0

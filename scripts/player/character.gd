@@ -17,7 +17,9 @@ var enter_state : bool = true
 var gravity : float = 9.8
 var in_attack : bool = false
 var dead : bool = false
+var pickup : bool = false
 
+@onready var hp_max := properties.hp
 @onready var animated_sprite : AnimatedSprite3D = $AnimatedSprite
 @onready var shadow : Sprite3D = $Shadow
 @onready var attack: Area3D = $Attack
@@ -27,6 +29,9 @@ var dead : bool = false
 @onready var camera: Camera3D = get_parent().get_node("Camera")
 
 @onready var debug_overlay = get_parent().get_node("DebugOverlay")
+
+# Signals
+signal __on_item_picked(item : Item)
 
 # Encapsulation - Get input (read-only)
 var input : Vector2: 
@@ -44,10 +49,15 @@ var kick: bool:
 # Runs only once
 func _ready() -> void:
 	health_component.hp = properties.hp
+	health_component.hp_max = hp_max
 	
+	# (TO-DO) Connect health component signals to GameController 
 	# Connect signals
 	health_component.__on_damage.connect(func(_hp: float): __change_state(StateMachine.HURT))
 	health_component.__on_dead.connect(func(): __change_state(StateMachine.DIED))
+	__on_item_picked.connect(func(__item: Item): __get_item(__item))
+	health_component.__on_recover.connect(func(health: float): print("Recovered " + str(health) + " HP"))
+	
 	# Detects collision with the enemy's hitbox component
 	attack.area_entered.connect(func(hitbox: HitboxComponent):
 		# print(hitbox.get_parent().name)
@@ -135,6 +145,17 @@ func __end_attack_collision() -> void:
 	if in_attack:
 		in_attack = false
 		attack_collision.disabled = true
+
+func __get_item(__item: Item) -> void:
+	# Item Pickup
+	# print(__item)
+	if __item:
+		pickup = true
+		health_component.__recover(__item.pickup())
+		await get_tree().create_timer(0.3).timeout
+		HUD.__hud_update_health(health_component.hp)
+		__item.queue_free()
+		pickup = false
 
 ############################# DEBUG #############################
 # Call this function to update the debug overlay

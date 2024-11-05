@@ -24,3 +24,5 @@ func _enter_tree() -> void:
 	camera = _camera
 	HUD = _HUD
 	level_controller = _level_controller
+
+## TO-DO: This controller should handles connection between nodes in the level scene

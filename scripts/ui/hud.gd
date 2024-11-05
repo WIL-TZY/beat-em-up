@@ -21,6 +21,7 @@ func _ready() -> void:
 
 func __hud_update_health(hp: float) -> void:
 	health_player.value = hp
+	
 func __hud_update_player(properties: CharacterData) -> void:
 	name_player.text = properties.name
 	health_player.value = properties.hp
