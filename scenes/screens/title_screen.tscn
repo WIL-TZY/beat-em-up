@@ -145,18 +145,13 @@ _data = {
 "press_start": SubResource("Animation_bddym")
 }
 
-[node name="TitleScreen" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="TitleScreen" type="CanvasLayer"]
+layer = 0
 script = ExtResource("2_rt46f")
 next_scene = "res://scenes/screens/player_selector.tscn"
 
 [node name="Title" type="Control" parent="."]
-layout_mode = 1
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -221,7 +216,7 @@ uppercase = true
 
 [node name="Intro" type="Control" parent="."]
 visible = false
-layout_mode = 1
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -233,7 +228,7 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 2275.56
+offset_right = 1175.56
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_d4hy3")
@@ -245,10 +240,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -0.5
-offset_top = -947.5
-offset_right = 0.5
-offset_bottom = 2191.5
+offset_left = 184.0
+offset_top = 641.0
+offset_right = -184.0
+offset_bottom = 603.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("5_82oed")

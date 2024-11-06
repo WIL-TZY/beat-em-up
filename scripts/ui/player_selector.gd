@@ -15,7 +15,6 @@ var selected_character: eCharacter = eCharacter.BRAWLER_GIRL
 	
 func _ready() -> void:
 	super()
-	print("Player Selector")
 	
 	# Set the initial selection when the scene is ready
 	update_selection()

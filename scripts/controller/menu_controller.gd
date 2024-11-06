@@ -8,7 +8,6 @@ var menu_state = MenuState.MENU
 
 func _ready() -> void:
 	super()
-	print("Title Screen")
 
 func _process(_delta: float) -> void:
 	super(_delta)
@@ -30,5 +29,4 @@ func __open_character_selector() -> void:
 	menu_state = MenuState.SELECT
 	
 	# Screen transition
-	# SceneManager.transition_to("res://scenes/screens/player_selector.tscn")
 	SceneManager.transition_to(next_scene)

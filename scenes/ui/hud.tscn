@@ -51,13 +51,8 @@ _data = {
 "go": SubResource("Animation_t1yq0")
 }
 
-[node name="HUD" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="HUD" type="CanvasLayer"]
+layer = 0
 script = ExtResource("1_x30gv")
 
 [node name="Go" type="TextureRect" parent="."]
@@ -71,7 +66,7 @@ texture = ExtResource("5_jyxh4")
 stretch_mode = 4
 
 [node name="UIGameplay" type="Control" parent="."]
-layout_mode = 1
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

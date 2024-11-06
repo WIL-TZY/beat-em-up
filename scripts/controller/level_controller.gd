@@ -8,7 +8,6 @@ var last_area : bool = false
 
 func _ready() -> void:
 	super()
-	print("Level")
 
 func enemy_died() -> void:
 	enemies -= 1
