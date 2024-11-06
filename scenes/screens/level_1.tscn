@@ -26,6 +26,7 @@ data = PackedVector3Array(-25, 1, 0.05, 25, 1, 0.05, -25, -1, 0.05, 25, 1, 0.05,
 
 [node name="Level1" type="Node3D"]
 script = ExtResource("1_14tb6")
+next_scene = "res://scenes/screens/player_selector.tscn"
 
 [node name="GameController" type="Node" parent="." node_paths=PackedStringArray("_player", "_camera", "_HUD", "_level_controller")]
 script = ExtResource("2_f1jq6")

@@ -1,7 +1,6 @@
-[gd_scene load_steps=20 format=3 uid="uid://b2yxl1eqpdeoi"]
+[gd_scene load_steps=19 format=3 uid="uid://b2yxl1eqpdeoi"]
 
-[ext_resource type="Script" path="res://scripts/ui/ui_player_selector.gd" id="1_hbrj3"]
-[ext_resource type="Script" path="res://scripts/controller/player_selector.gd" id="1_y74ep"]
+[ext_resource type="Script" path="res://scripts/ui/player_selector.gd" id="1_hbrj3"]
 [ext_resource type="FontFile" uid="uid://bxfrdveuo38na" path="res://assets/fonts/crang/Crang.ttf" id="2_jbxfc"]
 [ext_resource type="Texture2D" uid="uid://cnrnp1hc0injx" path="res://assets/sprites/menu/street_of_rage_city.png" id="2_xs8si"]
 [ext_resource type="Texture2D" uid="uid://cvwv1j5fexns2" path="res://assets/sprites/characters/brawler-girl/idle.png" id="4_w22ou"]
@@ -83,13 +82,18 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="PlayerSelector" type="Node"]
-script = ExtResource("1_y74ep")
-
-[node name="Content" type="CanvasLayer" parent="."]
+[node name="PlayerSelector" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_hbrj3")
+next_scene = "res://scenes/screens/level_1.tscn"
 
-[node name="Background" type="TextureRect" parent="Content"]
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -101,7 +105,8 @@ texture = ExtResource("2_xs8si")
 expand_mode = 3
 stretch_mode = 4
 
-[node name="Title" type="Label" parent="Content"]
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -115,7 +120,8 @@ text = "Choose your character:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Content"]
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -129,19 +135,19 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="ButtonBrawlerGirl" type="Button" parent="Content/HBoxContainer"]
+[node name="ButtonBrawlerGirl" type="Button" parent="HBoxContainer"]
 custom_minimum_size = Vector2(400, 50)
 layout_mode = 2
 focus_mode = 0
 flat = true
 
-[node name="AnimatedBrawlerGirl" type="AnimatedSprite2D" parent="Content/HBoxContainer/ButtonBrawlerGirl"]
+[node name="AnimatedBrawlerGirl" type="AnimatedSprite2D" parent="HBoxContainer/ButtonBrawlerGirl"]
 position = Vector2(216, 178)
 scale = Vector2(6, 6)
 sprite_frames = SubResource("SpriteFrames_jo0i6")
 frame_progress = 1.0
 
-[node name="NameBrawlerGirl" type="Label" parent="Content/HBoxContainer/ButtonBrawlerGirl"]
+[node name="NameBrawlerGirl" type="Label" parent="HBoxContainer/ButtonBrawlerGirl"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -160,21 +166,21 @@ text = "Brawler Girl"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Select1" type="AudioStreamPlayer" parent="Content/HBoxContainer/ButtonBrawlerGirl"]
+[node name="Select1" type="AudioStreamPlayer" parent="HBoxContainer/ButtonBrawlerGirl"]
 stream = ExtResource("5_3pplr")
 
-[node name="VSeparator" type="VSeparator" parent="Content/HBoxContainer"]
+[node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_bts7n")
 
-[node name="ButtonLongTail" type="Button" parent="Content/HBoxContainer"]
+[node name="ButtonLongTail" type="Button" parent="HBoxContainer"]
 custom_minimum_size = Vector2(400, 50)
 layout_mode = 2
 focus_mode = 0
 flat = true
 
-[node name="NameLongTail" type="Label" parent="Content/HBoxContainer/ButtonLongTail"]
+[node name="NameLongTail" type="Label" parent="HBoxContainer/ButtonLongTail"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -193,23 +199,16 @@ text = "Long Tail"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AnimatedLongTail" type="AnimatedSprite2D" parent="Content/HBoxContainer/ButtonLongTail"]
+[node name="AnimatedLongTail" type="AnimatedSprite2D" parent="HBoxContainer/ButtonLongTail"]
 position = Vector2(211, 178)
 scale = Vector2(6, 6)
 sprite_frames = SubResource("SpriteFrames_sfrxf")
 frame = 1
 frame_progress = 0.757879
 
-[node name="Select2" type="AudioStreamPlayer" parent="Content/HBoxContainer/ButtonLongTail"]
+[node name="Select2" type="AudioStreamPlayer" parent="HBoxContainer/ButtonLongTail"]
 stream = ExtResource("5_3pplr")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_wiyfn")
 autoplay = true
-
-[connection signal="mouse_entered" from="Content/HBoxContainer/ButtonBrawlerGirl" to="." method="_on_button_brawler_girl_mouse_entered"]
-[connection signal="mouse_exited" from="Content/HBoxContainer/ButtonBrawlerGirl" to="." method="_on_button_brawler_girl_mouse_exited"]
-[connection signal="pressed" from="Content/HBoxContainer/ButtonBrawlerGirl" to="." method="_on_button_brawler_girl_pressed"]
-[connection signal="mouse_entered" from="Content/HBoxContainer/ButtonLongTail" to="." method="_on_button_long_tail_mouse_entered"]
-[connection signal="mouse_exited" from="Content/HBoxContainer/ButtonLongTail" to="." method="_on_button_long_tail_mouse_exited"]
-[connection signal="pressed" from="Content/HBoxContainer/ButtonLongTail" to="." method="_on_button_long_tail_pressed"]

@@ -1,6 +1,5 @@
-[gd_scene load_steps=11 format=3 uid="uid://fyueqs4cwxae"]
+[gd_scene load_steps=10 format=3 uid="uid://fyueqs4cwxae"]
 
-[ext_resource type="Script" path="res://scripts/controller/title_screen.gd" id="1_ifns7"]
 [ext_resource type="Script" path="res://scripts/controller/menu_controller.gd" id="2_rt46f"]
 [ext_resource type="Texture2D" uid="uid://cnrnp1hc0injx" path="res://assets/sprites/menu/street_of_rage_city.png" id="3_d4hy3"]
 [ext_resource type="FontFile" uid="uid://bxfrdveuo38na" path="res://assets/fonts/crang/Crang.ttf" id="4_dosxy"]
@@ -12,7 +11,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Menu/Intro/Background2:size")
+tracks/0/path = NodePath("Intro/Background2:size")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -24,7 +23,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Menu/Intro/Background2:position")
+tracks/1/path = NodePath("Intro/Background2:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -36,7 +35,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Menu/Intro/Controls:size")
+tracks/2/path = NodePath("Intro/Controls:size")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -48,7 +47,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Menu/Intro/Controls:position")
+tracks/3/path = NodePath("Intro/Controls:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -60,7 +59,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Menu/Title/LabelPressStart:visible")
+tracks/4/path = NodePath("Title/LabelPressStart:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -76,7 +75,7 @@ length = 30.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Menu/Intro/Background2:size")
+tracks/0/path = NodePath("Intro/Background2:size")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -88,7 +87,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Menu/Intro/Background2:position")
+tracks/1/path = NodePath("Intro/Background2:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -100,7 +99,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Menu/Intro/Controls:size")
+tracks/2/path = NodePath("Intro/Controls:size")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -112,7 +111,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Menu/Intro/Controls:position")
+tracks/3/path = NodePath("Intro/Controls:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -129,7 +128,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Menu/Title/LabelPressStart:visible")
+tracks/0/path = NodePath("Title/LabelPressStart:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -146,21 +145,25 @@ _data = {
 "press_start": SubResource("Animation_bddym")
 }
 
-[node name="TitleScreen" type="Node"]
-script = ExtResource("1_ifns7")
-
-[node name="Menu" type="CanvasLayer" parent="."]
-script = ExtResource("2_rt46f")
-
-[node name="Title" type="Control" parent="Menu"]
+[node name="TitleScreen" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("2_rt46f")
+next_scene = "res://scenes/screens/player_selector.tscn"
 
-[node name="Background1" type="TextureRect" parent="Menu/Title"]
+[node name="Title" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background1" type="TextureRect" parent="Title"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -172,7 +175,7 @@ texture = ExtResource("3_d4hy3")
 expand_mode = 3
 stretch_mode = 4
 
-[node name="LabelTitle" type="Label" parent="Menu/Title"]
+[node name="LabelTitle" type="Label" parent="Title"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -196,7 +199,7 @@ text = "Fight Streets"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="LabelPressStart" type="Label" parent="Menu/Title"]
+[node name="LabelPressStart" type="Label" parent="Title"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -216,36 +219,36 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="Intro" type="Control" parent="Menu"]
+[node name="Intro" type="Control" parent="."]
 visible = false
-layout_mode = 3
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Background2" type="TextureRect" parent="Menu/Intro"]
+[node name="Background2" type="TextureRect" parent="Intro"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 1175.56
+offset_right = 2275.56
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_d4hy3")
 expand_mode = 3
 stretch_mode = 4
 
-[node name="Controls" type="Label" parent="Menu/Intro"]
+[node name="Controls" type="Label" parent="Intro"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 184.0
-offset_top = 641.0
-offset_right = -184.0
-offset_bottom = 603.0
+offset_left = -0.5
+offset_top = -947.5
+offset_right = 0.5
+offset_bottom = 2191.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("5_82oed")
@@ -262,7 +265,7 @@ horizontal_alignment = 1
 autowrap_mode = 3
 uppercase = true
 
-[node name="Placeholder" type="Label" parent="Menu/Intro"]
+[node name="Placeholder" type="Label" parent="Intro"]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -285,13 +288,12 @@ horizontal_alignment = 1
 autowrap_mode = 3
 uppercase = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Menu"]
-root_node = NodePath("../..")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_pupqi")
 }
 autoplay = "press_start"
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Menu"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_u1la5")
 autoplay = true

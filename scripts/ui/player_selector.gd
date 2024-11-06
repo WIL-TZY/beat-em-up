@@ -1,4 +1,4 @@
-extends CanvasLayer
+class_name PlayerSelector extends BaseScene
 
 @onready var animated_brawler_girl: AnimatedSprite2D = $HBoxContainer/ButtonBrawlerGirl/AnimatedBrawlerGirl
 @onready var animated_long_tail: AnimatedSprite2D = $HBoxContainer/ButtonLongTail/AnimatedLongTail
@@ -12,8 +12,11 @@ extends CanvasLayer
 enum eCharacter { BRAWLER_GIRL, LONG_TAIL }
 
 var selected_character: eCharacter = eCharacter.BRAWLER_GIRL
-
+	
 func _ready() -> void:
+	super()
+	print("Player Selector")
+	
 	# Set the initial selection when the scene is ready
 	update_selection()
 
@@ -64,7 +67,8 @@ func choose_character() -> void:
 	else:
 		GameController.player_resource = preload("res://scripts/resources/long_tail.tres")
 		
-	get_tree().change_scene_to_file("res://scenes/screens/level_1.tscn")
+	# Screen transition
+	SceneManager.transition_to(next_scene)
 
 # Mouse Hover Effect (removed to keep input limited to keyboard)
 #func _on_button_brawler_girl_mouse_entered() -> void:

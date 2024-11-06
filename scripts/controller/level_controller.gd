@@ -7,7 +7,8 @@ var unlocked_at_area := 0.0
 var last_area : bool = false
 
 func _ready() -> void:
-	print("Level 1")
+	super()
+	print("Level")
 
 func enemy_died() -> void:
 	enemies -= 1

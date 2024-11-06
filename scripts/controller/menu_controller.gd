@@ -1,4 +1,4 @@
-extends CanvasLayer
+class_name TitleScreen extends BaseScene
 
 enum MenuState { MENU, INTRO, SELECT }
 
@@ -6,7 +6,13 @@ enum MenuState { MENU, INTRO, SELECT }
 
 var menu_state = MenuState.MENU
 
+func _ready() -> void:
+	super()
+	print("Title Screen")
+
 func _process(_delta: float) -> void:
+	super(_delta)
+	
 	if Input.is_action_just_pressed("ui_accept"):
 		match menu_state:
 			MenuState.MENU:
@@ -22,4 +28,7 @@ func __play_intro() -> void:
 
 func __open_character_selector() -> void:
 	menu_state = MenuState.SELECT
-	get_tree().change_scene_to_file("res://scenes/screens/player_selector.tscn")
+	
+	# Screen transition
+	# SceneManager.transition_to("res://scenes/screens/player_selector.tscn")
+	SceneManager.transition_to(next_scene)

@@ -129,4 +129,6 @@ func __died() -> void:
 		
 		# Change back to menu after 2 seconds
 		await get_tree().create_timer(2).timeout
-		get_tree().change_scene_to_file("res://scenes/ui/ui_player_selector.tscn")
+		
+		# Screen transition
+		SceneManager.transition_to("res://scenes/screens/player_selector.tscn")

@@ -1,4 +1,4 @@
-class_name UI extends CanvasLayer
+class_name UI extends Control
 
 # Go
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
