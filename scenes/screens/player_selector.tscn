@@ -86,7 +86,6 @@ animations = [{
 layer = 0
 script = ExtResource("1_hbrj3")
 next_scene = "res://scenes/screens/level_1.tscn"
-emits_loaded_signal = false
 
 [node name="Background" type="TextureRect" parent="."]
 anchors_preset = 15

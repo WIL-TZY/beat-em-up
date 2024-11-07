@@ -29,4 +29,4 @@ func __open_character_selector() -> void:
 	menu_state = MenuState.SELECT
 	
 	# Screen transition
-	SceneManager.transition_to(next_scene)
+	SceneManager.transition(next_scene, transition_type)

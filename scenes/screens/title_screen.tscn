@@ -149,6 +149,7 @@ _data = {
 layer = 0
 script = ExtResource("2_rt46f")
 next_scene = "res://scenes/screens/player_selector.tscn"
+transition_type = 1
 
 [node name="Title" type="Control" parent="."]
 layout_mode = 3

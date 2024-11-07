@@ -23,12 +23,13 @@ func _input(event: InputEvent) -> void:
 func _process(_delta: float) -> void:
 	# DEBUG
 	if Input.is_action_just_pressed("switch_scene"):
-		SceneManager.transition_to(next_scene)
+		SceneManager.transition(next_scene, transition_type)
 
 func activate() -> void:
 	pass
 
 func load_scene() -> void:
+	# Simulate wait time
 	if SceneManager.transition_type == SceneManager.TransitionType.FADE:
 		await get_tree().create_timer(1.0).timeout
 	else:

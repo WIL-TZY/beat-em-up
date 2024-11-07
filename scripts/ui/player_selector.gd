@@ -67,7 +67,7 @@ func choose_character() -> void:
 		GameController.player_resource = preload("res://scripts/resources/long_tail.tres")
 		
 	# Screen transition
-	SceneManager.transition_to(next_scene)
+	SceneManager.transition(next_scene, transition_type)
 
 # Mouse Hover Effect (removed to keep input limited to keyboard)
 #func _on_button_brawler_girl_mouse_entered() -> void:
