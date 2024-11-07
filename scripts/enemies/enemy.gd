@@ -23,19 +23,19 @@ var hurt_index : int = 0
 @onready var hp_max := hp
 @onready var animated_sprite : AnimatedSprite3D = $AnimatedSprite
 @onready var timer_node: Timer = $Timer
-@onready var player: Player = LevelController.player
+@onready var player: Player = Global.level_controller.player
 @onready var attack: Area3D = $Attack
 @onready var attack_collision: CollisionShape3D = $Attack/AttackCollision
 
 @onready var health_component: HealthComponent = $HealthComponent
 @onready var hitbox_collision: CollisionShape3D = $HitboxComponent/HitboxCollision
-@onready var HUD: UI = LevelController.HUD
+@onready var HUD: UI = Global.level_controller.HUD
 
 @onready var debug_overlay = get_parent().get_node("DebugOverlay")
 var enemy_label: Label ## DEBUG
 	
 func _ready() -> void:
-	LevelController.enemies.append(self)
+	Global.level_controller.debug_enemies.append(self)
 	
 	health_component.hp = hp
 	
@@ -54,7 +54,7 @@ func _ready() -> void:
 	debug_overlay.add_child(enemy_label)
 
 	# Position the label for this specific enemy
-	var index = LevelController.enemies.find(self)
+	var index = Global.level_controller.debug_enemies.find(self)
 	enemy_label.position = Vector2(1000, -80 + index * 30)
 
 func _process(_delta: float) -> void:

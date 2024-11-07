@@ -1,4 +1,4 @@
-class_name PlayerSelector extends SceneController
+class_name PlayerSelector extends Scene
 
 @onready var animated_brawler_girl: AnimatedSprite2D = $HBoxContainer/ButtonBrawlerGirl/AnimatedBrawlerGirl
 @onready var animated_long_tail: AnimatedSprite2D = $HBoxContainer/ButtonLongTail/AnimatedLongTail
@@ -14,8 +14,6 @@ enum eCharacter { BRAWLER_GIRL, LONG_TAIL }
 var selected_character: eCharacter = eCharacter.BRAWLER_GIRL
 	
 func _ready() -> void:
-	super()
-	
 	# Set the initial selection when the scene is ready
 	update_selection()
 
@@ -62,9 +60,9 @@ func update_selection() -> void:
 
 func choose_character() -> void:
 	if selected_character == eCharacter.BRAWLER_GIRL:
-		LevelController.player_resource = preload("res://scripts/resources/brawler_girl.tres")
+		Global.player_resource = preload("res://scripts/resources/brawler_girl.tres")
 	else:
-		LevelController.player_resource = preload("res://scripts/resources/long_tail.tres")
+		Global.player_resource = preload("res://scripts/resources/long_tail.tres")
 		
 	# Screen transition
 	Global.screen_transition.transition(next_scene, transition_type)

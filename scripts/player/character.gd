@@ -5,8 +5,8 @@ enum StateMachine { IDLE, WALK, JUMP, FALL, JAB, PUNCH, KICK, KICK_AIR, HURT, DI
 # Get player properties
 @export var properties: CharacterData:
 	get:
-		if LevelController.player_resource != null:
-			return LevelController.player_resource
+		if Global.player_resource != null:
+			return Global.player_resource
 		else:
 			return properties
 
@@ -24,7 +24,7 @@ var pickup : bool = false
 @onready var shadow : Sprite3D = $Shadow
 @onready var attack: Area3D = $Attack
 @onready var attack_collision: CollisionShape3D = $Attack/AttackCollision
-@onready var HUD: UI = LevelController.HUD
+@onready var HUD: UI = Global.level_controller.HUD
 @onready var health_component: HealthComponent = $HealthComponent
 @onready var camera: Camera3D = get_parent().get_node("Camera")
 

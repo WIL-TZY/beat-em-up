@@ -1,4 +1,4 @@
-class_name TitleScreen extends SceneController
+class_name TitleScreen extends Scene
 
 enum MenuState { MENU, INTRO, SELECT }
 
