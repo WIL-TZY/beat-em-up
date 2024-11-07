@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c0o3swbnbqbxx"
-path.s3tc="res://.godot/imported/kick.png-4902b3acb0ec588f2fbf997561e596f4.s3tc.ctex"
+path="res://.godot/imported/kick.png-4902b3acb0ec588f2fbf997561e596f4.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://assets/sprites/characters/long-tail/kick.png"
-dest_files=["res://.godot/imported/kick.png-4902b3acb0ec588f2fbf997561e596f4.s3tc.ctex"]
+dest_files=["res://.godot/imported/kick.png-4902b3acb0ec588f2fbf997561e596f4.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

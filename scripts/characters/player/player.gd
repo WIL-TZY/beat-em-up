@@ -4,7 +4,7 @@ func _ready() -> void:
 	super()
 	
 	# DEBUG CHARA
-	print(chara)
+	print("Character: " + str(eChara.keys()[chara]))
 
 func __idle() -> void:
 	if dead: return
