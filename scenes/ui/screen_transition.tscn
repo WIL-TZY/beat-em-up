@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://cmpwwe5pnyhte"]
 
-[ext_resource type="Script" path="res://scripts/helpers/screen_transition.gd" id="1_y67er"]
+[ext_resource type="Script" path="res://scripts/ui/screen_transition.gd" id="1_y67er"]
 [ext_resource type="Shader" path="res://shaders/mosaic.gdshader" id="2_1wmoj"]
 [ext_resource type="Texture2D" uid="uid://cnrnp1hc0injx" path="res://assets/sprites/menu/street_of_rage_city.png" id="3_dayyf"]
 [ext_resource type="Script" path="res://scripts/helpers/screenshot.gd" id="4_8blje"]
