@@ -1,6 +1,6 @@
 [gd_scene load_steps=19 format=3 uid="uid://b2yxl1eqpdeoi"]
 
-[ext_resource type="Script" path="res://scripts/ui/player_selector.gd" id="1_hbrj3"]
+[ext_resource type="Script" path="res://scripts/controllers/player_selector.gd" id="1_hbrj3"]
 [ext_resource type="FontFile" uid="uid://bxfrdveuo38na" path="res://assets/fonts/crang/Crang.ttf" id="2_jbxfc"]
 [ext_resource type="Texture2D" uid="uid://cnrnp1hc0injx" path="res://assets/sprites/menu/street_of_rage_city.png" id="2_xs8si"]
 [ext_resource type="Texture2D" uid="uid://cvwv1j5fexns2" path="res://assets/sprites/characters/brawler-girl/idle.png" id="4_w22ou"]

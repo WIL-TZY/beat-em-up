@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dslgnhcf0pf77"
-path="res://.godot/imported/brawler-girl.png-996b6bd42451420e53a18bd576a5c4b0.ctex"
+uid="uid://bx3w65ebyb3tr"
+path="res://.godot/imported/big-guy.png-fe964895bc1a559c687ae6a8046426a9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/portraits/brawler-girl.png"
-dest_files=["res://.godot/imported/brawler-girl.png-996b6bd42451420e53a18bd576a5c4b0.ctex"]
+source_file="res://assets/sprites/portraits/big-guy.png"
+dest_files=["res://.godot/imported/big-guy.png-fe964895bc1a559c687ae6a8046426a9.ctex"]
 
 [params]
 

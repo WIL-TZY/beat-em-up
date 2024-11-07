@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://b2hexbevog3jp"]
 
-[ext_resource type="Script" path="res://scripts/enemies/spawn_enemy.gd" id="1_afo5l"]
+[ext_resource type="Script" path="res://scripts/characters/enemies/spawn_enemy.gd" id="1_afo5l"]
 [ext_resource type="PackedScene" uid="uid://cgbbvbh4tg22t" path="res://scenes/prefab/punk.tscn" id="2_salea"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kkxry"]

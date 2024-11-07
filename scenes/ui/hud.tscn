@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://scripts/ui/hud.gd" id="1_x30gv"]
 [ext_resource type="FontFile" uid="uid://bxfrdveuo38na" path="res://assets/fonts/crang/Crang.ttf" id="2_h3654"]
-[ext_resource type="Texture2D" uid="uid://dslgnhcf0pf77" path="res://assets/portraits/brawler-girl.png" id="3_d3ubh"]
-[ext_resource type="Texture2D" uid="uid://43vx4vkyisix" path="res://assets/portraits/enemy-punk.png" id="4_yhe04"]
+[ext_resource type="Texture2D" uid="uid://dslgnhcf0pf77" path="res://assets/sprites/portraits/brawler-girl.png" id="3_d3ubh"]
+[ext_resource type="Texture2D" uid="uid://43vx4vkyisix" path="res://assets/sprites/portraits/enemy-punk.png" id="4_yhe04"]
 [ext_resource type="Texture2D" uid="uid://dgmo5m0oq6r31" path="res://assets/sprites/items/go.png" id="5_jyxh4"]
 [ext_resource type="AudioStream" uid="uid://c1x6ri5umm2b4" path="res://assets/sound/level_clear.mp3" id="6_88prp"]
 

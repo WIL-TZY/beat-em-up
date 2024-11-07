@@ -1,7 +1,7 @@
 [gd_scene load_steps=37 format=3 uid="uid://cco2shgyyj3er"]
 
-[ext_resource type="Script" path="res://scripts/enemies/punk.gd" id="1_yh5wc"]
-[ext_resource type="Texture2D" uid="uid://c065w2rwpmpq5" path="res://assets/portraits/punk-girl.png" id="2_enrwh"]
+[ext_resource type="Script" path="res://scripts/characters/enemies/punk.gd" id="1_yh5wc"]
+[ext_resource type="Texture2D" uid="uid://c065w2rwpmpq5" path="res://assets/sprites/portraits/punk-girl.png" id="2_enrwh"]
 [ext_resource type="Texture2D" uid="uid://b8n5omseec43y" path="res://assets/sprites/characters/punk-girl/hurt.png" id="3_iuudo"]
 [ext_resource type="Texture2D" uid="uid://83k0jkxiioi8" path="res://assets/sprites/characters/punk-girl/idle.png" id="4_wwecn"]
 [ext_resource type="Texture2D" uid="uid://brarad0gg2k37" path="res://assets/sprites/characters/punk-girl/kick.png" id="5_jtlsr"]

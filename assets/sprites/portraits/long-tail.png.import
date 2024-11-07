@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c065w2rwpmpq5"
-path="res://.godot/imported/punk-girl.png-5e2440b8e3bd1d8a57f6b86e1281aa4c.ctex"
+uid="uid://68h33t3lfxxi"
+path="res://.godot/imported/long-tail.png-35a82f9bb0948c45e8b05dab481ff7bc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/portraits/punk-girl.png"
-dest_files=["res://.godot/imported/punk-girl.png-5e2440b8e3bd1d8a57f6b86e1281aa4c.ctex"]
+source_file="res://assets/sprites/portraits/long-tail.png"
+dest_files=["res://.godot/imported/long-tail.png-35a82f9bb0948c45e8b05dab481ff7bc.ctex"]
 
 [params]
 

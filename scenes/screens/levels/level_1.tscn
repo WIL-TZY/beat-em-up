@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://m6mn47cd8npo"]
 
-[ext_resource type="Script" path="res://scripts/controller/level.gd" id="1_ma8bs"]
+[ext_resource type="Script" path="res://scripts/controllers/level.gd" id="1_ma8bs"]
 [ext_resource type="PackedScene" uid="uid://bpya62t6qls8v" path="res://scenes/prefab/debug/debug_overlay.tscn" id="3_0lh6l"]
 [ext_resource type="PackedScene" uid="uid://dndpxufhapxen" path="res://scenes/ui/hud.tscn" id="4_udmyx"]
 [ext_resource type="Script" path="res://scripts/camera/camera.gd" id="5_wn274"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=58 format=3 uid="uid://dvjfg7epy2hwg"]
 
-[ext_resource type="Script" path="res://scripts/player/player.gd" id="1_hiktt"]
+[ext_resource type="Script" path="res://scripts/characters/player/player.gd" id="1_hiktt"]
 [ext_resource type="Texture2D" uid="uid://buxqfs57nxyhs" path="res://assets/sprites/characters/brawler-girl/hurt.png" id="2_gy2cy"]
 [ext_resource type="Resource" uid="uid://dig302ocvq1rd" path="res://scripts/resources/brawler_girl.tres" id="2_kgbci"]
 [ext_resource type="Texture2D" uid="uid://cvwv1j5fexns2" path="res://assets/sprites/characters/brawler-girl/idle.png" id="2_mpijn"]

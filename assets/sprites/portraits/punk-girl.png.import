@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://43vx4vkyisix"
-path="res://.godot/imported/enemy-punk.png-edf0b67305cf89cf9aa7ef5f2e425cfc.ctex"
+uid="uid://c065w2rwpmpq5"
+path="res://.godot/imported/punk-girl.png-ad475bf36311cc1c0eb8d9d506abeaaf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/portraits/enemy-punk.png"
-dest_files=["res://.godot/imported/enemy-punk.png-edf0b67305cf89cf9aa7ef5f2e425cfc.ctex"]
+source_file="res://assets/sprites/portraits/punk-girl.png"
+dest_files=["res://.godot/imported/punk-girl.png-ad475bf36311cc1c0eb8d9d506abeaaf.ctex"]
 
 [params]
 

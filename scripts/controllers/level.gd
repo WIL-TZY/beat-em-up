@@ -21,7 +21,7 @@ var last_area : bool = false
 
 # Runs before ready
 func _enter_tree() -> void:
-	Global.level_controller = self
+	Global.level = self
 	
 	player = _player
 	camera = _camera
@@ -40,7 +40,7 @@ func enemy_died() -> void:
 		_next_area(unlocked_at_area)
 
 func _next_area(camera_limit: float) -> void:
-	Global.level_controller.camera.set_camera_limit(camera_limit)
+	Global.level.camera.set_camera_limit(camera_limit)
 
 func config_next_area(amount: int, unlocked: float) -> void:
 	enemies = amount

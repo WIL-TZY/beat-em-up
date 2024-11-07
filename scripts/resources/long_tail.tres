@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="CharacterData" load_steps=3 format=3 uid="uid://cf2jqf5y68bys"]
 
-[ext_resource type="Script" path="res://scripts/character_data.gd" id="1_8d683"]
-[ext_resource type="Texture2D" uid="uid://68h33t3lfxxi" path="res://assets/portraits/long-tail.png" id="1_etq0a"]
+[ext_resource type="Script" path="res://scripts/characters/character_data.gd" id="1_8d683"]
+[ext_resource type="Texture2D" uid="uid://68h33t3lfxxi" path="res://assets/sprites/portraits/long-tail.png" id="1_etq0a"]
 
 [resource]
 script = ExtResource("1_8d683")
