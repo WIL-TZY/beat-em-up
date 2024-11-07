@@ -1,6 +1,7 @@
 class_name Character extends CharacterBody3D
 
 enum StateMachine { IDLE, WALK, JUMP, FALL, JAB, PUNCH, KICK, KICK_AIR, HURT, DIED }
+enum eChara { BRAWLER_GIRL, LONG_TAIL }
 
 # Get player properties
 @export var properties: CharacterData:
@@ -13,14 +14,21 @@ enum StateMachine { IDLE, WALK, JUMP, FALL, JAB, PUNCH, KICK, KICK_AIR, HURT, DI
 const CAMERA_OFFSET : float = 5.0
 
 var state : StateMachine = StateMachine.IDLE
+var chara : eChara = eChara.BRAWLER_GIRL
 var enter_state : bool = true
 var gravity : float = 9.8
 var in_attack : bool = false
 var dead : bool = false
 var pickup : bool = false
 
+# Preload the character scenes
+var brawler_girl_scene : PackedScene = preload("res://scenes/prefab/animations/brawler_girl.tscn")
+var longtail_scene : PackedScene = preload("res://scenes/prefab/animations/long_tail.tscn")
+
+# The dynamic sprite node
+var animated_sprite : AnimatedSprite3D = null
+
 @onready var hp_max := properties.hp
-@onready var animated_sprite : AnimatedSprite3D = $AnimatedSprite
 @onready var shadow : Sprite3D = $Shadow
 @onready var attack: Area3D = $Attack
 @onready var attack_collision: CollisionShape3D = $Attack/AttackCollision
@@ -49,6 +57,20 @@ var kick: bool:
 
 # Runs only once
 func _ready() -> void:
+	# Instantiate the character sprite based on the player's selection
+	if Global.player_resource == preload("res://scripts/resources/brawler_girl.tres"):
+		chara = eChara.BRAWLER_GIRL
+		animated_sprite = brawler_girl_scene.instantiate()
+	elif Global.player_resource == preload("res://scripts/resources/long_tail.tres"):
+		chara = eChara.LONG_TAIL
+		animated_sprite = longtail_scene.instantiate()
+	else:
+		print("No valid player resource selected.")
+		return
+
+	# Add the scene to the scene tree
+	add_child(animated_sprite)
+
 	health_component.hp = properties.hp
 	health_component.hp_max = hp_max
 	
@@ -73,8 +95,7 @@ func _ready() -> void:
 	HUD.__hud_update_player(properties) # Setup Player Character
 	HUD.__hud_update_health(properties.hp)
 	
-	# Change color based on character
-	animated_sprite.modulate = properties.color
+	# animated_sprite.modulate = properties.color # Change color based on character
 	
 	## (DEBUG) Delete later
 	debug_overlay.position = Vector2(20, 620)

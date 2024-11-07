@@ -1,14 +1,19 @@
 class_name Player extends Character
 
+func _ready() -> void:
+	super()
+	
+	# DEBUG CHARA
+	print(chara)
+
 func __idle() -> void:
 	if dead: return
 	
 	__enter_state("idle")
 	__stop_movement()
 	
-	
 	if input: __change_state(StateMachine.WALK)
-	if jump: __change_state(StateMachine.JUMP)
+	if jump and not chara == eChara.LONG_TAIL: __change_state(StateMachine.JUMP)
 	if punch: __change_state(StateMachine.JAB)
 	if kick: __change_state(StateMachine.KICK)
 
@@ -20,7 +25,7 @@ func __walk() -> void:
 	__flip()
 	
 	if not input: __change_state(StateMachine.IDLE)
-	if jump: __change_state(StateMachine.JUMP)
+	if jump and not chara == eChara.LONG_TAIL: __change_state(StateMachine.JUMP)
 	if punch: __change_state(StateMachine.JAB)
 	if kick: __change_state(StateMachine.KICK)
 
