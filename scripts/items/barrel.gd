@@ -18,7 +18,6 @@ func _ready() -> void:
 func take_damage() -> void:
 	health_component.dead = true
 	_drop_item()
-	print("Barrel damaged")
 	animation_player.play("broken")
 
 func _drop_item() -> void:

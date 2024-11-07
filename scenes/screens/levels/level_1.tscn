@@ -32,6 +32,7 @@ _camera = NodePath("Camera")
 _HUD = NodePath("HUD")
 
 [node name="DebugOverlay" parent="." instance=ExtResource("3_0lh6l")]
+visible = false
 
 [node name="HUD" parent="." instance=ExtResource("4_udmyx")]
 

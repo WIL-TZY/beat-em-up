@@ -62,7 +62,7 @@ func _ready() -> void:
 
 	# Position the label for this specific enemy
 	var index = Global.level.debug_enemies.find(self)
-	enemy_label.position = Vector2(1000, -80 + index * 30)
+	enemy_label.position = Vector2(1000, -380 + index * 30)
 
 func _process(_delta: float) -> void:
 	## (DEBUG) Delete later

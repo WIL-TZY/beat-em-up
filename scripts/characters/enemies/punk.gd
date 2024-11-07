@@ -81,7 +81,7 @@ func __walk(delta) -> void:
 	move_and_slide()
 
 func __attack() -> void:
-	if dead: return
+	if dead or player.dead: return
 
 	if enter_state:
 		enter_state = false
