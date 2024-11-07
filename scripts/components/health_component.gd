@@ -1,6 +1,6 @@
 class_name HealthComponent extends Node
 
-var host : CharacterBody3D = null
+var host : PhysicsBody3D = null
 var hp : float
 var hp_max : float
 var dead : bool
@@ -9,9 +9,12 @@ signal __on_damage(hp)
 signal __on_dead
 signal __on_recover(hp)
 
+func _ready() -> void:
+	host = get_parent()
+
 func __take_damage(damage: float) -> void:
 	if dead: return
-
+	
 	# Reduce HP
 	hp -= damage
 	

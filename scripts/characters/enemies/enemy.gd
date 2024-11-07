@@ -42,7 +42,8 @@ func _ready() -> void:
 	# Connect the signal manually
 	health_component.__on_damage.connect(func(_hp: float): __on_damage(_hp))
 	health_component.__on_dead.connect(func(): __change_state(EnemyState.DIED))
-	# Damage
+	
+	# Do Damage
 	attack.area_entered.connect(func(hitbox: HitboxComponent): hitbox.__take_damage(strength))
 
 	# (DEBUG) Delete later

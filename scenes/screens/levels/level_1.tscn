@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://m6mn47cd8npo"]
+[gd_scene load_steps=17 format=3 uid="uid://m6mn47cd8npo"]
 
 [ext_resource type="Script" path="res://scripts/controllers/level.gd" id="1_ma8bs"]
 [ext_resource type="PackedScene" uid="uid://bpya62t6qls8v" path="res://scenes/prefab/debug/debug_overlay.tscn" id="3_0lh6l"]
@@ -8,9 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://dvjfg7epy2hwg" path="res://scenes/prefab/player.tscn" id="7_2qifc"]
 [ext_resource type="PackedScene" uid="uid://b2hexbevog3jp" path="res://scenes/prefab/spawn_enemy.tscn" id="8_1rvou"]
 [ext_resource type="PackedScene" uid="uid://cco2shgyyj3er" path="res://scenes/prefab/boss.tscn" id="9_5ugsj"]
+[ext_resource type="PackedScene" uid="uid://c6fonim785ktx" path="res://scenes/prefab/items/barrel.tscn" id="10_a2kky"]
 [ext_resource type="AudioStream" uid="uid://nf84nk133h0b" path="res://assets/sound/level_1.mp3" id="10_bmxor"]
 [ext_resource type="Texture2D" uid="uid://cnqlxxo6qfwgy" path="res://assets/sprites/level/foreground_layer.png" id="11_fvhu7"]
-[ext_resource type="PackedScene" uid="uid://kwguj1q613ki" path="res://scenes/prefab/chicken.tscn" id="11_hnhdc"]
+[ext_resource type="PackedScene" uid="uid://kwguj1q613ki" path="res://scenes/prefab/items/chicken.tscn" id="11_hnhdc"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ve8hh"]
 size = Vector2(50, 10)
@@ -85,21 +86,22 @@ shape = SubResource("ConcavePolygonShape3D_cfvtq")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21, -1.2, 3)
 
 [node name="SpawnEnemy" parent="." instance=ExtResource("8_1rvou")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0.8)
 unlocked_at_area = -2.0
 amount = 2
 
 [node name="SpawnEnemy2" parent="." instance=ExtResource("8_1rvou")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 0.8)
 unlocked_at_area = 6.0
 amount = 3
 
 [node name="SpawnEnemy3" parent="." instance=ExtResource("8_1rvou")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 0, 0.8)
 unlocked_at_area = 14.0
 amount = 2
 
 [node name="SpawnEnemy4" parent="." instance=ExtResource("8_1rvou")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0.8)
 unlocked_at_area = 18.0
 enemies = Array[PackedScene]([ExtResource("9_5ugsj")])
 last_area = true
@@ -108,8 +110,12 @@ last_area = true
 stream = ExtResource("10_bmxor")
 autoplay = true
 
+[node name="Barrel" parent="." instance=ExtResource("10_a2kky")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, -1.5, -0.5)
+
 [node name="Chicken" parent="." instance=ExtResource("11_hnhdc")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.3, -1.7, 0)
+collision_layer = 8
 
 [node name="Foreground" type="Sprite3D" parent="."]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 1.10336, 5.06618)

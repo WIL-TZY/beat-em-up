@@ -1,0 +1,69 @@
+[gd_scene load_steps=7 format=3 uid="uid://kwguj1q613ki"]
+
+[ext_resource type="Texture2D" uid="uid://bgkmm1tjxebcq" path="res://assets/sprites/items/galeto.png" id="1_5hyqy"]
+[ext_resource type="Script" path="res://scripts/items/chicken.gd" id="1_601t0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pr2k6"]
+size = Vector3(0.2, 0.2, 0.2)
+
+[sub_resource type="Animation" id="Animation_bam4u"]
+resource_name = "entry"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.2, 0), Vector3(0, 0.25, 0), Vector3(0, 0.2, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_8qmo8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.2, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1etl8"]
+_data = {
+"RESET": SubResource("Animation_8qmo8"),
+"entry": SubResource("Animation_bam4u")
+}
+
+[node name="Chicken" type="Area3D"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_601t0")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+texture_filter = 0
+texture = ExtResource("1_5hyqy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+shape = SubResource("BoxShape3D_pr2k6")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_1etl8")
+}
+autoplay = "entry"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

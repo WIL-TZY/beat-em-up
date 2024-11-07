@@ -61,7 +61,7 @@ func _ready() -> void:
 	attack.area_entered.connect(func(hitbox: HitboxComponent):
 		# print(hitbox.get_parent().name)
 		hitbox.__take_damage(properties.strength)
-		)
+	)
 
 	# Update HUD
 	HUD.__hud_update_player(properties) # Setup Player Character
