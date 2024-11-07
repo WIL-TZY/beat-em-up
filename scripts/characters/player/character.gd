@@ -27,6 +27,7 @@ var pickup : bool = false
 @onready var HUD: UI = Global.level.HUD
 @onready var health_component: HealthComponent = $HealthComponent
 @onready var camera: Camera3D = get_parent().get_node("Camera")
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
 @onready var debug_overlay = get_parent().get_node("DebugOverlay")
 
@@ -52,7 +53,12 @@ func _ready() -> void:
 	health_component.hp_max = hp_max
 	
 	# Connect signals
-	health_component.__on_damage.connect(func(_hp: float): __change_state(StateMachine.HURT))
+	health_component.__on_damage.connect(func(_hp: float): 
+		audio_stream_player.stream = load("res://assets/sound/collision.wav")
+		audio_stream_player.play()
+		__change_state(StateMachine.HURT)
+	)
+	
 	health_component.__on_dead.connect(func(): __change_state(StateMachine.DIED))
 	__on_item_picked.connect(func(__item: Item): __get_item(__item))
 	health_component.__on_recover.connect(func(health: float): print("Recovered " + str(health) + " HP"))

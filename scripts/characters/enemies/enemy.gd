@@ -26,10 +26,16 @@ var hurt_index : int = 0
 @onready var player: Player = Global.level.player
 @onready var attack: Area3D = $Attack
 @onready var attack_collision: CollisionShape3D = $Attack/AttackCollision
-
 @onready var health_component: HealthComponent = $HealthComponent
 @onready var hitbox_collision: CollisionShape3D = $HitboxComponent/HitboxCollision
 @onready var HUD: UI = Global.level.HUD
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
+
+var SOUNDS = [
+	preload("res://assets/sound/collision.wav"), # 0 ---> HURT
+	preload("res://assets/sound/voice_9.wav"),   # 1 ---> DOWN
+	preload("res://assets/sound/voice_1.wav")    # 2 ---> DIED
+]
 
 @onready var debug_overlay = get_parent().get_node("DebugOverlay")
 var enemy_label: Label ## DEBUG
@@ -129,3 +135,8 @@ func __end_attack_collision() -> void:
 	if in_attack:
 		in_attack = false
 		attack_collision.disabled = true
+
+### SOUND
+func __play_sound(sound) -> void:
+	audio_stream_player.stream = sound
+	audio_stream_player.play()

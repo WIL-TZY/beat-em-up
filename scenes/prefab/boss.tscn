@@ -263,3 +263,5 @@ health_component = NodePath("../HealthComponent")
 [node name="HitboxCollision" type="CollisionShape3D" parent="HitboxComponent"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 0.9, 0)
 shape = SubResource("BoxShape3D_47rl8")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

@@ -111,11 +111,11 @@ stream = ExtResource("10_bmxor")
 autoplay = true
 
 [node name="Barrel" parent="." instance=ExtResource("10_a2kky")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, -1.5, -0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.8, -1.5, -0.5)
 
-[node name="Chicken" parent="." instance=ExtResource("11_hnhdc")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.3, -1.7, 0)
-collision_layer = 8
+[node name="Barrel2" parent="." instance=ExtResource("10_a2kky")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -1.5, -0.5)
+drop = ExtResource("11_hnhdc")
 
 [node name="Foreground" type="Sprite3D" parent="."]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 1.10336, 5.06618)

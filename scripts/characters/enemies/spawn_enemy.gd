@@ -14,6 +14,14 @@ func _ready() -> void:
 	body_entered.connect(func(_player: Player): _spawn_enemies())
 
 func _spawn_enemies() -> void:
+	if last_area:
+		var level_music = get_parent().get_node("AudioStreamPlayer")
+		level_music.stop()
+
+		# Play Boss Music
+		level_music.stream = load("res://assets/sound/boss_fight.mp3")
+		level_music.play()
+
 	for i in amount:
 		# Returns a random value between 0 and the amount of enemies
 		var enemy = enemies[randi() % enemies.size()].instantiate()

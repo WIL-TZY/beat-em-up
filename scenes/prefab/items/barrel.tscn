@@ -1,13 +1,27 @@
-[gd_scene load_steps=10 format=3 uid="uid://c6fonim785ktx"]
+[gd_scene load_steps=9 format=3 uid="uid://c6fonim785ktx"]
 
 [ext_resource type="Texture2D" uid="uid://d34pv76h5853y" path="res://assets/sprites/items/DestructibleObjects.png" id="1_eaubb"]
 [ext_resource type="Script" path="res://scripts/items/barrel.gd" id="1_f4fuh"]
-[ext_resource type="PackedScene" uid="uid://kwguj1q613ki" path="res://scenes/prefab/items/chicken.tscn" id="2_pef5x"]
 [ext_resource type="PackedScene" uid="uid://dya27kouyh7ho" path="res://scenes/prefab/components/hitbox_component.tscn" id="3_rcerr"]
 [ext_resource type="PackedScene" uid="uid://bl2vkn58dh1bm" path="res://scenes/prefab/components/health_component.tscn" id="3_wu3p7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_s6cbk"]
 size = Vector3(1, 1.14912, 1.13081)
+
+[sub_resource type="Animation" id="Animation_ib8kf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(89, 219, 19, 19)]
+}
 
 [sub_resource type="Animation" id="Animation_pqg6h"]
 resource_name = "broken"
@@ -25,21 +39,6 @@ tracks/0/keys = {
 "values": [Rect2(26, 217, 17, 21), Rect2(89, 219, 19, 19), Rect2(155, 215, 15, 23), Rect2(206, 216, 39, 40), Rect2(256, 208, 63, 48), Rect2(323, 206, 67, 49), Rect2(394, 208, 53, 49)]
 }
 
-[sub_resource type="Animation" id="Animation_ib8kf"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:region_rect")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Rect2(89, 219, 19, 19)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_oehit"]
 _data = {
 "RESET": SubResource("Animation_ib8kf"),
@@ -49,7 +48,6 @@ _data = {
 [node name="Barrel" type="StaticBody3D"]
 collision_layer = 16
 script = ExtResource("1_f4fuh")
-drop = ExtResource("2_pef5x")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0.54, 0)

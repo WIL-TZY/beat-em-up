@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dndpxufhapxen"]
+[gd_scene load_steps=13 format=3 uid="uid://dndpxufhapxen"]
 
 [ext_resource type="Script" path="res://scripts/ui/hud.gd" id="1_x30gv"]
 [ext_resource type="FontFile" uid="uid://bxfrdveuo38na" path="res://assets/fonts/crang/Crang.ttf" id="2_h3654"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://43vx4vkyisix" path="res://assets/sprites/portraits/enemy-punk.png" id="4_yhe04"]
 [ext_resource type="Texture2D" uid="uid://dgmo5m0oq6r31" path="res://assets/sprites/items/go.png" id="5_jyxh4"]
 [ext_resource type="AudioStream" uid="uid://c1x6ri5umm2b4" path="res://assets/sound/level_clear.mp3" id="6_88prp"]
+[ext_resource type="AudioStream" uid="uid://d26ep7rex6avy" path="res://assets/sound/go.wav" id="7_v2viy"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lpki2"]
 bg_color = Color(0.884516, 0.42812, 0.581192, 1)
@@ -27,10 +28,22 @@ tracks/0/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GoSFX:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_t1yq0"]
 resource_name = "go"
-length = 0.6
+length = 2.1
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -39,10 +52,22 @@ tracks/0/path = NodePath("Go:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [false, true]
+"values": [false, true, false, true, false, true, false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GoSFX:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.7, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0ltub"]
@@ -201,9 +226,10 @@ stream = ExtResource("6_88prp")
 [node name="TimerEnemyUI" type="Timer" parent="."]
 wait_time = 2.0
 
+[node name="GoSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_v2viy")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_0ltub")
 }
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

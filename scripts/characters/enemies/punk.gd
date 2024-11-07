@@ -2,6 +2,17 @@ extends Enemy
 
 var target_distance : Vector3 # Distance to player
 
+func _ready() -> void:
+	super()
+
+	# Changing sounds for each enemy type
+	if get_parent().name == "Boss":
+		SOUNDS[1] = preload("res://assets/sound/voice_7.wav")
+		SOUNDS[2] = preload("res://assets/sound/voice_1.wav")
+	else:
+		SOUNDS[1] = preload("res://assets/sound/voice_10.wav")
+		SOUNDS[2] = preload("res://assets/sound/collision.wav")
+
 func __idle() -> void:
 	if dead: return
 	
@@ -126,6 +137,9 @@ func __died() -> void:
 		enter_state = false
 		dead = true
 
+		# Play death sound
+		__play_sound(SOUNDS[2])
+		
 		# Down animation and VFX
 		__set_hurt_throw()
 		# Update enemy HUD 
@@ -162,8 +176,12 @@ func __on_damage(health: float) -> void:
 	
 	hurt_index += 1 # Reset is on idle state
 	match hurt_index:
-		1: __change_state(EnemyState.HURT)
-		2: __change_state(EnemyState.DOWN)
+		1: 
+			__play_sound(SOUNDS[0])
+			__change_state(EnemyState.HURT)
+		2: 
+			__play_sound(SOUNDS[1])
+			__change_state(EnemyState.DOWN)
 
 func __set_hurt_throw() -> void:
 	animated_sprite.play("down")
