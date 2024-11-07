@@ -1,17 +1,121 @@
-extends TextureRect
+class_name ScreenTransition extends Control
 
-const SCALE : int = 2
+signal transitioned_in()
+signal transitioned_out()
 
-func take_screenshot() -> void:
-	var viewport_size = get_viewport().get_size() # * SCALE
-	var viewport_width = viewport_size.x 
-	var viewport_height = viewport_size.y 
+enum TransitionType { FADE, PIXELATE }
+
+var current_scene : Node : set=set_current_scene
+var in_transition : bool = false
+var transition_type : TransitionType = TransitionType.FADE
+
+var transition_data = {
+	TransitionType.FADE: { "in": "fade_in", "out": "fade_out" },
+	TransitionType.PIXELATE: { "in": "pixelate_in", "out": "pixelate_out" }
+}
+
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var margin_container : MarginContainer = $MarginContainer
+@onready var screenshot_texture_rect : TextureRect = $Screenshot
+
+func _ready() -> void:
+	Global.screen_transition = self
+	current_scene = get_tree().current_scene
+
+# Runs every new scene
+func set_current_scene(value: Node) -> void:
+	if current_scene == null:
+		current_scene = value
+		return
 	
-	# Capture the current viewport as a texture
-	var img = get_viewport().get_texture().get_image()
-	img.resize(viewport_width, viewport_height)
+	current_scene = value
+	var root: Window = get_tree().get_root()
+	root.get_child(root.get_child_count() - 1).free()
+	root.add_child(value)
+
+# General transition function (in and out) based on the current transition type
+func transition(scene: String, type: TransitionType = transition_type) -> void:
+	if in_transition: return  # Return if already in transition
+
+	in_transition = true
+
+	transition_type = type  # Set the transition type based on the argument
+
+	transition_in()
+	await transitioned_in
+
+	# =======================================================
+	#  ============== MANUALLY LOADING SCENES ===============
+	# Instead of using Godot's built-in functions
+	# =======================================================
 	
-	# img.flip_y() # Flip the image vertically
+	# Load and instantiate the new scene
+	Global.main_scene.load_scene(scene)
+	var new_scene = Global.main_scene.scene_instance
+	# print(new_scene) # Debugging
 	
-	var screenshot = ImageTexture.create_from_image(img) # Static call
-	texture = screenshot  
+	if new_scene.emits_loaded_signal:
+		await Global.main_scene.loaded
+
+	transition_out()
+	await transitioned_out
+
+	# Activate the new scene
+	new_scene.activate()
+
+	in_transition = false
+
+# Handle transition in
+func transition_in() -> void:
+	var animation = transition_data[transition_type]["in"]
+	if transition_type == TransitionType.PIXELATE:
+		transition_pixelate_in(animation)
+	else: # Default to Fade Anim
+		transition_fade_in(animation)
+
+# Handle transition out
+func transition_out() -> void:
+	var animation = transition_data[transition_type]["out"]
+	if transition_type == TransitionType.PIXELATE:
+		transition_pixelate_out(animation)
+	else: # Default to Fade Anim
+		transition_fade_out(animation)
+
+# Pixelate in transition
+func transition_pixelate_in(animation : String) -> void:
+	# print("Playing Pixelate In animation: ", animation)  # Debugging
+	screenshot_texture_rect.take_screenshot()
+	screenshot_texture_rect.visible = true
+	animation_player.play(animation)
+
+# Pixelate out transition
+func transition_pixelate_out(animation : String) -> void:
+	# print("Playing Pixelate Out animation: ", animation)  # Debugging
+	screenshot_texture_rect.take_screenshot()
+	screenshot_texture_rect.visible = true
+	animation_player.play(animation)
+
+# Fade in transition
+func transition_fade_in(animation : String) -> void:
+	animation_player.play(animation)
+
+# Fade out transition
+func transition_fade_out(animation : String) -> void:
+	show_loading_label()
+	animation_player.play(animation)
+
+# Show a loading label during fade transitions
+func show_loading_label() -> void:
+	if transition_type == TransitionType.FADE:
+		create_tween().tween_property(margin_container, "scale", Vector2.ZERO, 0.3)
+
+# Emit signals when animation finishes
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	# print("Animation Finished: ", anim_name)  # Debugging
+	if anim_name == transition_data[transition_type]["in"]:
+		if transition_type == TransitionType.FADE:
+			animation_player.play("pulse_text")
+		transitioned_in.emit()
+	elif anim_name == transition_data[transition_type]["out"]:
+		transitioned_out.emit()
+		screenshot_texture_rect.visible = false

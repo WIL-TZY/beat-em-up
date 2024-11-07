@@ -1,4 +1,4 @@
-class_name PlayerSelector extends BaseScene
+class_name PlayerSelector extends SceneController
 
 @onready var animated_brawler_girl: AnimatedSprite2D = $HBoxContainer/ButtonBrawlerGirl/AnimatedBrawlerGirl
 @onready var animated_long_tail: AnimatedSprite2D = $HBoxContainer/ButtonLongTail/AnimatedLongTail
@@ -62,26 +62,9 @@ func update_selection() -> void:
 
 func choose_character() -> void:
 	if selected_character == eCharacter.BRAWLER_GIRL:
-		GameController.player_resource = preload("res://scripts/resources/brawler_girl.tres")
+		LevelController.player_resource = preload("res://scripts/resources/brawler_girl.tres")
 	else:
-		GameController.player_resource = preload("res://scripts/resources/long_tail.tres")
+		LevelController.player_resource = preload("res://scripts/resources/long_tail.tres")
 		
 	# Screen transition
-	SceneManager.transition(next_scene, transition_type)
-
-# Mouse Hover Effect (removed to keep input limited to keyboard)
-#func _on_button_brawler_girl_mouse_entered() -> void:
-	#if selected_character != eCharacter.BRAWLER_GIRL:
-		#animated_brawler_girl.play()
-		## select_1.play()
-#
-#func _on_button_brawler_girl_mouse_exited() -> void:
-	#animated_brawler_girl.pause()
-#
-#func _on_button_long_tail_mouse_entered() -> void:
-	#if selected_character != eCharacter.LONG_TAIL:
-		#animated_long_tail.play()
-		## select_2.play()
-#
-#func _on_button_long_tail_mouse_exited() -> void:
-	#animated_long_tail.pause()
+	Global.screen_transition.transition(next_scene, transition_type)

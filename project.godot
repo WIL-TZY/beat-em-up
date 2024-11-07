@@ -11,13 +11,13 @@ config_version=5
 [application]
 
 config/name="BeatEmUp"
-run/main_scene="res://scenes/screens/title_screen.tscn"
+run/main_scene="res://scenes/main_scene.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
-SceneManager="*res://scenes/scene_manager.tscn"
+Global="*res://scripts/global.gd"
 
 [display]
 

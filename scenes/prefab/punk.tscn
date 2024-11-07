@@ -213,7 +213,7 @@ size = Vector3(0.9, 1.6, 0.2)
 [node name="Punk" type="CharacterBody3D"]
 collision_layer = 4
 script = ExtResource("1_myo8e")
-chara_name = "Enemy Punk"
+chara_name = "Punk Dude"
 portrait = ExtResource("2_a5xkq")
 
 [node name="Collision" type="CollisionShape3D" parent="."]

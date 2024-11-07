@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cch1r1sferwuc"]
+
+[ext_resource type="Script" path="res://scripts/main_scene.gd" id="1_x72v7"]
+[ext_resource type="PackedScene" uid="uid://cmpwwe5pnyhte" path="res://scenes/screen_transition.tscn" id="2_01gxl"]
+
+[node name="MainScene" type="CanvasLayer"]
+script = ExtResource("1_x72v7")
+
+[node name="Transitions" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="ScreenTransition" parent="Transitions" instance=ExtResource("2_01gxl")]
+
+[node name="MainControl" type="CanvasLayer" parent="."]
+
+[node name="Main3D" type="Node3D" parent="."]

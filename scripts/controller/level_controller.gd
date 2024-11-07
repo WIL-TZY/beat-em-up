@@ -1,29 +1,26 @@
-class_name LevelController extends BaseScene
+class_name LevelController extends Node
 
-@onready var HUD: UI = $HUD
+# Singleton script
 
-var enemies := 0
-var unlocked_at_area := 0.0
-var last_area : bool = false
+# For debug
+static var enemies: Array[Enemy]
 
-func _ready() -> void:
-	super()
+@export var _player: Player 
+@export var _camera: Camera3D
+@export var _HUD: UI
 
-func enemy_died() -> void:
-	enemies -= 1
-	
-	if last_area: 
-		# Ends the game if level is cleared
-		HUD.__level_cleared()
-		return
-		
-	if enemies <= 0:
-		HUD.__show_go()
-		_next_area(unlocked_at_area)
+# Static variables persist across instances and scene changes
+# ideal for global data management, utility functions, and ensuring a single data copy 
+# These variables can be accessed directly from the class without creating a new instance
+static var player: Player 
+static var camera: Camera3D
+static var HUD: UI
+static var player_resource: CharacterData
 
-func _next_area(camera_limit: float) -> void:
-	GameController.camera.set_camera_limit(camera_limit)
+# Runs before ready
+func _enter_tree() -> void:
+	player = _player
+	camera = _camera
+	HUD = _HUD
 
-func config_next_area(amount: int, unlocked: float) -> void:
-	enemies = amount
-	unlocked_at_area = unlocked
+## TO-DO: This controller should handles connection between nodes in the level scene

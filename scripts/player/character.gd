@@ -5,8 +5,8 @@ enum StateMachine { IDLE, WALK, JUMP, FALL, JAB, PUNCH, KICK, KICK_AIR, HURT, DI
 # Get player properties
 @export var properties: CharacterData:
 	get:
-		if GameController.player_resource != null:
-			return GameController.player_resource
+		if LevelController.player_resource != null:
+			return LevelController.player_resource
 		else:
 			return properties
 
@@ -24,7 +24,7 @@ var pickup : bool = false
 @onready var shadow : Sprite3D = $Shadow
 @onready var attack: Area3D = $Attack
 @onready var attack_collision: CollisionShape3D = $Attack/AttackCollision
-@onready var HUD: UI = GameController.HUD
+@onready var HUD: UI = LevelController.HUD
 @onready var health_component: HealthComponent = $HealthComponent
 @onready var camera: Camera3D = get_parent().get_node("Camera")
 
@@ -51,7 +51,6 @@ func _ready() -> void:
 	health_component.hp = properties.hp
 	health_component.hp_max = hp_max
 	
-	# (TO-DO) Connect health component signals to GameController 
 	# Connect signals
 	health_component.__on_damage.connect(func(_hp: float): __change_state(StateMachine.HURT))
 	health_component.__on_dead.connect(func(): __change_state(StateMachine.DIED))

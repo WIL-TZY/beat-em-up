@@ -131,5 +131,8 @@ func __died() -> void:
 		await get_tree().create_timer(2).timeout
 		
 		# Screen transition
-		SceneManager.transition("res://scenes/screens/player_selector.tscn", SceneManager.TransitionType.PIXELATE)
+		Global.screen_transition.transition(
+			"res://scenes/screens/player_selector.tscn", 
+			Global.screen_transition.TransitionType.PIXELATE
+		)
 		

@@ -4,7 +4,7 @@ var smooth := 4
 var initial_pos := -17.5
 var clamped_pos := -10.5
 
-@onready var player: Player = GameController.player
+@onready var player: Player = LevelController.player
 
 func _process(delta: float) -> void:
 	# So the camera doesn't move back, only forward

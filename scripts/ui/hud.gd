@@ -1,4 +1,4 @@
-class_name UI extends CanvasLayer
+class_name UI extends Control
 
 # Go
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
@@ -17,6 +17,7 @@ class_name UI extends CanvasLayer
 @onready var timer_enemy_ui: Timer = $TimerEnemyUI
 
 func _ready() -> void:
+	Global.HUD = self
 	hud_enemy.hide()
 
 func __hud_update_health(hp: float) -> void:
@@ -62,4 +63,7 @@ func __level_cleared() -> void:
 	await get_tree().create_timer(5).timeout
 	
 	# Change back to menu
-	get_tree().change_scene_to_file("res://scenes/screens/player_selector.tscn")
+	Global.screen_transition.transition(
+		"res://scenes/screens/player_selector.tscn", 
+		Global.screen_transition.TransitionType.FADE
+	)

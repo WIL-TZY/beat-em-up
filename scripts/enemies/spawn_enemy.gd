@@ -7,7 +7,7 @@ enum sides { LEFT = 0, RIGHT = 1 }
 @export var enemies: Array[PackedScene]
 @export var last_area: bool = false
 
-@onready var camera: Camera3D = GameController.camera
+@onready var camera: Camera3D = LevelController.camera
 
 func _ready() -> void:
 	# Connect signal to activate the functions when player collides
@@ -22,8 +22,8 @@ func _spawn_enemies() -> void:
 		# Add each enemy to the scene
 		get_parent().add_child(enemy)
 
-	GameController.level_controller.config_next_area(amount, unlocked_at_area)
-	if last_area: GameController.level_controller.last_area = true
+	Global.scene_controller.config_next_area(amount, unlocked_at_area)
+	if last_area: Global.scene_controller.last_area = true
 	# After the spawn is done, remove this node from the scene
 	queue_free()
 
