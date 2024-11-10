@@ -18,13 +18,14 @@ func _ready() -> void:
 	update_selection()
 
 func _input(event: InputEvent) -> void:
-	if event is InputEventKey and event.pressed:
-		if Input.is_action_just_pressed("ui_left"):
-			select_character(-1)
-		elif Input.is_action_just_pressed("ui_right"):
-			select_character(1)
-		elif Input.is_action_just_pressed("ui_accept"):
-			choose_character()
+	if not Global.screen_transition.in_transition:
+		if event is InputEventKey and event.pressed:
+			if Input.is_action_just_pressed("ui_left"):
+				select_character(-1)
+			elif Input.is_action_just_pressed("ui_right"):
+				select_character(1)
+			elif Input.is_action_just_pressed("ui_accept"):
+				choose_character()
 
 # Change the selected character based on direction
 func select_character(direction: int) -> void:
