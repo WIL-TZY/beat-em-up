@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cgsnooqj5kr0j"
-path="res://.godot/imported/back.png-0ab34714bd9c2d2d3a2a6eb1164e87fe.ctex"
+uid="uid://cneesnrf8dt80"
+path="res://.godot/imported/sushi-2.png-16938131d6a0c38b470ef57b3533ea1a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/level/stage layers/back.png"
-dest_files=["res://.godot/imported/back.png-0ab34714bd9c2d2d3a2a6eb1164e87fe.ctex"]
+source_file="res://assets/sprites/props/sushi/sushi-2.png"
+dest_files=["res://.godot/imported/sushi-2.png-16938131d6a0c38b470ef57b3533ea1a.ctex"]
 
 [params]
 

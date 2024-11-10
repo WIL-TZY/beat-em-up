@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4q061563wx5n"
-path="res://.godot/imported/ethereum-2.png-b1e2ba430a1b3297fee6a69b71201e93.ctex"
+uid="uid://c53gbgxcq75xe"
+path="res://.godot/imported/car.png-b1b30c3678b78c1e74d525bba4fbf144.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/level/stage layers/props/Ethereum/ethereum-2.png"
-dest_files=["res://.godot/imported/ethereum-2.png-b1e2ba430a1b3297fee6a69b71201e93.ctex"]
+source_file="res://assets/sprites/props/car.png"
+dest_files=["res://.godot/imported/car.png-b1b30c3678b78c1e74d525bba4fbf144.ctex"]
 
 [params]
 

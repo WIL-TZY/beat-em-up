@@ -1,16 +1,18 @@
-[gd_scene load_steps=17 format=3 uid="uid://m6mn47cd8npo"]
+[gd_scene load_steps=19 format=3 uid="uid://m6mn47cd8npo"]
 
 [ext_resource type="Script" path="res://scripts/controllers/level.gd" id="1_ma8bs"]
 [ext_resource type="PackedScene" uid="uid://bpya62t6qls8v" path="res://scenes/prefab/debug/debug_overlay.tscn" id="3_0lh6l"]
 [ext_resource type="PackedScene" uid="uid://dndpxufhapxen" path="res://scenes/ui/hud.tscn" id="4_udmyx"]
+[ext_resource type="Texture2D" uid="uid://cbdicdullgqph" path="res://assets/sprites/level/parallax.png" id="5_7s0kq"]
 [ext_resource type="Script" path="res://scripts/camera/camera.gd" id="5_wn274"]
-[ext_resource type="Texture2D" uid="uid://cqs84ver46kn7" path="res://assets/sprites/level/street2.png" id="6_y61cr"]
+[ext_resource type="Script" path="res://scripts/helpers/parallax3d.gd" id="6_d0dsx"]
+[ext_resource type="Texture2D" uid="uid://dqtf2q2l1e8iq" path="res://assets/sprites/level/street2.png" id="6_k5sv3"]
 [ext_resource type="PackedScene" uid="uid://dvjfg7epy2hwg" path="res://scenes/prefab/player.tscn" id="7_2qifc"]
 [ext_resource type="PackedScene" uid="uid://b2hexbevog3jp" path="res://scenes/prefab/spawn_enemy.tscn" id="8_1rvou"]
 [ext_resource type="PackedScene" uid="uid://cco2shgyyj3er" path="res://scenes/prefab/boss.tscn" id="9_5ugsj"]
 [ext_resource type="PackedScene" uid="uid://c6fonim785ktx" path="res://scenes/prefab/items/barrel.tscn" id="10_a2kky"]
 [ext_resource type="AudioStream" uid="uid://nf84nk133h0b" path="res://assets/sound/level_1.mp3" id="10_bmxor"]
-[ext_resource type="Texture2D" uid="uid://cnqlxxo6qfwgy" path="res://assets/sprites/level/foreground_layer.png" id="11_fvhu7"]
+[ext_resource type="Texture2D" uid="uid://cnqlxxo6qfwgy" path="res://assets/sprites/level/foreground.png" id="11_fvhu7"]
 [ext_resource type="PackedScene" uid="uid://kwguj1q613ki" path="res://scenes/prefab/items/chicken.tscn" id="11_hnhdc"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ve8hh"]
@@ -42,12 +44,17 @@ projection = 1
 current = true
 size = 6.0
 script = ExtResource("5_wn274")
-metadata/_edit_lock_ = true
+
+[node name="Parallax3D" type="Sprite3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 1, 0, -1.3, -6)
+texture_filter = 0
+texture = ExtResource("5_7s0kq")
+script = ExtResource("6_d0dsx")
 
 [node name="Background" type="Sprite3D" parent="."]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 1, 0, -2.8, -4.1)
 texture_filter = 0
-texture = ExtResource("6_y61cr")
+texture = ExtResource("6_k5sv3")
 metadata/_edit_lock_ = true
 
 [node name="Ground" type="MeshInstance3D" parent="."]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bir11ejyib51y"
-path="res://.godot/imported/barrel.png-8493ab7fa5ce8aa9b6747bf7cb2f4140.ctex"
+uid="uid://cch5gtambf5x7"
+path="res://.godot/imported/hydrant.png-aa4ba4682047a4405792b3ef067f2df4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/level/stage layers/props/barrel.png"
-dest_files=["res://.godot/imported/barrel.png-8493ab7fa5ce8aa9b6747bf7cb2f4140.ctex"]
+source_file="res://assets/sprites/props/hydrant.png"
+dest_files=["res://.godot/imported/hydrant.png-aa4ba4682047a4405792b3ef067f2df4.ctex"]
 
 [params]
 

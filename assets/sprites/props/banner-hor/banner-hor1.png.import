@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://hm1lvohh2qgg"
-path="res://.godot/imported/banner-hor2.png-dfa52e4bd9681c9d008111ef52ae91ee.ctex"
+uid="uid://403i6vt3xdhm"
+path="res://.godot/imported/banner-hor1.png-845571194a1bd89fa28100955601feed.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/level/stage layers/props/banner-hor/banner-hor2.png"
-dest_files=["res://.godot/imported/banner-hor2.png-dfa52e4bd9681c9d008111ef52ae91ee.ctex"]
+source_file="res://assets/sprites/props/banner-hor/banner-hor1.png"
+dest_files=["res://.godot/imported/banner-hor1.png-845571194a1bd89fa28100955601feed.ctex"]
 
 [params]
 

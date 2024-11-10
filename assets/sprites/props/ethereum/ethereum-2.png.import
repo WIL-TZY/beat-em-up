@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cnqlxxo6qfwgy"
-path="res://.godot/imported/foreground_layer.png-3d585a8f89d5bfb9ee824f60fc61903d.ctex"
+uid="uid://c4q061563wx5n"
+path="res://.godot/imported/ethereum-2.png-ccd5d2e86a4bed6ab1c395eb57f86951.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/level/foreground_layer.png"
-dest_files=["res://.godot/imported/foreground_layer.png-3d585a8f89d5bfb9ee824f60fc61903d.ctex"]
+source_file="res://assets/sprites/props/ethereum/ethereum-2.png"
+dest_files=["res://.godot/imported/ethereum-2.png-ccd5d2e86a4bed6ab1c395eb57f86951.ctex"]
 
 [params]
 
@@ -31,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

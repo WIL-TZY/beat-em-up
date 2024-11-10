@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cch5gtambf5x7"
-path="res://.godot/imported/hydrant.png-05f17385bbf7a8e44d64016cb8c178d1.ctex"
+uid="uid://cl4081p1ph8ry"
+path="res://.godot/imported/sushi-1.png-164d7126186fa50451250f245d422f8c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/level/stage layers/props/hydrant.png"
-dest_files=["res://.godot/imported/hydrant.png-05f17385bbf7a8e44d64016cb8c178d1.ctex"]
+source_file="res://assets/sprites/props/sushi/sushi-1.png"
+dest_files=["res://.godot/imported/sushi-1.png-164d7126186fa50451250f245d422f8c.ctex"]
 
 [params]
 
