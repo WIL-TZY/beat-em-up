@@ -13,7 +13,7 @@ config_version=5
 config/name="BeatEmUp"
 run/main_scene="res://scenes/main_scene.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
-config/icon="res://icon.png"
+config/icon="res://icon.ico"
 
 [autoload]
 
